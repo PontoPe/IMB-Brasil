@@ -136,7 +136,7 @@
   gap: 0.4rem;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #6c757d;
+  color: var(--imb-neutral-600);
   letter-spacing: 0.02em;
 }
 .wa-hint::before {
@@ -232,7 +232,7 @@
 .catalog-filter-button.is-active {
   background: var(--imb-orange) !important;
   border-color: var(--imb-orange) !important;
-  color: var(--imb-white) !important;
+  color: #ffffff !important;
 }
 
 .catalog-filter-button:focus-visible {
@@ -359,8 +359,8 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  border: 1px solid #e9ecef;
+  background: var(--imb-white);
+  border: 1px solid var(--imb-neutral-200);
   border-radius: 20px;
   padding: 1.25rem 1.75rem;
   font-family: 'Roboto', sans-serif;
@@ -368,7 +368,7 @@ h1, h2, h3, h4 {
   letter-spacing: 0;
   text-transform: uppercase;
   font-size: 1.05rem;
-  color: #6c757d;
+  color: var(--imb-neutral-600);
   text-align: center;
   line-height: 1.05;
   filter: grayscale(100%);
@@ -486,24 +486,24 @@ h1, h2, h3, h4 {
 }
 .cmp-head-cell {
   padding: 1.25rem 1rem;
-  background: #ffffff;
-  border-bottom: 1px solid #e9ecef;
+  background: var(--imb-white);
+  border-bottom: 1px solid var(--imb-neutral-200);
   position: sticky;
   top: 0;
   z-index: 5;
 }
 .cmp-head-label {
-  background: #f8f9fa;
-  border-right: 1px solid #e9ecef;
+  background: var(--imb-neutral-100);
+  border-right: 1px solid var(--imb-neutral-200);
 }
 .cmp-row-label {
   padding: 0.9rem 1rem;
   font-weight: 600;
   font-size: 0.78rem;
-  color: #6c757d;
-  background: #f8f9fa;
-  border-right: 1px solid #e9ecef;
-  border-bottom: 1px solid #f8f9fa;
+  color: var(--imb-neutral-600);
+  background: var(--imb-neutral-100);
+  border-right: 1px solid var(--imb-neutral-200);
+  border-bottom: 1px solid var(--imb-neutral-100);
   display: flex;
   align-items: center;
   text-transform: uppercase;
@@ -511,8 +511,8 @@ h1, h2, h3, h4 {
 }
 .cmp-cell {
   padding: 0.9rem 1rem;
-  border-bottom: 1px solid #f8f9fa;
-  border-right: 1px solid #f8f9fa;
+  border-bottom: 1px solid var(--imb-neutral-100);
+  border-right: 1px solid var(--imb-neutral-100);
   display: flex;
   align-items: center;
 }
@@ -532,7 +532,7 @@ h1, h2, h3, h4 {
 .cmp-bar-track {
   width: 100%;
   height: 8px;
-  background: #e9ecef;
+  background: var(--imb-neutral-200);
   border-radius: 9999px;
   overflow: hidden;
 }
@@ -573,10 +573,12 @@ h1, h2, h3, h4 {
   --imb-orange: #ea7805;
   --imb-red: #e94f1b;
   --imb-blue-dark: #272e63;
+  --imb-accent: #272e63;
   --imb-yellow: #fdc531;
   --imb-success: #4cca39;
   --imb-error: #ff0000;
   --imb-neutral-800: #343a40;
+  --imb-neutral-700: #495057;
   --imb-neutral-600: #6c757d;
   --imb-neutral-500: #adb5bd;
   --imb-neutral-400: #ced4da;
@@ -584,6 +586,7 @@ h1, h2, h3, h4 {
   --imb-neutral-200: #e9ecef;
   --imb-neutral-100: #f8f9fa;
   --imb-white: #ffffff;
+  color-scheme: light;
   --imb-orange-rgb: 234, 120, 5;
   --imb-blue-dark-rgb: 39, 46, 99;
   --imb-yellow-rgb: 253, 197, 49;
@@ -715,7 +718,7 @@ textarea,
 }
 .bg-on-surface,
 .bg-inverse-primary {
-  background-color: var(--imb-body) !important;
+  background-color: #1f2322 !important;
 }
 .bg-success {
   background-color: var(--imb-success) !important;
@@ -766,16 +769,16 @@ textarea,
 .text-on-primary,
 .text-on-primary-container,
 .text-white {
-  color: var(--imb-white) !important;
+  color: #ffffff !important;
 }
 .text-tertiary,
 .text-on-tertiary-container,
 .text-on-tertiary-fixed,
 .text-on-tertiary-fixed-variant {
-  color: var(--imb-blue-dark) !important;
+  color: var(--imb-accent) !important;
 }
 .text-inverse-on-surface {
-  color: var(--imb-neutral-100) !important;
+  color: #f1f3f5 !important;
 }
 .text-success {
   color: var(--imb-success) !important;
@@ -816,7 +819,7 @@ textarea,
 }
 .hover\:text-on-primary:hover,
 .hover\:text-on-primary-container:hover {
-  color: var(--imb-white) !important;
+  color: #ffffff !important;
 }
 
 .tracking-tight,
@@ -1015,7 +1018,7 @@ textarea:disabled,
 #select-all-btn {
   background: var(--imb-orange) !important;
   border-color: var(--imb-orange) !important;
-  color: var(--imb-white) !important;
+  color: #ffffff !important;
 }
 
 #select-all-btn:hover {
@@ -1090,7 +1093,7 @@ textarea:disabled,
 
 .picker-card .picker-toggle.is-selected {
   background: var(--imb-orange);
-  color: var(--imb-white);
+  color: #ffffff;
 }
 
 .picker-card .picker-toggle.is-selected::before {
@@ -1486,7 +1489,7 @@ textarea:disabled,
   border: 2px solid var(--imb-white);
   border-radius: 9999px;
   box-shadow: 0 8px 18px rgba(31, 35, 34, 0.18);
-  color: var(--imb-white);
+  color: #ffffff;
   display: inline-flex;
   font-family: 'Poppins', sans-serif;
   font-size: 0.72rem;
@@ -1655,7 +1658,7 @@ textarea:disabled,
 }
 ::selection {
   background: var(--imb-orange);
-  color: var(--imb-white);
+  color: #ffffff;
 }
 
 /* ========== User-requested palette overrides ========== */
@@ -1663,7 +1666,7 @@ textarea:disabled,
 .bg-tertiary,
 .bg-on-background,
 .bg-inverse-surface {
-  background-color: var(--imb-black) !important;
+  background-color: #1f2322 !important;
 }
 .bg-on-background\/60 {
   background-color: rgba(31, 35, 34, 0.6) !important;
@@ -1678,14 +1681,14 @@ footer.bg-surface-container,
 footer.bg-white,
 footer.bg-surface,
 footer.bg-background {
-  background-color: var(--imb-black) !important;
+  background-color: #1f2322 !important;
   color: rgba(255, 255, 255, 0.72) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 footer h5,
 footer .font-headline,
 footer .text-on-surface {
-  color: var(--imb-white) !important;
+  color: #ffffff !important;
 }
 footer a {
   color: rgba(255, 255, 255, 0.72) !important;
@@ -1822,7 +1825,7 @@ footer .material-symbols-outlined.text-primary {
   flex-shrink: 0;
 }
 .lang-switcher-menu {
-  background: #ffffff;
+  background: var(--imb-white);
   border: 1px solid var(--imb-neutral-300);
   border-radius: 12px;
   box-shadow: var(--imb-shadow-2);
@@ -1863,3 +1866,95 @@ footer .material-symbols-outlined.text-primary {
   white-space: nowrap;
 }
 .lang-switcher-menu a.is-current .lang-name { color: var(--imb-orange); }
+
+/* ========== Dark theme ========== */
+/* The whole site is themed through --imb-* variables (see the utility override
+   layer above). Dark mode just redefines those primitives. Brand colors
+   (orange, yellow, success) stay constant in both themes. */
+:root[data-theme="dark"] {
+  --imb-black: #e8eaec;
+  --imb-body: #e8eaec;
+  --imb-white: #1a1e22;
+  --imb-neutral-100: #15181b;
+  --imb-neutral-200: #23282d;
+  --imb-neutral-300: #2d333a;
+  --imb-neutral-400: #3a4149;
+  --imb-neutral-500: #6b7178;
+  --imb-neutral-600: #9aa1a9;
+  --imb-neutral-700: #c5c9ce;
+  --imb-neutral-800: #dfe2e5;
+  --imb-accent: #9aa6f0;
+  --imb-error: #ff6b6b;
+  --imb-shadow-1: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --imb-shadow-2: 0 12px 40px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+/* Translucent nav bar: dark glass instead of white glass. */
+:root[data-theme="dark"] .bg-white\/80 {
+  background-color: rgba(26, 30, 34, 0.92) !important;
+}
+:root[data-theme="dark"] .bg-white\/90,
+:root[data-theme="dark"] .bg-white\/95 {
+  background-color: rgba(26, 30, 34, 0.95) !important;
+}
+/* Light surface-tint utilities meant for light mode become subtle on dark. */
+:root[data-theme="dark"] .bg-surface-container-high\/30 {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+/* "Eng. Responsável" quote callout (contato.html): a dark card on light mode,
+   so it inverts to a white card with black text on dark mode to keep contrast. */
+:root[data-theme="dark"] .quote-callout {
+  background-color: #ffffff !important;
+  border-color: rgba(31, 35, 34, 0.12) !important;
+}
+:root[data-theme="dark"] .quote-callout .text-white {
+  color: #1f2322 !important;
+}
+:root[data-theme="dark"] .quote-callout .text-white\/70 {
+  color: rgba(31, 35, 34, 0.66) !important;
+}
+
+/* ========== Theme toggle button (nav) ========== */
+.theme-toggle {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 9999px;
+  color: var(--imb-neutral-600);
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 40px;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.18s ease, color 0.18s ease;
+  width: 40px;
+}
+.theme-toggle:hover {
+  background: var(--imb-neutral-200);
+  color: var(--imb-orange);
+}
+.theme-toggle:focus-visible {
+  outline: 3px solid rgba(var(--imb-orange-rgb), 0.24);
+  outline-offset: 2px;
+}
+.theme-toggle .material-symbols-outlined {
+  font-size: 1.4rem;
+}
+
+/* Smooth color crossfade applied only while toggling (not on load/hover). */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease,
+    color 0.3s ease, fill 0.3s ease, box-shadow 0.3s ease !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.theme-anim,
+  html.theme-anim *,
+  html.theme-anim *::before,
+  html.theme-anim *::after {
+    transition: none !important;
+  }
+}

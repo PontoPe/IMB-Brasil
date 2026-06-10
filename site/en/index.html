@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,6 +43,34 @@
       }
     };
   </script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
 </head>
 <body class="bg-surface text-on-surface">
 
@@ -57,7 +85,7 @@
         <a class="nav-link" href="contact.html#about">About IMB</a>
       </div>
       <div class="flex items-center gap-2 md:gap-3 ml-auto">
-        <div class="lang-switcher hidden md:flex items-center">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle theme"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button><div class="lang-switcher hidden md:flex items-center">
           <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Language"><img class="lang-flag" src="../images/bandeiras/usa.svg"    alt="" aria-hidden="true" width="20" height="14" /></button>
           <ul class="lang-switcher-menu" role="menu" data-open="false">
             <li role="none"><a role="menuitem" data-lang="pt" href="../index.html" aria-label="Português"><img class="lang-flag" src="../images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
@@ -269,7 +297,6 @@
       </div>
     </div>
   </section>
-
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
       <div class="space-y-4">
@@ -280,29 +307,24 @@
         <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipment</h5>
         <ul class="text-xs text-on-surface-variant space-y-2">
           <li><a class="hover:text-primary transition-colors" href="paver.html">Pavers</a></li>
-          <li><a class="hover:text-primary transition-colors" href="extruder.html">Extruders</a></li>
+          <li><a class="hover:text-primary transition-colors" href="extruder.html">Concrete Extruders</a></li>
           <li><a class="hover:text-primary transition-colors" href="products.html">Full Catalog</a></li>
-          <li><a class="hover:text-primary transition-colors" href="compare.html">Compare Equipment</a></li>
         </ul>
       </div>
       <div class="space-y-4">
         <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Company</h5>
         <ul class="text-xs text-on-surface-variant space-y-2">
           <li><a class="hover:text-primary transition-colors" href="contact.html#about">About Us</a></li>
-          <li><a class="hover:text-primary transition-colors" href="cases.html">Project Cases</a></li>
           <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Technical Support</a></li>
         </ul>
       </div>
       <div class="space-y-4">
-        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">International Reach</h5>
-        <div class="flex flex-wrap gap-2 text-[11px] text-on-surface-variant">
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇧🇷 BR</span>
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇦🇷 AR</span>
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇨🇱 CL</span>
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇵🇾 PY</span>
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇺🇾 UY</span>
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇵🇪 PE</span>
-          <span class="px-2 py-1 bg-surface-container-high rounded">🇨🇴 CO</span>
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Quick Contact</h5>
+        <div class="text-xs text-on-surface-variant space-y-2">
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (47) 3333-0000</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial@imb-brasil.com.br</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (47) 98888-7777</p>
         </div>
       </div>
     </div>

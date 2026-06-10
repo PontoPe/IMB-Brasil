@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,6 +15,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <link href="../css/styles.css" rel="stylesheet" />
   <script>tailwind.config={theme:{extend:{colors:{"surface-container-high":"#e9ecef","surface-dim":"#dee2e6","inverse-surface":"#272e63","on-primary-container":"#ffffff","primary-container":"#ea7805","outline-variant":"#ced4da","secondary-container":"#e9ecef","on-primary-fixed":"#1f2322","on-primary-fixed-variant":"#e94f1b","primary-fixed":"#fdc531","on-background":"#1f2322","primary-fixed-dim":"#fdc531","on-secondary":"#ffffff","on-secondary-container":"#6c757d","on-tertiary-container":"#272e63","on-tertiary-fixed":"#272e63","on-tertiary-fixed-variant":"#272e63","surface-bright":"#f8f9fa","surface-container-low":"#f8f9fa","on-surface-variant":"#6c757d","inverse-primary":"#fdc531","surface-container-highest":"#dee2e6","surface-container-lowest":"#ffffff","on-surface":"#1f2322","tertiary-container":"#e9ecef","tertiary-fixed-dim":"#dee2e6","background":"#f8f9fa","surface-tint":"#ea7805","inverse-on-surface":"#f8f9fa","tertiary":"#272e63","surface-container":"#e9ecef","surface":"#f8f9fa","tertiary-fixed":"#e9ecef","on-primary":"#ffffff","secondary":"#6c757d","primary":"#ea7805","outline":"#6c757d"},borderRadius:{"DEFAULT":"8px","lg":"8px","xl":"20px","full":"9999px"},fontFamily:{"headline":["Poppins"],"body":["Roboto"],"label":["Roboto"]}}}};</script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
 </head>
 <body class="bg-surface text-on-surface">
     <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
@@ -28,7 +56,7 @@
         <a class="nav-link" href="contact.html#about">About IMB</a>
       </div>
       <div class="flex items-center gap-2 md:gap-3 ml-auto">
-        <div class="lang-switcher hidden md:flex items-center">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle theme"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button><div class="lang-switcher hidden md:flex items-center">
           <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Language"><img class="lang-flag" src="../images/bandeiras/usa.svg"    alt="" aria-hidden="true" width="20" height="14" /></button>
           <ul class="lang-switcher-menu" role="menu" data-open="false">
             <li role="none"><a role="menuitem" data-lang="pt" href="../extrusora.html" aria-label="Português"><img class="lang-flag" src="../images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
@@ -152,9 +180,44 @@
       </div>
     </section>
   </main>
-
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
-    <div class="max-w-7xl mx-auto text-center"><p class="text-xs text-on-surface-variant">© 2025 IMB Brasil. All rights reserved.</p></div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="space-y-4">
+        <div class="site-logo-footer"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Leader in concrete paving and extrusion technology, serving the largest infrastructure projects in Latin America.</p>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipment</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" href="paver.html">Pavers</a></li>
+          <li><a class="hover:text-primary transition-colors" href="extruder.html">Concrete Extruders</a></li>
+          <li><a class="hover:text-primary transition-colors" href="products.html">Full Catalog</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Company</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" href="contact.html#about">About Us</a></li>
+          <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Technical Support</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Quick Contact</h5>
+        <div class="text-xs text-on-surface-variant space-y-2">
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (47) 3333-0000</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial@imb-brasil.com.br</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (47) 98888-7777</p>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-10 pt-8 border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-4 px-4 md:px-8">
+      <p class="text-xs text-on-surface-variant">© 2025 IMB Brasil. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="text-xs text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a>
+        <a href="#" class="text-xs text-on-surface-variant hover:text-primary transition-colors">Terms of Use</a>
+      </div>
+    </div>
   </footer>
 
   <a class="wa-link wa-fab fixed bottom-6 right-6 z-50 hidden md:flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-success text-white rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><span class="material-symbols-outlined text-2xl md:text-3xl" style="font-variation-settings:'FILL' 1;">chat</span></a>

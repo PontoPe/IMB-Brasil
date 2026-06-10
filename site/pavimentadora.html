@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,6 +43,34 @@
       }
     };
   </script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
 </head>
 <body class="bg-surface text-on-surface">
 
@@ -57,7 +85,7 @@
         <a class="nav-link" href="contato.html#sobre">Sobre a IMB</a>
       </div>
       <div class="flex items-center gap-2 md:gap-3 ml-auto">
-        <div class="lang-switcher hidden md:flex items-center">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Alternar tema" title="Alternar tema"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button><div class="lang-switcher hidden md:flex items-center">
           <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma"><img class="lang-flag" src="images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /></button>
           <ul class="lang-switcher-menu" role="menu" data-open="false">
             <li role="none"><a role="menuitem" data-lang="pt" href="pavimentadora.html" aria-label="Português"><img class="lang-flag" src="images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
@@ -100,10 +128,6 @@
         <div class="lg:col-span-7 relative fade-in-up">
           <div class="relative z-10 group">
             <img alt="Pavimentadora IMB-7300" class="w-full aspect-[4/3] object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCazj80UbPQR9R9GCudjFBfDDOWQJ6YxniMFaEewO44eMWCrs7Xn-zznluWLPijFzgBiDAVoEHgjNAgV5AZgqds2iQ9bv3jW5q01p9QvkBjpoxXEAlfzs_7PSf7COs7IUEK5z0NxqiUtBX7JC0fZXwNgVJ3tZf9pCypmnfm-2lFB__dxm4Yac3Uig9DiNZ1upp3PuEyw3i1JZNlOrOknY8ib3aHQdh3V4rL-A_h52cZPySQQhe90nxhq1WP3dp2IrLtuu9nNFb6b_JI" />
-            <div class="absolute bottom-4 left-4 bg-on-surface/90 backdrop-blur-md text-white px-4 py-2 rounded-lg flex items-center gap-2">
-              <span class="material-symbols-outlined text-primary-container" style="font-variation-settings:'FILL' 1;">verified</span>
-              <span class="text-xs font-bold tracking-widest uppercase">Engenharia de Precisão</span>
-            </div>
           </div>
         </div>
 
@@ -304,18 +328,17 @@
       </div>
     </section>
   </main>
-
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
       <div class="space-y-4">
         <div class="site-logo-footer"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
-        <p class="text-xs text-on-surface-variant leading-relaxed">Líder em tecnologia de pavimentação e extrusão de concreto na América Latina.</p>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Líder em tecnologia de pavimentação e extrusão de concreto, servindo os maiores projetos de infraestrutura da América Latina.</p>
       </div>
       <div class="space-y-4">
         <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipamentos</h5>
         <ul class="text-xs text-on-surface-variant space-y-2">
           <li><a class="hover:text-primary transition-colors" href="pavimentadora.html">Pavimentadoras</a></li>
-          <li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras</a></li>
+          <li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras de Concreto</a></li>
           <li><a class="hover:text-primary transition-colors" href="produtos.html">Catálogo Completo</a></li>
         </ul>
       </div>
@@ -324,6 +347,7 @@
         <ul class="text-xs text-on-surface-variant space-y-2">
           <li><a class="hover:text-primary transition-colors" href="contato.html#sobre">Sobre Nós</a></li>
           <li><a class="hover:text-primary transition-colors" href="contato.html">Contato</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Assistência Técnica</a></li>
         </ul>
       </div>
       <div class="space-y-4">
@@ -331,6 +355,7 @@
         <div class="text-xs text-on-surface-variant space-y-2">
           <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (47) 3333-0000</p>
           <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial@imb-brasil.com.br</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (47) 98888-7777</p>
         </div>
       </div>
     </div>

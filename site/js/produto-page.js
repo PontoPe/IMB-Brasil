@@ -51,7 +51,21 @@
                      en: function(n,s){ return 'Hi! I\'d like a quote for the ' + n + ' (' + s + ').'; },
                      es: function(n,s){ return '¡Hola! Quisiera una cotización para el equipo ' + n + ' (' + s + ').'; } },
     pageTitleSuffix:{pt: '— Ficha técnica IMB Brasil', en: '— IMB Brasil Data Sheet', es: '— Ficha técnica IMB Brasil' },
+    profilesTitle:  { pt: 'Perfis de Aplicação', en: 'Application Profiles', es: 'Perfiles de Aplicación' },
+    profilesThis:   { pt: 'Este equipamento executa os seguintes tipos de perfil:', en: 'This equipment produces the following profile types:', es: 'Este equipo ejecuta los siguientes tipos de perfil:' },
+    profilesCustom: { pt: 'Perfis personalizados sob consulta — moldes sob medida para o seu projeto.', en: 'Custom profiles on request — made-to-measure molds for your project.', es: 'Perfiles personalizados bajo consulta — moldes a medida para su proyecto.' },
+    profilesCatBtn: { pt: 'Ver catálogo de perfis (PDF)', en: 'View profile catalog (PDF)', es: 'Ver catálogo de perfiles (PDF)' },
+    profilesAlt:    { pt: 'Perfis personalizados sob consulta', en: 'Custom profiles on request', es: 'Perfiles personalizados bajo consulta' },
   };
+  var PROFILE_LABELS = {
+    'meio-fio':            { pt: 'Meio-fio',              en: 'Curb',               es: 'Cordón' },
+    'guia-sarjeta':        { pt: 'Guia e Sarjeta',        en: 'Guide & Gutter',     es: 'Guía y Cuneta' },
+    'calcada':             { pt: 'Calçada',               en: 'Sidewalk',           es: 'Vereda' },
+    'canaleta-drenagem':   { pt: 'Canaleta de Drenagem',  en: 'Drainage Channel',   es: 'Canal de Drenaje' },
+    'barreira-new-jersey': { pt: 'Barreira New Jersey',   en: 'New Jersey Barrier', es: 'Barrera New Jersey' },
+    'pavimento-concreto':  { pt: 'Pavimento de Concreto', en: 'Concrete Pavement',  es: 'Pavimento de Concreto' },
+  };
+  var assetPrefix = /\/(en|es)\//i.test(window.location.pathname) ? '../' : '';
   function ui(k) { var e = UI[k]; return e ? (e[LANG] || e.pt) : k; }
 
   function fmt(v, unit) {
@@ -116,10 +130,7 @@
     +     '<div class="lg:col-span-7 relative fade-in-up">'
     +       '<div class="relative z-10 group">'
     +         '<img alt="' + escHtml(prod.name) + '" class="w-full aspect-[4/3] object-cover rounded-xl shadow-2xl transition-transform duration-500 group-hover:scale-[1.02]" src="' + escHtml(prod.image) + '" />'
-    +         '<div class="absolute bottom-4 left-4 bg-on-surface/90 backdrop-blur-md text-white px-4 py-2 rounded-lg flex items-center gap-2">'
-    +           '<span class="material-symbols-outlined text-primary-container" style="font-variation-settings:\'FILL\' 1;">verified</span>'
-    +           '<span class="text-xs font-bold tracking-widest uppercase">' + escHtml(ui('precisionEng')) + '</span>'
-    +         '</div>'
+    +         ''
     +       '</div>'
     +     '</div>'
     +     '<div class="lg:col-span-5 space-y-6 md:space-y-8 fade-in-up">'
@@ -202,6 +213,35 @@
     +   '</div>'
     + '</section>';
 
+  // ---- Perfis de aplicação ----
+  var profileChips = (prod.profile_types || []).map(function (id) {
+    var lbl = PROFILE_LABELS[id];
+    return lbl
+      ? '<span class="spec-chip bg-tertiary-container/30 px-3 py-1.5 text-xs font-bold text-tertiary">' + escHtml(T(lbl)) + '</span>'
+      : '';
+  }).join('');
+
+  var perfisSection = ''
+    + '<section class="py-16 md:py-24 bg-surface-container-low">'
+    +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
+    +     '<div class="mb-10 md:mb-12 fade-in-up">'
+    +       '<h2 class="text-2xl md:text-3xl font-black font-headline tracking-tight uppercase border-l-8 border-primary-container pl-6">' + escHtml(ui('profilesTitle')) + '</h2>'
+    +     '</div>'
+    +     '<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center fade-in-up">'
+    +       '<div class="rounded-xl p-6 md:p-8 border border-outline-variant" style="background:#ffffff;">'
+    +         '<img src="' + escHtml(assetPrefix + 'images/perfis-personalizados.png') + '" alt="' + escHtml(ui('profilesAlt')) + '" class="w-full h-auto" loading="lazy" />'
+    +       '</div>'
+    +       '<div>'
+    +         (profileChips ? '<p class="text-on-surface-variant text-sm md:text-base mb-3">' + escHtml(ui('profilesThis')) + '</p><div class="flex flex-wrap gap-2 mb-6">' + profileChips + '</div>' : '')
+    +         '<p class="text-on-surface text-base md:text-lg font-semibold leading-relaxed mb-6">' + escHtml(ui('profilesCustom')) + '</p>'
+    +         '<a href="' + escHtml(assetPrefix + 'manuals/sugestao-de-perfis-imb.pdf') + '" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-primary-container hover:bg-primary text-on-primary-container hover:text-on-primary font-bold text-sm uppercase tracking-widest px-6 py-3 rounded transition-colors">'
+    +           '<span class="material-symbols-outlined text-base">picture_as_pdf</span>' + escHtml(ui('profilesCatBtn'))
+    +         '</a>'
+    +       '</div>'
+    +     '</div>'
+    +   '</div>'
+    + '</section>';
+
   // ---- Cases relacionados ----
   var relatedCases = [];
   if (window.IMB_CASES && window.IMB_CASES.cases) {
@@ -244,5 +284,5 @@
     +   '</div>'
     + '</section>';
 
-  main.innerHTML = hero + specsSection + casesBlock + ctaBlock;
+  main.innerHTML = hero + specsSection + perfisSection + casesBlock + ctaBlock;
 })();

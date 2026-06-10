@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,6 +43,34 @@
       }
     };
   </script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
 </head>
 <body class="bg-surface text-on-surface">
 
@@ -57,7 +85,7 @@
         <a class="nav-link is-active" href="contato.html#sobre">Sobre a IMB</a>
       </div>
       <div class="flex items-center gap-2 md:gap-3 ml-auto">
-        <div class="lang-switcher hidden md:flex items-center">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Alternar tema" title="Alternar tema"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button><div class="lang-switcher hidden md:flex items-center">
           <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma"><img class="lang-flag" src="images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /></button>
           <ul class="lang-switcher-menu" role="menu" data-open="false">
             <li role="none"><a role="menuitem" data-lang="pt" href="contato.html" aria-label="Português"><img class="lang-flag" src="images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
@@ -151,7 +179,7 @@
             <div class="w-full max-w-sm xl:max-w-md aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
               <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgaMjhPhQ9MRcsWyz-vg5tlz1IEcVrOOcG4zrSf2RkGzdeg7DF9TqFHjunIkjCqLq1Gj_1WEVLXmW8Fs_6PphTmm2VGXQS9ByD3Cpxh3r19q2EW4gWHOFWMDDiWBW-742p-SDguwMUJwrkv8edk1t_wpbxUC15ng7CfsSMhZOeRunwhIsEupvJlUTF5TDUEcVLrd_3M4bb4g7mDuN8ipn7q5xrQUWJiDO31eqKv8Dm51qZG0ng9W2nZaM00hAzqCrGhj7TzgBYrpo" alt="Engenheira na fábrica IMB Brasil" />
             </div>
-            <div class="absolute -bottom-6 left-0 bg-on-background border border-white/10 p-6 md:p-7 rounded-lg shadow-xl hidden md:block max-w-xs">
+            <div class="quote-callout absolute -bottom-6 left-0 bg-on-background border border-white/10 p-6 md:p-7 rounded-lg shadow-xl hidden md:block max-w-xs">
               <p class="font-headline font-bold text-white text-base md:text-lg leading-tight italic">
                 "Nossa meta não é vender volume, é garantir que cada cliente tenha uma máquina operando sem paradas."
               </p>
@@ -431,31 +459,26 @@
     </section>
 
   </main>
-
   <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
       <div class="space-y-4">
         <div class="site-logo-footer"><img src="images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
-        <p class="text-xs text-on-surface-variant leading-relaxed">Líder em tecnologia de pavimentação e extrusão de concreto na América Latina.</p>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Líder em tecnologia de pavimentação e extrusão de concreto, servindo os maiores projetos de infraestrutura da América Latina.</p>
       </div>
       <div class="space-y-4">
         <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipamentos</h5>
         <ul class="text-xs text-on-surface-variant space-y-2">
           <li><a class="hover:text-primary transition-colors" href="pavimentadora.html">Pavimentadoras</a></li>
-          <li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras</a></li>
+          <li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras de Concreto</a></li>
           <li><a class="hover:text-primary transition-colors" href="produtos.html">Catálogo Completo</a></li>
         </ul>
       </div>
       <div class="space-y-4">
         <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Empresa</h5>
         <ul class="text-xs text-on-surface-variant space-y-2">
-          <li><a class="hover:text-primary transition-colors" href="#sobre">Sobre Nós</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#historia">Nossa História</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#presenca">Onde Atuamos</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#obras">Obras de Destaque</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#clientes">Clientes</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#depoimentos">Depoimentos</a></li>
-          <li><a class="hover:text-primary transition-colors" href="#contato">Contato</a></li>
+          <li><a class="hover:text-primary transition-colors" href="contato.html#sobre">Sobre Nós</a></li>
+          <li><a class="hover:text-primary transition-colors" href="contato.html">Contato</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Assistência Técnica</a></li>
         </ul>
       </div>
       <div class="space-y-4">
