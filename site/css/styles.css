@@ -24,6 +24,41 @@
   color: var(--imb-orange);
 }
 
+/* Hero slideshow — crossfading placeholder photos, cycled by js/main.js. */
+.hero-slideshow {
+  position: absolute;
+  inset: 0;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+.hero-slide.is-active {
+  opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}
+
+/* Ploomes CRM contact form embed (responsive iframe). */
+.ploomes-form-embed {
+  width: 100%;
+}
+.ploomes-form-embed iframe {
+  display: block;
+  width: 100%;
+  min-height: 800px;
+  border: 0;
+  border-radius: 8px;
+}
+
 /* Single-color button utilities. */
 .btn-solid-orange {
   background: var(--imb-orange);

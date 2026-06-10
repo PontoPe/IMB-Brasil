@@ -1,6 +1,6 @@
 // site vars
 var IMB_CONFIG = {
-  whatsappNumber: '5519994169662',        // somente num
+  whatsappNumber: '5541988490341',        // somente num
   whatsappDefaultMsg: 'Olá! Gostaria de mais informações sobre os equipamentos IMB.',
   telefone: '+55 (47) 3333-0000',
   email: 'comercial@imb-brasil.com.br',
@@ -91,6 +91,22 @@ window.IMB_resolveWaMsg = function (el) {
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') setOpen(false);
     });
+  });
+
+  // ---- Hero slideshow (home) — auto-cycles placeholder photos by time ----
+  // Markup: a [data-hero-slideshow] wrapper with N <img class="hero-slide">.
+  // The first slide carries .is-active; CSS crossfades on opacity.
+  document.querySelectorAll('[data-hero-slideshow]').forEach(function (show) {
+    var slides = show.querySelectorAll('.hero-slide');
+    if (slides.length < 2) return;
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    var idx = 0;
+    setInterval(function () {
+      slides[idx].classList.remove('is-active');
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add('is-active');
+    }, 5000);
   });
 
   const nav = document.getElementById('main-nav');

@@ -65,7 +65,7 @@
             <li role="none"><a role="menuitem" data-lang="es" href="es/casos.html" aria-label="Español"><img class="lang-flag" src="images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
           </ul>
         </div>
-        <a href="contato.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="hidden xl:inline-flex btn-secondary-light nav-cta">Entre em contato</a>
         <a href="contato.html#contato" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
           <span class="material-symbols-outlined text-2xl">menu</span>
@@ -89,7 +89,7 @@
         <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contato.html#sobre">Sobre a IMB</a>
       </div>
       <div class="mt-8 space-y-3">
-        <a href="contato.html" class="flex w-full btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="flex w-full btn-secondary-light nav-cta">Entre em contato</a>
         <a href="contato.html#contato" class="flex w-full btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
       </div>
     </div>
@@ -109,7 +109,7 @@
             <span class="text-primary-container font-semibold">Cases</span>
           </div>
           <h1 class="font-headline font-black text-4xl sm:text-5xl md:text-6xl text-white tracking-tighter mb-4 md:mb-6 leading-none">
-            OBRAS QUE <br /><span class="text-primary-container">MUDAM O MAPA.</span>
+            OBRAS REAIS, <br /><span class="text-primary-container">RESULTADOS CONCRETOS.</span>
           </h1>
           <p class="text-surface-container-high text-base md:text-lg font-light leading-relaxed max-w-xl">
             Pavimentação rígida, meios-fios, sarjetas e barreiras de concreto entregues em obras de infraestrutura crítica em todo o Brasil e América Latina.
@@ -127,28 +127,8 @@
           </div>
           <h2 class="font-headline font-extrabold text-2xl md:text-3xl text-on-surface tracking-tight max-w-2xl">Resultado consolidado das obras de destaque.</h2>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          <div style="background:#fff;border-radius:12px;padding:1.5rem;border-bottom:4px solid #ced4da;">
-            <span class="material-symbols-outlined" style="font-size:2.5rem;color:#ea7805;display:block;margin-bottom:0.75rem;">route</span>
-            <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:2rem;color:#1f2322;line-height:1;">+170 <span style="font-size:1rem;color:#6c757d;">km</span></div>
-            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6c757d;margin-top:0.5rem;">Pavimentação rígida &amp; contornos</div>
-          </div>
-          <div style="background:#fff;border-radius:12px;padding:1.5rem;border-bottom:4px solid #ced4da;">
-            <span class="material-symbols-outlined" style="font-size:2.5rem;color:#ea7805;display:block;margin-bottom:0.75rem;">security</span>
-            <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:2rem;color:#1f2322;line-height:1;">+298 <span style="font-size:1rem;color:#6c757d;">km</span></div>
-            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6c757d;margin-top:0.5rem;">Barreiras de concreto extrudadas</div>
-          </div>
-          <div style="background:#fff;border-radius:12px;padding:1.5rem;border-bottom:4px solid #ced4da;">
-            <span class="material-symbols-outlined" style="font-size:2.5rem;color:#ea7805;display:block;margin-bottom:0.75rem;">package_2</span>
-            <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:2rem;color:#1f2322;line-height:1;">+336k <span style="font-size:1rem;color:#6c757d;">m³</span></div>
-            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6c757d;margin-top:0.5rem;">Concreto aplicado</div>
-          </div>
-          <div style="background:#fff;border-radius:12px;padding:1.5rem;border-bottom:4px solid #ced4da;">
-            <span class="material-symbols-outlined" style="font-size:2.5rem;color:#ea7805;display:block;margin-bottom:0.75rem;">verified</span>
-            <div style="font-family:'Poppins',sans-serif;font-weight:900;font-size:2rem;color:#1f2322;line-height:1;">5</div>
-            <div style="font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6c757d;margin-top:0.5rem;">Obras de destaque entregues</div>
-          </div>
-        </div>
+        <!-- Populado por js/main.js a partir de IMB_CASES.totals(). Sem métricas oficiais ainda → mostra "Em breve". -->
+        <div id="cases-totals" class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 fade-in-up"></div>
       </div>
     </section>
 

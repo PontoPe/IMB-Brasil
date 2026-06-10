@@ -98,7 +98,7 @@
             <li role="none"><a role="menuitem" data-lang="es" href="es/index.html" aria-label="Español"><img class="lang-flag" src="images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
           </ul>
         </div>
-        <a href="contato.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="hidden xl:inline-flex btn-secondary-light nav-cta">Entre em contato</a>
         <a href="contato.html#contato" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
           <span class="material-symbols-outlined text-2xl">menu</span>
@@ -122,7 +122,7 @@
         <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contato.html#sobre">Sobre a IMB</a>
       </div>
       <div class="mt-8 space-y-3">
-        <a href="contato.html" class="flex w-full btn-secondary-light nav-cta">Entre em contato</a>
+        <a href="contato.html#contato" class="flex w-full btn-secondary-light nav-cta">Entre em contato</a>
         <a href="contato.html#contato" class="flex w-full btn-solid-orange text-white nav-cta">Solicite um orçamento</a>
       </div>
     </div>
@@ -130,7 +130,14 @@
 
 <header class="relative min-h-screen flex items-center justify-center md:justify-start overflow-hidden pt-20">
     <div class="absolute inset-0 z-0">
-      <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaIx-L4aTxls6YD5ugOLtTB7ys3NSLi8VK4oRcP8RZajqN5bHV0I5capcK6OzdXx21gU2QSI_aiS0VF5QFg4S_WrotbDH_I-OpkLzbakclqKisHW0t2q8T-WXlDwt1znHcfWn5iCK_yAMiZK1Et2Pkle9hriCfD3tJ78dA4kQqslvAUSUMC33pigvxJ3IR9vBECUZTPFRp6rUyYNU_ww6c8c7Aw5Adt6HvzAGBBgt5ZUCxZZTE7fiXTigkr-nSZkefoNfezzPQQQlF" alt="Pavimentadora de concreto IMB operando em rodovia ao pôr do sol" />
+      <!-- Carrossel da hero: fotos oficiais da fábrica IMB, ciclando por tempo via js/main.js. Otimizadas em images/fabrica/. -->
+      <div class="hero-slideshow" data-hero-slideshow>
+        <img class="hero-slide is-active" src="images/fabrica/hero-producao.jpg" alt="Linha de produção de equipamentos IMB na fábrica" />
+        <img class="hero-slide" src="images/fabrica/hero-expedicao.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <img class="hero-slide" src="images/fabrica/hero-solda.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <img class="hero-slide" src="images/fabrica/hero-montagem.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <img class="hero-slide" src="images/fabrica/hero-motor.jpg" alt="" aria-hidden="true" loading="lazy" />
+      </div>
       <div class="absolute inset-0 bg-on-background/60"></div>
     </div>
 
@@ -140,10 +147,10 @@
           Excelência Industrial
         </div>
         <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] font-headline">
-          Soluções Avançadas em Pavimentação e Extrusão de Concreto
+          Líder em Pavimentação e Extrusão de Concreto na América Latina
         </h1>
         <p class="text-lg sm:text-xl md:text-2xl font-light text-surface-container-high max-w-lg">
-          Precisão e Robustez para sua Obra
+          Produtividade e Robustez para sua obra
         </p>
         <div class="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
           <a href="contato.html#contato" class="px-8 py-4 bg-primary-container text-on-primary-fixed font-bold text-sm uppercase tracking-widest rounded-md hover:bg-primary-fixed-dim transition-all shadow-xl">
@@ -162,7 +169,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="order-2 lg:order-1 fade-in-up">
-          <img class="rounded-lg shadow-2xl grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500 w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfbWQkhhiLq6x-l4a-VRsZbkZ-ZW1iKuNcVzgo_uQPjVzTb-tXhemaNogKIWy6Wp10f7mKPenT-2nnLdkMzKmEtX33ufh8WvRvPulNBRAK0AjEZg3yEY3oKVh9UG-K6JmQtYLXPChQBkojBgpRIPGfC6XYT1oYdOerLZ_i8B9p45u11bEHqwQ8Ghtftde9ftzNUO9_BER1UUtzzAj-NQ8ZI4dsNeOAmn4XUuOlZ3J5TJS6DtW-REqmuiH-fZZGQM2hInqxqjZmVf4k" alt="Técnico inspecionando componentes de máquina industrial" />
+          <img class="rounded-lg shadow-2xl grayscale-0 md:grayscale md:hover:grayscale-0 transition-all duration-500 w-full" src="images/fabrica/equipe.jpg" alt="Equipe IMB Brasil na fábrica" />
         </div>
         <div class="order-1 lg:order-2 space-y-8 fade-in-up">
           <div class="space-y-4">
@@ -181,19 +188,19 @@
               <div class="home-kpi-label">de fábrica</div>
             </div>
             <div class="home-kpi-card">
-              <div class="home-kpi-value">+10</div>
+              <div class="home-kpi-value">+40</div>
               <div class="home-kpi-label">países atendidos</div>
             </div>
             <div class="home-kpi-card">
-              <div class="home-kpi-value">3</div>
-              <div class="home-kpi-label">gerações de clientes</div>
+              <div class="home-kpi-value">+10.000</div>
+              <div class="home-kpi-label">equipamentos em operação</div>
             </div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
             <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md">
               <span class="material-symbols-outlined text-primary text-3xl">verified</span>
               <h4 class="font-bold text-lg font-headline">Durabilidade Extrema</h4>
-              <p class="text-sm text-on-surface-variant">Chassis reforçados e componentes premium para operação contínua 24/7.</p>
+              <p class="text-sm text-on-surface-variant">Chassis reforçados e componentes homologados para operação contínua.</p>
             </div>
             <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md">
               <span class="material-symbols-outlined text-primary text-3xl">support_agent</span>
@@ -203,7 +210,7 @@
             <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md">
               <span class="material-symbols-outlined text-primary text-3xl">architecture</span>
               <h4 class="font-bold text-lg font-headline">Engenharia de Precisão</h4>
-              <p class="text-sm text-on-surface-variant">Sensores e sistemas de controle que garantem a perfeição em cada centímetro.</p>
+              <p class="text-sm text-on-surface-variant">Sensores e sistemas de monitoramento que garantem precisão em cada centímetro.</p>
             </div>
             <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md">
               <span class="material-symbols-outlined text-primary text-3xl">handshake</span>
@@ -396,7 +403,7 @@
         <div class="text-xs text-on-surface-variant space-y-2">
           <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (47) 3333-0000</p>
           <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial@imb-brasil.com.br</p>
-          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (47) 98888-7777</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (41) 98849-0341</p>
         </div>
       </div>
     </div>

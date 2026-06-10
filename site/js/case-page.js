@@ -108,8 +108,8 @@
     +       '<span class="bg-white/10 backdrop-blur text-white font-bold text-[11px] uppercase tracking-widest px-3 py-1.5 rounded flex items-center gap-1.5">'
     +         '<span class="material-symbols-outlined text-sm">location_on</span>' + escHtml(cLocation)
     +       '</span>'
-    +       '<span class="bg-white/10 backdrop-blur text-white font-bold text-[11px] uppercase tracking-widest px-3 py-1.5 rounded">' + escHtml(c.year) + '</span>'
-    +       '<span class="bg-white/10 backdrop-blur text-white font-bold text-[11px] uppercase tracking-widest px-3 py-1.5 rounded">' + escHtml(cStatus) + '</span>'
+    +       (c.year ? '<span class="bg-white/10 backdrop-blur text-white font-bold text-[11px] uppercase tracking-widest px-3 py-1.5 rounded">' + escHtml(c.year) + '</span>' : '')
+    +       (cStatus ? '<span class="bg-white/10 backdrop-blur text-white font-bold text-[11px] uppercase tracking-widest px-3 py-1.5 rounded">' + escHtml(cStatus) + '</span>' : '')
     +     '</div>'
     +     '<h1 class="font-headline font-black text-4xl md:text-6xl uppercase tracking-tighter leading-none mb-4 max-w-4xl">' + escHtml(cTitle) + '</h1>'
     +     '<p class="text-primary-container font-bold uppercase tracking-widest text-sm mb-6">' + escHtml(cSubtitle) + '</p>'

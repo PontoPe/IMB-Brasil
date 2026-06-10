@@ -36,7 +36,7 @@
             <li role="none"><a role="menuitem" data-lang="es" href="../es/contacto.html" aria-label="Español"><img class="lang-flag" src="../images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
           </ul>
         </div>
-        <a href="contact.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contact Us</a>
+        <a href="contact.html#contact" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contact Us</a>
         <a href="contact.html#contact" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Request a Quote</a>
         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Open menu">
           <span class="material-symbols-outlined text-2xl">menu</span>
@@ -60,7 +60,7 @@
         <a class="block px-4 py-3 font-headline font-bold text-primary bg-primary-container/20 rounded-lg" href="contact.html#about">About IMB</a>
       </div>
       <div class="mt-8 space-y-3">
-        <a href="contact.html" class="flex w-full btn-secondary-light nav-cta">Contact Us</a>
+        <a href="contact.html#contact" class="flex w-full btn-secondary-light nav-cta">Contact Us</a>
         <a href="contact.html#contact" class="flex w-full btn-solid-orange text-white nav-cta">Request a Quote</a>
       </div>
     </div>
@@ -112,20 +112,12 @@
         </div>
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div class="lg:col-span-7 fade-in-up">
-            <form id="contact-form" class="bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-sm space-y-5 md:space-y-6">
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Full Name</label><input name="nome" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm transition-all" placeholder="John Smith" type="text" required /></div>
-                <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Email</label><input name="email" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm transition-all" placeholder="john@company.com" type="email" /></div>
+            <div class="bg-white p-6 md:p-8 lg:p-10 rounded-xl shadow-sm">
+              <!-- Ploomes CRM contact form (integration in progress). -->
+              <div class="ploomes-form-embed">
+                <iframe src="https://forms.ploomes.com/form/fb9e652ec3e8497d859dd1e26367d437?iframe=true" title="IMB Brasil contact form" loading="lazy"></iframe>
               </div>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-                <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Phone / WhatsApp</label><input name="telefone" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm transition-all" placeholder="+55 (47) 99999-9999" type="tel" required /></div>
-                <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Interest</label><select name="interesse" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm transition-all"><option value="Pavers">Pavers</option><option value="Extruders">Extruders</option><option value="Spare Parts">Spare Parts</option><option value="Technical Support">Technical Support</option><option value="Other">Other</option></select></div>
-              </div>
-              <div class="space-y-1"><label class="text-xs font-bold uppercase text-on-surface-variant/70 tracking-widest">Message</label><textarea name="mensagem" class="w-full bg-surface-container-high border-none focus:ring-2 focus:ring-primary rounded p-3 md:p-4 text-sm transition-all" placeholder="Describe your need, project type, timeline..." rows="4"></textarea></div>
-              <button class="w-full btn-solid-orange text-white font-headline font-bold py-4 md:py-5 rounded-full shadow-lg transition-all text-sm md:text-base uppercase tracking-wider" type="submit">Send Request</button>
-              <p class="text-xs text-on-surface-variant text-center">On submit you'll be redirected to WhatsApp with your message pre-filled.</p>
-              <div class="flex justify-center"><span class="wa-hint">Mon–Fri · 8am–6pm · Reply in ~15min</span></div>
-            </form>
+            </div>
           </div>
           <div class="lg:col-span-5 flex flex-col gap-6 md:gap-8">
             <div class="grid grid-cols-1 gap-4 fade-in-up">
@@ -139,7 +131,7 @@
               </a>
               <a href="#" class="wa-link bg-surface-container-highest p-5 md:p-6 rounded-lg flex items-start gap-4 hover:translate-x-1 transition-transform" target="_blank" rel="noopener">
                 <div class="bg-success-soft p-3 rounded-full text-success shrink-0"><span class="material-symbols-outlined">forum</span></div>
-                <div><p class="text-xs font-bold uppercase text-on-surface-variant tracking-widest">WhatsApp</p><p class="font-headline font-bold text-lg md:text-xl text-on-surface">+55 (47) 98888-7777</p></div>
+                <div><p class="text-xs font-bold uppercase text-on-surface-variant tracking-widest">WhatsApp</p><p class="font-headline font-bold text-lg md:text-xl text-on-surface">+55 (41) 98849-0341</p></div>
               </a>
             </div>
           </div>

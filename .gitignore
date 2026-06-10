@@ -1,0 +1,11 @@
+# Camera originals from the client's SharePoint dump (~480 MB).
+# Keep them locally, but do NOT commit/deploy the originals — the web-ready,
+# optimized copies live in site/images/fabrica/ and ARE tracked.
+site/images/SharePoint/
+
+# Stray download archives
+site/images/*.zip
+
+# OS / editor junk
+Thumbs.db
+.DS_Store

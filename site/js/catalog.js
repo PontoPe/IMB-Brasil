@@ -37,7 +37,8 @@
     seeDetails:     { pt: 'Ver Detalhes', en: 'View Details', es: 'Ver Detalles' },
     available:      { pt: 'Disponível', en: 'Available', es: 'Disponible' },
     powerLabel:     { pt: 'Potência', en: 'Power', es: 'Potencia' },
-    widthLabel:     { pt: 'Largura', en: 'Width', es: 'Ancho' },
+    widthLabel:     { pt: 'Largura Máx.', en: 'Max. Width', es: 'Ancho Máx.' },
+    applicationLabel:{ pt: 'Aplicação', en: 'Application', es: 'Aplicación' },
     resultOne:      { pt: '1 equipamento', en: '1 machine', es: '1 equipo' },
     resultsMany:    { pt: 'equipamentos', en: 'machines', es: 'equipos' },
     noResults:      { pt: 'Nenhum equipamento encontrado com estes filtros.', en: 'No machines found with these filters.', es: 'No se encontraron equipos con estos filtros.' },
@@ -206,6 +207,7 @@
       +       '<h3 class="text-xl md:text-2xl font-black tracking-tight text-on-surface mb-1 uppercase font-headline">' + escHTML(p.name) + '</h3>'
       +       '<p class="text-sm font-semibold text-on-surface-variant">' + escHTML(T(p.subtitle)) + '</p>'
       +     '</div>'
+      +     (p.specs.aplicacoes ? '<p class="text-sm text-on-surface-variant mb-4 leading-relaxed"><span class="font-bold text-on-surface">' + escHTML(ui('applicationLabel')) + ':</span> ' + escHTML(T(p.specs.aplicacoes)) + '</p>' : '')
       +     '<div class="grid grid-cols-2 gap-3 mb-6">'
       +       '<div class="bg-surface-container-low p-3 rounded-lg border-b-2 border-outline-variant">'
       +         '<span class="text-[10px] font-bold text-on-surface-variant uppercase block mb-1">' + escHTML(ui('powerLabel')) + '</span>'

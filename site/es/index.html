@@ -36,7 +36,7 @@
             <li role="none"><a role="menuitem" data-lang="es" href="index.html" aria-label="Español"><img class="lang-flag" src="../images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
           </ul>
         </div>
-        <a href="contacto.html" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contacto</a>
+        <a href="contacto.html#contacto" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contacto</a>
         <a href="contacto.html#contacto" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
         <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menú">
           <span class="material-symbols-outlined text-2xl">menu</span>
@@ -60,19 +60,29 @@
         <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contacto.html#nosotros">Sobre IMB</a>
       </div>
       <div class="mt-8 space-y-3">
-        <a href="contacto.html" class="flex w-full btn-secondary-light nav-cta">Contacto</a>
+        <a href="contacto.html#contacto" class="flex w-full btn-secondary-light nav-cta">Contacto</a>
         <a href="contacto.html#contacto" class="flex w-full btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
       </div>
     </div>
   </div>
 
 <header class="relative min-h-screen flex items-center justify-center md:justify-start overflow-hidden pt-20">
-    <div class="absolute inset-0 z-0"><img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaIx-L4aTxls6YD5ugOLtTB7ys3NSLi8VK4oRcP8RZajqN5bHV0I5capcK6OzdXx21gU2QSI_aiS0VF5QFg4S_WrotbDH_I-OpkLzbakclqKisHW0t2q8T-WXlDwt1znHcfWn5iCK_yAMiZK1Et2Pkle9hriCfD3tJ78dA4kQqslvAUSUMC33pigvxJ3IR9vBECUZTPFRp6rUyYNU_ww6c8c7Aw5Adt6HvzAGBBgt5ZUCxZZTE7fiXTigkr-nSZkefoNfezzPQQQlF" alt="Pavimentadora IMB operando" /><div class="absolute inset-0 bg-on-background/60"></div></div>
+    <div class="absolute inset-0 z-0">
+      <!-- Carrusel del hero: fotos oficiales de la fábrica IMB, rotando por tiempo vía js/main.js. Optimizadas en images/fabrica/. -->
+      <div class="hero-slideshow" data-hero-slideshow>
+        <img class="hero-slide is-active" src="../images/fabrica/hero-producao.jpg" alt="Línea de producción de equipos IMB en la fábrica" />
+        <img class="hero-slide" src="../images/fabrica/hero-expedicao.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <img class="hero-slide" src="../images/fabrica/hero-solda.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <img class="hero-slide" src="../images/fabrica/hero-montagem.jpg" alt="" aria-hidden="true" loading="lazy" />
+        <img class="hero-slide" src="../images/fabrica/hero-motor.jpg" alt="" aria-hidden="true" loading="lazy" />
+      </div>
+      <div class="absolute inset-0 bg-on-background/60"></div>
+    </div>
     <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 w-full">
       <div class="max-w-2xl text-white space-y-6 fade-in-up text-center md:text-left">
         <div class="home-hero-eyebrow inline-block px-3 py-1 text-xs font-bold tracking-widest uppercase">Excelencia Industrial</div>
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] font-headline">Soluciones Avanzadas en Pavimentación y Extrusión de Concreto</h1>
-        <p class="text-lg sm:text-xl md:text-2xl font-light text-surface-container-high max-w-lg">Precisión y Robustez para su Obra</p>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-[1.1] font-headline">Líder en Pavimentación y Extrusión de Concreto en América Latina</h1>
+        <p class="text-lg sm:text-xl md:text-2xl font-light text-surface-container-high max-w-lg">Productividad y Robustez para su obra</p>
         <div class="flex flex-wrap gap-4 pt-4 justify-center md:justify-start">
           <a href="contacto.html#contacto" class="px-8 py-4 bg-primary-container text-on-primary-fixed font-bold text-sm uppercase tracking-widest rounded-md hover:bg-primary-fixed-dim transition-all shadow-xl">Contáctanos</a>
           <a href="productos.html" class="px-8 py-4 bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-sm uppercase tracking-widest rounded-md hover:bg-white/20 transition-all">Ver Catálogo</a>
@@ -85,7 +95,7 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div class="fade-in-up">
-          <img class="rounded-lg shadow-2xl w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfbWQkhhiLq6x-l4a-VRsZbkZ-ZW1iKuNcVzgo_uQPjVzTb-tXhemaNogKIWy6Wp10f7mKPenT-2nnLdkMzKmEtX33ufh8WvRvPulNBRAK0AjEZg3yEY3oKVh9UG-K6JmQtYLXPChQBkojBgpRIPGfC6XYT1oYdOerLZ_i8B9p45u11bEHqwQ8Ghtftde9ftzNUO9_BER1UUtzzAj-NQ8ZI4dsNeOAmn4XUuOlZ3J5TJS6DtW-REqmuiH-fZZGQM2hInqxqjZmVf4k" alt="Técnico inspeccionando componentes industriales" />
+          <img class="rounded-lg shadow-2xl w-full" src="../images/fabrica/equipe.jpg" alt="Equipo de IMB Brasil en la fábrica" />
         </div>
         <div class="space-y-8 fade-in-up">
           <div class="space-y-4">
@@ -95,11 +105,11 @@
           <div class="home-kpi-grid">
             <div class="home-kpi-card"><div class="home-kpi-value">+30</div><div class="home-kpi-label">años de mercado</div></div>
             <div class="home-kpi-card"><div class="home-kpi-value">16.000m²</div><div class="home-kpi-label">de fábrica</div></div>
-            <div class="home-kpi-card"><div class="home-kpi-value">+10</div><div class="home-kpi-label">países atendidos</div></div>
-            <div class="home-kpi-card"><div class="home-kpi-value">3</div><div class="home-kpi-label">generaciones de clientes</div></div>
+            <div class="home-kpi-card"><div class="home-kpi-value">+40</div><div class="home-kpi-label">países atendidos</div></div>
+            <div class="home-kpi-card"><div class="home-kpi-value">+10.000</div><div class="home-kpi-label">equipos en operación</div></div>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-            <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md"><span class="material-symbols-outlined text-primary text-3xl">verified</span><h4 class="font-bold text-lg font-headline">Durabilidad Extrema</h4><p class="text-sm text-on-surface-variant">Chasis reforzados y componentes premium para operación continua.</p></div>
+            <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md"><span class="material-symbols-outlined text-primary text-3xl">verified</span><h4 class="font-bold text-lg font-headline">Durabilidad Extrema</h4><p class="text-sm text-on-surface-variant">Chasis reforzados y componentes homologados para operación continua.</p></div>
             <div class="space-y-3 p-6 bg-surface-container-lowest rounded-md"><span class="material-symbols-outlined text-primary text-3xl">support_agent</span><h4 class="font-bold text-lg font-headline">Soporte Local</h4><p class="text-sm text-on-surface-variant">Asistencia técnica ágil y disponibilidad de repuestos para obras críticas.</p></div>
           </div>
         </div>
