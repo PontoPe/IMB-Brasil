@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidad | IMB Brasil</title>
+  <meta name="description" content="Política de Privacidad y Protección de Datos de IMB – Indústria Metalúrgica – EPP. Conozca cómo recolectamos, usamos, almacenamos y protegemos sus datos personales." />
+  <meta name="robots" content="index, follow" />
+
+  <meta name="wa-default-msg" content="¡Hola! Vine del sitio de IMB Brasil y quisiera más información." />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="../css/styles.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-high": "#e9ecef",
+            "surface-dim": "#dee2e6",
+            "inverse-surface": "#272e63",
+            "on-primary-container": "#ffffff",
+            "primary-container": "#ea7805",
+            "outline-variant": "#ced4da",
+            "secondary-container": "#e9ecef",
+            "on-primary-fixed": "#1f2322",
+            "on-primary-fixed-variant": "#e94f1b",
+            "primary-fixed": "#fdc531",
+            "on-background": "#1f2322",
+            "primary-fixed-dim": "#fdc531",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#6c757d",
+            "on-tertiary-container": "#272e63",
+            "on-tertiary-fixed": "#272e63",
+            "on-tertiary-fixed-variant": "#272e63",
+            "surface-bright": "#f8f9fa",
+            "surface-container-low": "#f8f9fa",
+            "on-surface-variant": "#6c757d",
+            "inverse-primary": "#fdc531",
+            "surface-container-highest": "#dee2e6",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1f2322",
+            "tertiary-container": "#e9ecef",
+            "tertiary-fixed-dim": "#dee2e6",
+            "background": "#f8f9fa",
+            "surface-tint": "#ea7805",
+            "inverse-on-surface": "#f8f9fa",
+            "tertiary": "#272e63",
+            "surface-container": "#e9ecef",
+            "surface": "#f8f9fa",
+            "tertiary-fixed": "#e9ecef",
+            "on-primary": "#ffffff",
+            "secondary": "#6c757d",
+            "primary": "#ea7805",
+            "outline": "#6c757d"
+          },
+          borderRadius: { DEFAULT: "8px", lg: "8px", xl: "20px", full: "9999px" },
+          fontFamily: { headline: ["Poppins"], body: ["Roboto"], label: ["Roboto"] }
+        }
+      }
+    };
+  </script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
+</head>
+<body class="bg-surface text-on-surface">
+
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="flex items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-12">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
+        <a class="nav-link" href="index.html">Inicio</a>
+        <a class="nav-link" href="productos.html">Productos</a>
+        <a class="nav-link" href="comparar.html">Comparar Equipos</a>
+        <a class="nav-link" href="casos.html">Nuestros Proyectos</a>
+        <a class="nav-link" href="contacto.html">Sobre IMB</a>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3 ml-auto">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button><div class="lang-switcher hidden md:flex items-center">
+          <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma"><img class="lang-flag" src="../images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /></button>
+          <ul class="lang-switcher-menu" role="menu" data-open="false">
+            <li role="none"><a role="menuitem" data-lang="pt" href="../politica-de-privacidade.html" aria-label="Português"><img class="lang-flag" src="../images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="en" href="../en/privacy-policy.html" aria-label="English"><img class="lang-flag" src="../images/bandeiras/usa.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">English</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="es" href="politica-de-privacidad.html" aria-label="Español"><img class="lang-flag" src="../images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
+          </ul>
+        </div>
+        <a href="contacto.html#contacto" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contacto</a>
+        <a href="contacto.html#contacto" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
+        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menú">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" aria-label="Cerrar menú"><span class="material-symbols-outlined text-2xl">close</span></button>
+    </div>
+    <div class="flex-1 overflow-y-auto py-6 px-6">
+      <div class="space-y-1">
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="index.html">Inicio</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="productos.html">Productos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="comparar.html">Comparar Equipos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="casos.html">Nuestros Proyectos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contacto.html">Sobre IMB</a>
+      </div>
+      <div class="mt-8 space-y-3">
+        <a href="contacto.html#contacto" class="flex w-full btn-secondary-light nav-cta">Contacto</a>
+        <a href="contacto.html#contacto" class="flex w-full btn-solid-orange text-white nav-cta">Solicitar Cotización</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="pt-28 md:pt-32 pb-16 md:pb-24 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 md:px-8">
+      <div class="flex items-center gap-4 mb-4 fade-in-up">
+        <span class="h-1 w-12 bg-primary"></span>
+        <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Privacidad</span>
+      </div>
+      <h1 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight leading-tight mb-8 fade-in-up">Política de Privacidad y Protección de Datos</h1>
+
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP es una empresa comprometida con la privacidad y la protección de los datos personales y, por ello, establece con los titulares de datos personales (“TITULARES”) el compromiso de respetar las legislaciones brasileña y europea de protección de datos personales.</p>
+        <p>La presente Política de Privacidad y Protección de Datos (“Política”) tiene por finalidad informar a los TITULARES sobre las medidas utilizadas por IMB – INDÚSTRIA METALÚRGICA – EPP para la recolección, el almacenamiento, la utilización o cualquier otra operación de tratamiento de datos personales realizada en su sitio electrónico.</p>
+        <p>Al enviar documentos por aplicaciones electrónicas, correo electrónico o entrega personal física, los TITULARES declaran conocer los términos y condiciones de la presente Política, otorgando su libre, informado e inequívoco consentimiento para el tratamiento de sus datos personales para las finalidades aquí determinadas.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">1. Recolección de Datos</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>Cuando son proporcionados por los TITULARES, a través de cualquier medio y/o forma, los datos personales son recolectados, almacenados, utilizados y tratados por IMB – INDÚSTRIA METALÚRGICA – EPP. Algunas formas de recolección de datos se enumeran a continuación, pero el tratamiento de datos personales no se limita a los ejemplos siguientes:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>suministro de información para la elaboración de registro, pedidos, presupuestos, consentimiento, etc.;</li>
+          <li>envío de mensaje a través de la aplicación WhatsApp o correo electrónico de contacto.</li>
+        </ul>
+        <p>Los datos recolectados por IMB – INDÚSTRIA METALÚRGICA – EPP incluyen, pero no se limitan a: nombres, correos electrónicos, direcciones, teléfonos, profesión, institución y/o empresa vinculada, documento de identidad (RG), CPF, CNPJ, etc.</p>
+        <p>El sitio web de IMB – INDÚSTRIA METALÚRGICA – EPP no utiliza “cookies” para recolectar información personal o de navegación. Los proveedores de IMB – INDÚSTRIA METALÚRGICA – EPP podrán, sin embargo, recolectar datos con finalidad estadística.</p>
+        <p>Los TITULARES son responsables de la veracidad de los datos informados a IMB – INDÚSTRIA METALÚRGICA – EPP. Cuando informen datos personales de terceros, los TITULARES deben asegurarse de que poseen autorización para hacerlo, no teniendo IMB – INDÚSTRIA METALÚRGICA – EPP responsabilidad sobre este acto.</p>
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP no recolecta datos personales sensibles a través de su sitio, aplicación o cualquier medio electrónico o no. En caso de que los TITULARES decidan voluntariamente informar sus datos personales sensibles, los TITULARES consienten expresamente el tratamiento de esos datos de conformidad con lo descrito en esta Política. Los datos personales sensibles que eventualmente sean recolectados, a través de otros medios, por IMB – INDÚSTRIA METALÚRGICA – EPP serán tratados para la finalidad específica informada y autorizada por los TITULARES.</p>
+        <p>Durante la utilización del sitio de IMB – INDÚSTRIA METALÚRGICA – EPP, en caso de que los TITULARES sean conducidos, vía enlace, a otro sitio, los TITULARES deberán verificar la política de privacidad del sitio que están visitando. IMB – INDÚSTRIA METALÚRGICA – EPP no se responsabiliza por la recolección y uso de datos personales ni por el contenido de los sitios de terceros.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">2. Finalidades de Uso de los Datos Personales</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP se compromete a utilizar los datos personales recolectados de los TITULARES para las siguientes finalidades:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>registro, presupuestos y/o pedidos;</li>
+          <li>realización de estadísticas acerca de las actividades y el comportamiento de los TITULARES;</li>
+          <li>agregar contenido al sitio web y a las actividades de la empresa;</li>
+          <li>atender las solicitudes y dudas acerca de los productos y servicios ofrecidos por IMB – INDÚSTRIA METALÚRGICA – EPP;</li>
+          <li>divulgación de contenidos de mercado, así como de eventos organizados y/o promovidos por IMB – INDÚSTRIA METALÚRGICA – EPP;</li>
+          <li>administración de inscripciones de eventos organizados y/o promovidos por IMB – INDÚSTRIA METALÚRGICA – EPP, incluyendo ferias;</li>
+          <li>atender las suscripciones de usuarios al clipping de boletines de noticias del área industrial o de interés disponible en el sitio web;</li>
+          <li>registro de los TITULARES en la mailing list;</li>
+          <li>envío de comunicados institucionales;</li>
+          <li>promoción de marketing institucional;</li>
+          <li>reclutamiento de profesionales y/o pasantes;</li>
+          <li>resguardar derechos y obligaciones relacionados con el legítimo interés de IMB – INDÚSTRIA METALÚRGICA – EPP.</li>
+        </ul>
+        <p>El consentimiento para la recolección, el almacenamiento y el tratamiento de los datos personales de los TITULARES, para atender las finalidades propuestas por IMB – INDÚSTRIA METALÚRGICA – EPP, es voluntario. En caso de que los TITULARES decidan no consentir la recolección de los datos, la única consecuencia será la no prestación de los servicios y/o facilidades propuestos por IMB – INDÚSTRIA METALÚRGICA – EPP.</p>
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP no realizará el tratamiento de los datos personales de sus TITULARES sin su consentimiento, excepto en las hipótesis legales en que sea necesario u obligatorio, incluyendo:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>el cumplimiento de obligación legal o regulatoria;</li>
+          <li>el ejercicio regular de un derecho;</li>
+          <li>en atención a los legítimos intereses de IMB – INDÚSTRIA METALÚRGICA – EPP.</li>
+        </ul>
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP garantiza que no comercializa los datos personales de los TITULARES. No obstante, los datos personales de los TITULARES podrán ser compartidos con agentes externos, contratados por IMB – INDÚSTRIA METALÚRGICA – EPP, para la realización de servicios técnicos y/o de soporte a las actividades de la empresa, exclusivamente para alcanzar los fines aquí estipulados.</p>
+        <p>En respeto a los datos personales de los TITULARES, IMB – INDÚSTRIA METALÚRGICA – EPP requiere a los agentes externos que procesen los datos en consonancia con sus propios parámetros de confidencialidad y seguridad, observándose la presente Política.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">3. Derechos de los Usuarios</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>Los TITULARES poseen el derecho de solicitar, en cualquier momento, el acceso a los datos y la portabilidad de los mismos, así como de modificar, corregir, actualizar, limitar y eliminar sus datos personales recolectados por IMB – INDÚSTRIA METALÚRGICA – EPP.</p>
+        <p>Los TITULARES también pueden objetar el tratamiento de los datos por razones legítimas, así como solicitar la anonimización, bloqueo o eliminación de datos que consideren innecesarios y/o excesivos.</p>
+        <p>Si lo desean, los TITULARES pueden solicitar su exclusión de la mailing list del sitio de IMB – INDÚSTRIA METALÚRGICA – EPP, dejando de recibir cualquier correo electrónico o WhatsApp informativo.</p>
+        <p>Para ejercer sus derechos, los TITULARES deben enviar correo electrónico o carta/WhatsApp con su solicitud a las direcciones informadas a continuación en el ítem “6. Datos de Contacto”.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">4. Almacenamiento de los Datos</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP realiza el almacenamiento de los datos personales de los TITULARES recolectados de forma segura, solamente por el período de tiempo necesario para realizar las operaciones aquí establecidas, estando en conformidad con las legislaciones europea y brasileña, incluyendo el Marco Civil de Internet, que determina el almacenamiento de registros de acceso a aplicaciones de internet por el período de 6 (seis) meses.</p>
+        <p>Los datos relacionados con clientes son almacenados por el período de la duración prevista legalmente y/o en las Condiciones Generales de Contratación.</p>
+        <p>El almacenamiento de los datos respetará esta Política y/o eventuales instrumentos celebrados con los TITULARES. No obstante, los datos pueden ser almacenados por un período de tiempo superior, por razones legales o por orden judicial.</p>
+        <p>En los términos de la legislación de protección de datos personales, en caso de que los TITULARES lo deseen, podrán revocar el consentimiento previamente concedido a IMB – INDÚSTRIA METALÚRGICA – EPP para el tratamiento de sus datos personales. Este derecho deberá ser ejercido a través del canal disponibilizado en el ítem “6. Datos de Contacto”.</p>
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP almacena sus datos en servidores propios y/o de socios contratados, ubicados en Brasil y/o en el exterior, y también en servidores en la nube (cloud computing), de forma que puede ocurrir transferencia y tratamiento de datos personales de los TITULARES fuera del territorio brasileño.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">5. Seguridad</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB – INDÚSTRIA METALÚRGICA – EPP tiene compromiso con la seguridad del tratamiento de los datos personales de los usuarios a través de la implementación de mecanismos avanzados de tecnología de la información, que adoptan procedimientos técnicos, físicos y lógicos de seguridad normalmente utilizados por el mercado. Esos procedimientos buscan la protección de los datos personales contra la pérdida, mal uso, alteración, destrucción o filtración.</p>
+        <p>Cualquier miembro de IMB – INDÚSTRIA METALÚRGICA – EPP que tiene acceso a la información recolectada es informado sobre su naturaleza confidencial, además de mantener el compromiso de actuar de conformidad con esta Política.</p>
+        <p>Los TITULARES deberán adoptar las medidas preventivas necesarias para el uso de internet, incluyendo el uso de antivirus, contraseña de acceso personal y otras medidas técnicas y gerenciales, con vistas a evitar fallas, invasiones u otros inconvenientes en el acceso a las herramientas disponibilizadas por IMB – INDÚSTRIA METALÚRGICA – EPP, inclusive en la aplicación WhatsApp, que es una herramienta utilizada como medio legal de comunicación. IMB – INDÚSTRIA METALÚRGICA – EPP no será responsable por eventuales daños derivados de culpa exclusiva de los TITULARES y/o de terceros.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">6. Encargado del Tratamiento de Datos Personales y Datos de Contacto</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>La identidad y la información del Encargado del Tratamiento de Datos Personales de IMB – INDÚSTRIA METALÚRGICA – EPP se detallan a continuación:</p>
+        <div class="p-6 bg-surface-container-lowest rounded-md border-l-4 border-primary space-y-2 text-on-surface">
+          <p><strong>Sector responsable:</strong> Seguridad y Tecnología</p>
+          <p><strong>Correo electrónico:</strong> <a class="text-primary hover:underline" href="mailto:contato@imb-brasil.com.br">contato@imb-brasil.com.br</a></p>
+          <p><strong>Dirección:</strong> Rua Clóvis Rogério da Silva Maschio, 749 – Campina Grande do Sul/PR – 83433-422</p>
+        </div>
+        <p>Cualquier reclamación o comunicación de los TITULARES deberá ser dirigida al sector identificado anteriormente. El Encargado se encuentra debidamente autorizado por IMB – INDÚSTRIA METALÚRGICA – EPP para prestar aclaraciones y/o adoptar medidas referentes al tratamiento de datos personales.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">7. Modificaciones a esta Política</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>Esta Política podrá ser modificada en cualquier momento, mediante previa comunicación a través del sitio web de IMB – INDÚSTRIA METALÚRGICA – EPP y/o de correspondencia electrónica dirigida a los TITULARES, a ser enviada al correo electrónico informado a IMB o vía aplicación WhatsApp.</p>
+        <p class="font-semibold text-on-surface">Equipo IMB – INDÚSTRIA METALÚRGICA – EPP</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="space-y-4">
+        <div class="site-logo-footer"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Líder en tecnología de pavimentación y extrusión de concreto, sirviendo a los mayores proyectos de infraestructura de América Latina.</p>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipos</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" href="pavimentadora.html">Pavimentadoras</a></li>
+          <li><a class="hover:text-primary transition-colors" href="extrusora.html">Extrusoras de Concreto</a></li>
+          <li><a class="hover:text-primary transition-colors" href="productos.html">Catálogo Completo</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Empresa</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" href="contacto.html#sobre">Sobre Nosotros</a></li>
+          <li><a class="hover:text-primary transition-colors" href="contacto.html">Contacto</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Asistencia Técnica</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Contacto Rápido</h5>
+        <div class="text-xs text-on-surface-variant space-y-2">
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (47) 3333-0000</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial@imb-brasil.com.br</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (47) 98888-7777</p>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-10 pt-8 border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-4 px-4 md:px-8">
+      <p class="text-xs text-on-surface-variant">© 2025 IMB Brasil. Todos los derechos reservados.</p>
+      <div class="flex gap-4">
+        <a href="politica-de-privacidad.html" class="text-xs text-on-surface-variant hover:text-primary transition-colors">Política de Privacidad</a>
+        <a href="#" class="text-xs text-on-surface-variant hover:text-primary transition-colors">Términos de Uso</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-link wa-fab fixed bottom-6 right-6 z-50 hidden md:flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-success text-white rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <span class="material-symbols-outlined text-2xl md:text-3xl" style="font-variation-settings:'FILL' 1;">chat</span>
+  </a>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/cases.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
