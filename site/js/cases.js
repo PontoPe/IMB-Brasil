@@ -9,13 +9,13 @@ window.IMB_CASES = (function () {
 
   function L(pt, en, es) { return { pt: pt, en: en, es: es }; }
 
-  // Imagens placeholder (reaproveitadas do restante do site) até as fotos oficiais.
-  var IMG_1 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuBwwJcyx5gT9i4Ojc0t3hJ1aGFUwme5uG7fR2nATLD5BfjNI5TrVR94Fxd3EFedPpIh5A62_JZ4XmPAnD58zj33YGLBwHnkgDk_HlpPbSJpAmX0NfvNGsHKqcbAvPkoJ_ztr6L-OEcC7LssEz01-CvpqdXT-um1sOEIxiZ2iuZEIfhHmbj_3TqnFERnTfLx0NTCZVNVkq2WE1zhH_74Grl1vxFVSopcWqXZOuVbWfJentUobw1Jkc-BlB_XpS4R2oVUWftyRCAyG2l5';
-  var IMG_2 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuALs8apXLBfQ6bVyJmFGZmVi7Zd7WRJNbjmz5pJOTsMJgRjW81KifXAdS4IpmwjJd-8OADO9cKgUBQy1rfqp9zBOhvZJPl4c86tv-UbGtkZa6xGzr3yi_lUAsPGXEdFteqZmnooc9OMHslkidW3qQl-n7migyB77eoBzjmSz8JXh0utwSgxWnW1BGUbddjzITyF9sSa0XBkv5ERBG8QVSYrPKrmCpvZ1VbQyI8qyto7nT-e36c2jnwDnJjS9CeP91Dzwfj3Z2jI2vrw';
-  var IMG_3 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUE3nwYdkpehDIG3xReuYMn_MRYrG2e3YuRFZ9F5qaY7dR0JS3Jp2IeieUD0Y-fnsx0AR59vxfORjt4wQ5UJDBfy51GMghek1-CXgFOO_BxiYj2UP8DWS18aqJpBKiNTuZgf2tirsebSxvm6LY5QNIBrUk1lUJKNvbaM5-oOLeK3PKz7vKLlxqrcpk2Mj-7YLvTN0sUpyJlVzRrEneQ42K0Xu96Ruao5wwWGI7jEBfeaEaJWNKw1z2o_RIv9L4Gh_0R5g7qNJV5POn';
-  var IMG_4 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCBiHR_gNYr94xgDAkMoxOmaUot-rCbyRLBlytge-PAy_BRiq4W4GOUKW-q6QX_LZOCOYpf-e1uoMIRcgiSpOnj0F-gpRr61h2knWces76T7UYeCCJDtysFt_bLDAuRGuN85WQnk26jDPQEOF_3V_vIYRbyisPpHE76ukRiziKN_6eYtiob-vpJ19nU5evbNzzEzsCEg2-iACFxDn9jhQVTmeG_oQ-rAZlTxGnHUyk4VN_VrJy3ZHaGkpNjv3RU603O46qk3pU0-hk0';
-  var IMG_5 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Pp8KVJw7n6c3S24oqhMeaBWm1o4Ij3YAdVGi6juX63TvVimzzTLL5nXgHZTc-v-OZbTSqnubNacQsphyGH-zdEF4GfNBHDoi4H8bMQ3fDeeDkdyJUfYFOQRSXLou4frRGUpxEhPC5guxaX7kOS5hlB8iGJTfQslTUY2B8zP1-2jrCFLcbijDVCKOev3E7QQH93ebbO30BZQToDLdvCy7NP2TtN1Mtz4lz6X5nRBGg1uOB-j8suUTgSherACYnB0JBnvTZ3hspxeQ';
-  var IMG_6 = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCazj80UbPQR9R9GCudjFBfDDOWQJ6YxniMFaEewO44eMWCrs7Xn-zznluWLPijFzgBiDAVoEHgjNAgV5AZgqds2iQ9bv3jW5q01p9QvkBjpoxXEAlfzs_7PSf7COs7IUEK5z0NxqiUtBX7JC0fZXwNgVJ3tZf9pCypmnfm-2lFB__dxm4Yac3Uig9DiNZ1upp3PuEyw3i1JZNlOrOknY8ib3aHQdh3V4rL-A_h52cZPySQQhe90nxhq1WP3dp2IrLtuu9nNFb6b_JI';
+  var assetPrefix = /\/(en|es)\//i.test(window.location.pathname) ? '../' : '';
+  var IMG_1 = assetPrefix + 'images/casees/ponte-guaratuba.jpg';
+  var IMG_2 = assetPrefix + 'images/casees/linha-verde.jpg';
+  var IMG_3 = assetPrefix + 'images/casees/rodoanel.jpg';
+  var IMG_4 = assetPrefix + 'images/casees/palotina.jpg';
+  var IMG_5 = assetPrefix + 'images/casees/major-vieira.jpg';
+  var IMG_6 = assetPrefix + 'images/casees/lages.jpg';
 
   // Equipamentos reais (ids batem com IMB_PRODUCTS quando o modelo existe no catálogo).
   var EQ_700C   = { id: 'imb-700c',          name: L('Pavimentadora IMB 700C',  'IMB 700C Paver',   'Pavimentadora IMB 700C') };
