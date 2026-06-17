@@ -60,19 +60,19 @@ window.IMB_PRODUCTS = (function () {
   // ----- product catalog -----
   var assetPrefix = /\/(en|es)\//i.test(window.location.pathname) ? '../' : '';
 
-  const IMG_PAVER_COMPACT_2000HD = assetPrefix + 'images/SharePoint/2000HD MAX/2000HD MAX/BES 2025 2000HD MAX/40-IMG_9580.jpg';
-  const IMG_PAVER_MEDIUM_3500HD  = assetPrefix + 'images/SharePoint/3500HD/3500HD/3500HD - FRANCISCON - FOTOS/DSC05103.jpg';
-  const IMG_PAVER_LARGE_TITAN    = assetPrefix + 'images/SharePoint/5500HD TITAN/5500HD TITAN/BES 2025/28-IMG_9566.jpg';
-  const IMG_PAVER_LARGE_CRONUS   = assetPrefix + 'images/SharePoint/5500HD CRONUS/5500HD CRONUS/5500HD - CONTEC - Rodoanel - SP/FOTOS LEANDRO/6-IMG_1267.jpg';
+  const IMG_PAVER_COMPACT_2000HD = assetPrefix + 'images/produtos/2000hd-max.jpg';
+  const IMG_PAVER_MEDIUM_3500HD  = assetPrefix + 'images/produtos/3500hd.jpg';
+  const IMG_PAVER_LARGE_TITAN    = assetPrefix + 'images/produtos/5500hd-titan.jpg';
+  const IMG_PAVER_LARGE_CRONUS   = assetPrefix + 'images/produtos/5500hd-cronus.jpg';
 
-  const IMG_EXTRUDER_500HD       = assetPrefix + 'images/SharePoint/500HD/500HD/500 - FÁBRICA/184-IMG_0524.jpg';
-  const IMG_EXTRUDER_300_BANTAM  = assetPrefix + 'images/SharePoint/300 BANTAM - FÁBRICA/300 BANTAM - FÁBRICA/52-IMG_8479.jpg';
+  const IMG_EXTRUDER_500HD       = assetPrefix + 'images/produtos/500hd.jpg';
+  const IMG_EXTRUDER_300_BANTAM  = assetPrefix + 'images/produtos/300-bantam.jpg';
   const IMG_EXTRUDER_400_ECON    = assetPrefix + 'images/SharePoint/400 ECONOMIC/400 ECONOMIC/400 - FÁBRICA/21-IMG_8436.jpg';
-  const IMG_EXTRUDER_700_COMPACT = assetPrefix + 'images/SharePoint/700 COMPACT/700 COMPACT/700 - FÁBRICA/6-IMG_8407.jpg';
+  const IMG_EXTRUDER_700_COMPACT = assetPrefix + 'images/produtos/700-compact.jpg';
   const IMG_EXTRUDER_800_COMPACT = assetPrefix + 'images/SharePoint/800 COMPACT/800 COMPACT/IMB 800 - 02.jpeg';
-  const IMG_EXTRUDER_900_MASTER  = assetPrefix + 'images/SharePoint/900 G MASTER/900 MASTER - SEM EMBREAGEM - FABRICA/70-IMG_8513.jpg';
+  const IMG_EXTRUDER_900_MASTER  = assetPrefix + 'images/produtos/900g-master.jpg';
   const IMG_EXTRUDER_900_EMB     = assetPrefix + 'images/SharePoint/900 G MASTER/900 G Master - Embreagem - FABRICA/101-IMG_0419.jpg';
-  const IMG_EXTRUDER_900_STC     = assetPrefix + 'images/SharePoint/900 G STC/900G STC - FÁBRICA/43-IMG_0326.jpg';
+  const IMG_EXTRUDER_900_STC     = assetPrefix + 'images/produtos/900g-stc.jpg';
 
   const products = [
     // ===== LINHA HIDRÁULICA — Pavimentadoras de Formas Deslizantes =====
