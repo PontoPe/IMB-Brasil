@@ -71,7 +71,7 @@ window.IMB_PRODUCTS = (function () {
   const IMG_EXTRUDER_700_COMPACT = assetPrefix + 'images/produtos/700-compact.jpg';
   const IMG_EXTRUDER_800_COMPACT = assetPrefix + 'images/produtos/800-compact.jpg';
   const IMG_EXTRUDER_900_MASTER  = assetPrefix + 'images/produtos/900g-master.jpg';
-  const IMG_EXTRUDER_900_EMB     = assetPrefix + 'images/SharePoint/900 G MASTER/900 G Master - Embreagem - FABRICA/101-IMG_0419.jpg';
+  const IMG_EXTRUDER_900_EMB     = assetPrefix + 'images/produtos/900g-master-embreagem.jpg';
   const IMG_EXTRUDER_900_STC     = assetPrefix + 'images/produtos/900g-stc.jpg';
 
   const products = [
