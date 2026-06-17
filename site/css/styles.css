@@ -193,6 +193,22 @@
   width: 100%;
 }
 
+.catalog-search {
+  background: linear-gradient(180deg, #f1f3f5 0%, #e9ecef 100%);
+  border-color: var(--imb-neutral-400);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.catalog-search::placeholder {
+  color: var(--imb-neutral-600);
+}
+
+.catalog-search:focus {
+  border-color: var(--imb-orange);
+  box-shadow: 0 0 0 3px rgba(var(--imb-orange-rgb), 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.75);
+  outline: none;
+}
+
 .catalog-select {
   -webkit-appearance: none;
   -moz-appearance: none;

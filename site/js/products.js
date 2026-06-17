@@ -58,12 +58,21 @@ window.IMB_PRODUCTS = (function () {
   ];
 
   // ----- product catalog -----
-  // Placeholder image URLs are reused across products until real photos are provided.
-  const IMG_PAVER_LARGE   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCazj80UbPQR9R9GCudjFBfDDOWQJ6YxniMFaEewO44eMWCrs7Xn-zznluWLPijFzgBiDAVoEHgjNAgV5AZgqds2iQ9bv3jW5q01p9QvkBjpoxXEAlfzs_7PSf7COs7IUEK5z0NxqiUtBX7JC0fZXwNgVJ3tZf9pCypmnfm-2lFB__dxm4Yac3Uig9DiNZ1upp3PuEyw3i1JZNlOrOknY8ib3aHQdh3V4rL-A_h52cZPySQQhe90nxhq1WP3dp2IrLtuu9nNFb6b_JI';
-  const IMG_PAVER_MEDIUM  = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCBiHR_gNYr94xgDAkMoxOmaUot-rCbyRLBlytge-PAy_BRiq4W4GOUKW-q6QX_LZOCOYpf-e1uoMIRcgiSpOnj0F-gpRr61h2knWces76T7UYeCCJDtysFt_bLDAuRGuN85WQnk26jDPQEOF_3V_vIYRbyisPpHE76ukRiziKN_6eYtiob-vpJ19nU5evbNzzEzsCEg2-iACFxDn9jhQVTmeG_oQ-rAZlTxGnHUyk4VN_VrJy3ZHaGkpNjv3RU603O46qk3pU0-hk0';
-  const IMG_PAVER_COMPACT = 'https://lh3.googleusercontent.com/aida-public/AB6AXuC1Pp8KVJw7n6c3S24oqhMeaBWm1o4Ij3YAdVGi6juX63TvVimzzTLL5nXgHZTc-v-OZbTSqnubNacQsphyGH-zdEF4GfNBHDoi4H8bMQ3fDeeDkdyJUfYFOQRSXLou4frRGUpxEhPC5guxaX7kOS5hlB8iGJTfQslTUY2B8zP1-2jrCFLcbijDVCKOev3E7QQH93ebbO30BZQToDLdvCy7NP2TtN1Mtz4lz6X5nRBGg1uOB-j8suUTgSherACYnB0JBnvTZ3hspxeQ';
-  const IMG_EXTRUDER_HD   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUE3nwYdkpehDIG3xReuYMn_MRYrG2e3YuRFZ9F5qaY7dR0JS3Jp2IeieUD0Y-fnsx0AR59vxfORjt4wQ5UJDBfy51GMghek1-CXgFOO_BxiYj2UP8DWS18aqJpBKiNTuZgf2tirsebSxvm6LY5QNIBrUk1lUJKNvbaM5-oOLeK3PKz7vKLlxqrcpk2Mj-7YLvTN0sUpyJlVzRrEneQ42K0Xu96Ruao5wwWGI7jEBfeaEaJWNKw1z2o_RIv9L4Gh_0R5g7qNJV5POn';
-  const IMG_EXTRUDER_SM   = 'https://lh3.googleusercontent.com/aida-public/AB6AXuCUzsvM8JpwadJn5PuVvng8CP2bfaW73JNOnwPOtPbdpcs82R3sBKFBOiADVEsKDBIzV1JbBtr5vJOf6PY-25f9ln2wY2j3yyXtnY-bBLYVrdSJb8d0Pr-h38OHrYcrbtA6deyFMn3bvcJQynOIjgayhzfL-3wCNqdzv0XMpaDftXUwMY9K2bflRY5gZZPnoHw2Zupy65_WDiXqNQifwwRVrVSGj81z1F2SQWEz1yJFLzCzmgIJjFfUJNOgR87U1k9O8n-eQN1t6xA5';
+  var assetPrefix = /\/(en|es)\//i.test(window.location.pathname) ? '../' : '';
+
+  const IMG_PAVER_COMPACT_2000HD = assetPrefix + 'images/SharePoint/2000HD MAX/2000HD MAX/BES 2025 2000HD MAX/40-IMG_9580.jpg';
+  const IMG_PAVER_MEDIUM_3500HD  = assetPrefix + 'images/SharePoint/3500HD/3500HD/3500HD - FRANCISCON - FOTOS/DSC05103.jpg';
+  const IMG_PAVER_LARGE_TITAN    = assetPrefix + 'images/SharePoint/5500HD TITAN/5500HD TITAN/BES 2025/28-IMG_9566.jpg';
+  const IMG_PAVER_LARGE_CRONUS   = assetPrefix + 'images/SharePoint/5500HD CRONUS/5500HD CRONUS/5500HD - CONTEC - Rodoanel - SP/FOTOS LEANDRO/6-IMG_1267.jpg';
+
+  const IMG_EXTRUDER_500HD       = assetPrefix + 'images/SharePoint/500HD/500HD/500 - FÁBRICA/184-IMG_0524.jpg';
+  const IMG_EXTRUDER_300_BANTAM  = assetPrefix + 'images/SharePoint/300 BANTAM - FÁBRICA/300 BANTAM - FÁBRICA/52-IMG_8479.jpg';
+  const IMG_EXTRUDER_400_ECON    = assetPrefix + 'images/SharePoint/400 ECONOMIC/400 ECONOMIC/400 - FÁBRICA/21-IMG_8436.jpg';
+  const IMG_EXTRUDER_700_COMPACT = assetPrefix + 'images/SharePoint/700 COMPACT/700 COMPACT/700 - FÁBRICA/6-IMG_8407.jpg';
+  const IMG_EXTRUDER_800_COMPACT = assetPrefix + 'images/SharePoint/800 COMPACT/800 COMPACT/IMB 800 - 02.jpeg';
+  const IMG_EXTRUDER_900_MASTER  = assetPrefix + 'images/SharePoint/900 G MASTER/900 MASTER - SEM EMBREAGEM - FABRICA/70-IMG_8513.jpg';
+  const IMG_EXTRUDER_900_EMB     = assetPrefix + 'images/SharePoint/900 G MASTER/900 G Master - Embreagem - FABRICA/101-IMG_0419.jpg';
+  const IMG_EXTRUDER_900_STC     = assetPrefix + 'images/SharePoint/900 G STC/900G STC - FÁBRICA/43-IMG_0326.jpg';
 
   const products = [
     // ===== LINHA HIDRÁULICA — Pavimentadoras de Formas Deslizantes =====
@@ -72,7 +81,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 2000HD MAX',
       subtitle: L('Pavimentadora — Linha Hidráulica','Paver — Hydraulic Line','Pavimentadora — Línea Hidráulica'),
       url: 'pavimentadora.html',
-      image: IMG_PAVER_COMPACT,
+      image: IMG_PAVER_COMPACT_2000HD,
       manualUrl: 'manuals/manual-imb-2000hd-max.pdf',
       profile_types: ['pavimento-concreto'],
       specs: {
@@ -100,7 +109,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 3500HD',
       subtitle: L('Pavimentadora — Linha Hidráulica','Paver — Hydraulic Line','Pavimentadora — Línea Hidráulica'),
       url: 'pavimentadora.html',
-      image: IMG_PAVER_MEDIUM,
+      image: IMG_PAVER_MEDIUM_3500HD,
       manualUrl: 'manuals/manual-imb-3500hd.pdf',
       profile_types: ['pavimento-concreto', 'canaleta-drenagem'],
       specs: {
@@ -128,7 +137,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 5500HD TITAN',
       subtitle: L('Pavimentadora — Linha Hidráulica','Paver — Hydraulic Line','Pavimentadora — Línea Hidráulica'),
       url: 'pavimentadora.html',
-      image: IMG_PAVER_LARGE,
+      image: IMG_PAVER_LARGE_TITAN,
       manualUrl: 'manuals/manual-imb-5500hd-titan.pdf',
       profile_types: ['pavimento-concreto', 'barreira-new-jersey'],
       specs: {
@@ -156,7 +165,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 5500HD CRONUS',
       subtitle: L('Pavimentadora — Linha Hidráulica','Paver — Hydraulic Line','Pavimentadora — Línea Hidráulica'),
       url: 'pavimentadora.html',
-      image: IMG_PAVER_LARGE,
+      image: IMG_PAVER_LARGE_CRONUS,
       manualUrl: null,
       profile_types: ['pavimento-concreto', 'barreira-new-jersey'],
       specs: {
@@ -186,7 +195,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 500HD',
       subtitle: L('Extrusora — Linha Automatizada','Extruder — Automated Line','Extrusora — Línea Automatizada'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_HD,
+      image: IMG_EXTRUDER_500HD,
       manualUrl: 'manuals/manual-imb-500hd.pdf',
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
       specs: {
@@ -216,7 +225,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 300 BANTAM',
       subtitle: L('Extrusora — Linha Leve','Extruder — Light Line','Extrusora — Línea Liviana'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_SM,
+      image: IMG_EXTRUDER_300_BANTAM,
       manualUrl: null,
       profile_types: ['meio-fio', 'guia-sarjeta'],
       specs: {
@@ -244,7 +253,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 400 ECONOMIC',
       subtitle: L('Extrusora — Linha Leve','Extruder — Light Line','Extrusora — Línea Liviana'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_SM,
+      image: IMG_EXTRUDER_400_ECON,
       manualUrl: 'manuals/manual-imb-400-economic.pdf',
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
       specs: {
@@ -274,7 +283,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 700 COMPACT',
       subtitle: L('Extrusora — Linha Média','Extruder — Medium Line','Extrusora — Línea Media'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_SM,
+      image: IMG_EXTRUDER_700_COMPACT,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
       specs: {
@@ -302,7 +311,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 800 COMPACT',
       subtitle: L('Extrusora — Linha Média','Extruder — Medium Line','Extrusora — Línea Media'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_SM,
+      image: IMG_EXTRUDER_800_COMPACT,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
       specs: {
@@ -332,7 +341,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 900G MASTER',
       subtitle: L('Extrusora — Linha Pesada','Extruder — Heavy Line','Extrusora — Línea Pesada'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_HD,
+      image: IMG_EXTRUDER_900_MASTER,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'barreira-new-jersey'],
       specs: {
@@ -360,7 +369,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 900G MASTER C/ Embreagem',
       subtitle: L('Extrusora — Linha Pesada','Extruder — Heavy Line','Extrusora — Línea Pesada'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_HD,
+      image: IMG_EXTRUDER_900_EMB,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'barreira-new-jersey'],
       specs: {
@@ -390,7 +399,7 @@ window.IMB_PRODUCTS = (function () {
       name: 'IMB 900G STC',
       subtitle: L('Extrusora — Linha Especial (drenagem)','Extruder — Special Line (drainage)','Extrusora — Línea Especial (drenaje)'),
       url: 'extrusora.html',
-      image: IMG_EXTRUDER_HD,
+      image: IMG_EXTRUDER_900_STC,
       manualUrl: 'manuals/manual-imb-900g-stc.pdf',
       profile_types: ['canaleta-drenagem'],
       specs: {
