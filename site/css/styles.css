@@ -292,8 +292,16 @@ h1, h2, h3, h4 {
   font-family: 'Poppins', sans-serif;
 }
 
+/* Drive the drawer transform explicitly (ID specificity beats Tailwind's .translate-x-full).
+   Toggling the .translate-x-full class alone removed the transform *property*, which froze
+   the CSS transition mid-closed and left the panel off-screen on mobile. Explicit values on
+   both states let the 0.3s slide animate reliably. JS still toggles .translate-x-full. */
 #mobile-menu {
+  transform: translateX(100%);
   transition: transform 0.3s ease-in-out;
+}
+#mobile-menu:not(.translate-x-full) {
+  transform: translateX(0);
 }
 
 @keyframes wa-pulse {
@@ -302,6 +310,21 @@ h1, h2, h3, h4 {
 }
 .wa-fab {
   animation: wa-pulse 2.5s infinite;
+}
+
+/* --- Mobile usability --- */
+/* The WhatsApp FAB markup is `hidden md:flex`, so it never showed on phones — even though it
+   carries a mobile size (w-14 h-14). For a WhatsApp-first site that's the wrong default. Force it
+   visible on every viewport; `a.wa-fab` outranks the `.hidden` utility on specificity, and the
+   print rule (display:none !important) still hides it when printing. */
+a.wa-fab {
+  display: flex;
+}
+/* Footer links render as ~14px text — fiddly to tap on mobile. Pad the hit area vertically
+   without disturbing the visual layout. Footer has no anchor logo, so this only hits real links. */
+footer a {
+  display: inline-block;
+  padding-block: 0.35rem;
 }
 
 .vignette-bottom::after {
