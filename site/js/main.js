@@ -301,20 +301,37 @@ window.IMB_resolveWaMsg = function (el) {
   }
 
   // Clients marquee — populate the track w/ two copies so translateX(-50%) loops cleanly.
+  // Logos oficiais em site/images/clientes/. `dark: true` = logo branco, precisa de card escuro.
+  // Sem loading="lazy" nas imgs: dentro do track animado (width:max-content) o lazy nunca dispara.
   var clientsTrack = document.getElementById('clients-track');
   if (clientsTrack) {
     var CLIENTS = [
-      'DNIT', 'DER-PR', 'DER-SC', 'DER-SP',
-      'Prefeitura de Curitiba', 'Prefeitura de Joinville',
-      'Andrade Gutierrez', 'Construcap', 'CCR', 'Ecorodovias',
-      'Arteris', 'Queiroz Galvão', 'Mendes Júnior',
-      'Galvão Engenharia', 'Concremat',
+      { name: 'Odebrecht Engenharia & Construção', file: 'odebrecht.png' },
+      { name: 'Vale',                  file: 'vale.png' },
+      { name: 'Contec',                file: 'contec.png' },
+      { name: 'Marandel',              file: 'marandel.png' },
+      { name: 'Neovia Engenharia',     file: 'neovia.png' },
+      { name: 'Construtora Alya',      file: 'alya.png' },
+      { name: 'Construtora Castilho',  file: 'castilho.png' },
+      { name: 'Construtora Luiz Costa',file: 'clc.png' },
+      { name: 'Grupo Cotragon',        file: 'cotragon.png' },
+      { name: 'Dameda',                file: 'dameda.png' },
+      { name: 'ICV',                   file: 'icv.png' },
+      { name: 'Infra Urbana',          file: 'infraurbana.png', dark: true },
+      { name: 'Tripoloni',             file: 'tripoloni.png',   dark: true },
+      { name: 'Valevias Construtora',  file: 'valevias.png' },
     ];
+    var logoPrefix = /\/(en|es)\//i.test(window.location.pathname) ? '../' : '';
     var html = '';
     for (var pass = 0; pass < 2; pass++) {
       for (var i = 0; i < CLIENTS.length; i++) {
-        html += '<div class="client-logo" aria-hidden="' + (pass === 1 ? 'true' : 'false') + '">'
-              + CLIENTS[i] + '</div>';
+        var c = CLIENTS[i];
+        var dup = pass === 1;
+        html += '<div class="client-logo' + (c.dark ? ' client-logo--dark' : '') + '"'
+              + (dup ? ' aria-hidden="true"' : '') + '>'
+              + '<img src="' + logoPrefix + 'images/clientes/' + c.file + '"'
+              + ' alt="' + (dup ? '' : c.name) + '" decoding="async" width="190" height="60" />'
+              + '</div>';
       }
     }
     clientsTrack.innerHTML = html;

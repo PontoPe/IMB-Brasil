@@ -398,8 +398,10 @@ footer a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--imb-white);
-  border: 1px solid var(--imb-neutral-200);
+  /* Cores fixas nos dois temas: as marcas dos clientes precisam do mesmo fundo
+     para o qual foram desenhadas — trocar no dark mode apaga metade dos logos. */
+  background: #ffffff;
+  border: 1px solid #e9ecef;
   border-radius: 20px;
   padding: 1.25rem 1.75rem;
   font-family: 'Roboto', sans-serif;
@@ -410,11 +412,25 @@ footer a {
   color: var(--imb-neutral-600);
   text-align: center;
   line-height: 1.05;
-  filter: grayscale(100%);
-  opacity: 0.65;
+  /* Dessaturação leve: com logos reais, grayscale(100%) + opacity .65 apagava marcas
+     de tom claro (CONTEC, ICV). Cor cheia no hover. */
+  filter: grayscale(55%);
+  opacity: 0.9;
   transition: filter 0.3s, opacity 0.3s, color 0.3s, border-color 0.3s, transform 0.3s;
 }
 .client-logo:hover { filter: grayscale(0); opacity: 1; color: #ea7805; border-color: #ea7805; transform: translateY(-2px); z-index: 3; }
+.client-logo img {
+  max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+/* Logos monocromáticos em branco só aparecem sobre fundo escuro. */
+.client-logo--dark {
+  background: #1f2322;
+  border-color: #1f2322;
+}
 
 /* ========== Compare page ========== */
 .compare-picker-grid {
