@@ -584,6 +584,42 @@ footer a {
   border-top: 1px solid #ced4da33;
   border-bottom: 1px solid #ced4da33;
 }
+/* Cabeçalho de categoria vira botão de recolher/expandir. */
+.cmp-section-toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  border-left: 0;
+  border-right: 0;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+  /* Sem `font: inherit` aqui: o shorthand zeraria a tipografia de .cmp-section-head. */
+}
+/* Realce translúcido para o hover funcionar no tema claro e no escuro. */
+.cmp-section-toggle:hover { box-shadow: inset 0 0 0 999px rgba(127, 127, 127, 0.14); }
+.cmp-section-toggle:focus-visible { outline: 2px solid #ea7805; outline-offset: -2px; }
+.cmp-section-chevron {
+  margin-left: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--imb-neutral-600);
+  transition: transform 0.25s;
+}
+.cmp-section-toggle[aria-expanded="false"] .cmp-section-chevron { transform: rotate(-90deg); }
+/* A contagem só aparece quando a seção está recolhida, para lembrar o que ficou escondido. */
+.cmp-section-count {
+  margin-left: auto;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--imb-neutral-600);
+  text-transform: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.cmp-section-toggle[aria-expanded="false"] .cmp-section-count { opacity: 1; }
+.cmp-section-title { margin-right: 0.5rem; }
+.cmp-row-hidden { display: none; }
 .cmp-bar-track {
   width: 100%;
   height: 8px;
@@ -615,6 +651,9 @@ footer a {
   .cmp-scroll { overflow: visible !important; }
   .cmp-grid   { min-width: 0; }
   #share-link-btn, #print-btn, #picker, #select-all-btn, #clear-btn, footer { display: none !important; }
+  /* O PDF é documento técnico: sai completo mesmo com seções recolhidas na tela. */
+  .cmp-row-hidden { display: block !important; }
+  .cmp-section-chevron, .cmp-section-count { display: none !important; }
 }
 /* ========== IMB Design System tokens ==========
    Typography: Poppins for headlines (h1-h6, .font-headline); Roboto for body/labels.
@@ -680,7 +719,9 @@ h3,
 h4,
 h5,
 h6,
-.font-headline {
+.font-headline,
+/* É <button> por causa do recolher/expandir, mas segue sendo título de seção. */
+.cmp-section-toggle {
   font-family: 'Poppins', sans-serif !important;
 }
 
@@ -910,7 +951,7 @@ a.rounded-md,
 button.rounded,
 button.rounded-sm,
 button.rounded-md,
-button:not(.picker-card),
+button:not(.picker-card):not(.cmp-section-toggle),
 .btn-solid-orange,
 .btn-secondary-light,
 .nav-cta,

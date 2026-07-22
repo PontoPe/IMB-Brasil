@@ -30,6 +30,10 @@
     shareLink:   { pt: 'Copiar link da comparação', en: 'Copy comparison link', es: 'Copiar enlace de comparación' },
     linkCopied:  { pt: 'Link copiado!', en: 'Link copied!',        es: '¡Enlace copiado!' },
     print:       { pt: 'Imprimir / Salvar PDF', en: 'Print / Save PDF', es: 'Imprimir / Guardar PDF' },
+    collapse:    { pt: 'Recolher seção', en: 'Collapse section',  es: 'Contraer sección' },
+    expand:      { pt: 'Expandir seção', en: 'Expand section',    es: 'Expandir sección' },
+    hiddenRow:   { pt: 'item oculto',    en: 'hidden item',       es: 'ítem oculto' },
+    hiddenRows:  { pt: 'itens ocultos',  en: 'hidden items',      es: 'ítems ocultos' },
     waCompare:   { pt: function(p, list){ return 'Olá! Estou comparando o ' + p + ' com ' + list + ' e gostaria de ajuda para escolher.'; },
                    en: function(p, list){ return 'Hi! I\'m comparing the ' + p + ' with ' + list + ' and would like help choosing.'; },
                    es: function(p, list){ return '¡Hola! Estoy comparando el ' + p + ' con ' + list + ' y quisiera ayuda para elegir.'; } },
@@ -63,6 +67,8 @@
   let selected = readSelectionFromURL();
   let comparisonResizeObserver = null;
   let comparisonResizeHandler = null;
+  // Seções recolhidas pelo usuário — sobrevive a incluir/remover equipamentos.
+  const collapsedGroups = new Set();
 
   function readSelectionFromURL() {
     const raw = new URLSearchParams(window.location.search).get('ids') || '';
@@ -230,6 +236,19 @@
     return `<div class="text-on-surface text-sm leading-snug">${escapeHTML(T(v))}</div>`;
   }
 
+  // Recolher = esconder as linhas do grupo; o cabeçalho continua como alvo do clique.
+  function applyGroupState(groupId) {
+    const isCollapsed = collapsedGroups.has(groupId);
+    comparisonEl.querySelectorAll('[data-group="' + groupId + '"]').forEach((el) => {
+      if (el.classList.contains('cmp-section-toggle')) {
+        el.setAttribute('aria-expanded', isCollapsed ? 'false' : 'true');
+        el.setAttribute('title', isCollapsed ? ui('expand') : ui('collapse'));
+      } else {
+        el.classList.toggle('cmp-row-hidden', isCollapsed);
+      }
+    });
+  }
+
   function renderComparison() {
     const picks = Array.from(selected).map((id) => productMap[id]).filter(Boolean);
 
@@ -306,20 +325,25 @@
       const anyData = groupFields.some((f) => picks.some((p) => p.specs[f.key] !== null && p.specs[f.key] !== undefined));
       if (!anyData) return;
 
-      html += `
-        <div class="cmp-section-head" style="grid-column:1 / -1;">
-          <span class="w-1.5 h-5 bg-primary inline-block align-middle mr-2"></span>
-          ${escapeHTML(T(g.label))}
-        </div>`;
+      const isCollapsed = collapsedGroups.has(g.id);
+      const rowClass = isCollapsed ? 'cmp-row-hidden' : '';
+      const visibleFields = groupFields.filter((f) => picks.some((p) => f.key in p.specs));
 
-      groupFields.forEach((field) => {
-        // Linha some quando o campo não se aplica a nenhum dos produtos selecionados.
-        const applies = picks.some((p) => field.key in p.specs);
-        if (!applies) return;
+      html += `
+        <button type="button" class="cmp-section-head cmp-section-toggle" data-group="${g.id}"
+                aria-expanded="${isCollapsed ? 'false' : 'true'}"
+                title="${isCollapsed ? ui('expand') : ui('collapse')}" style="grid-column:1 / -1;">
+          <span class="w-1.5 h-5 bg-primary inline-block align-middle mr-2"></span>
+          <span class="cmp-section-title">${escapeHTML(T(g.label))}</span>
+          <span class="cmp-section-count">${visibleFields.length} ${visibleFields.length === 1 ? ui('hiddenRow') : ui('hiddenRows')}</span>
+          <span class="cmp-section-chevron material-symbols-outlined" aria-hidden="true">expand_more</span>
+        </button>`;
+
+      visibleFields.forEach((field) => {
         const max = field.type === 'bar' ? maxFor(field.key, picks) : 0;
-        html += `<div class="cmp-row-label">${escapeHTML(T(field.label))}</div>`;
+        html += `<div class="cmp-row-label ${rowClass}" data-group="${g.id}">${escapeHTML(T(field.label))}</div>`;
         picks.forEach((p) => {
-          html += `<div class="cmp-cell">${renderCell(field, p, max)}</div>`;
+          html += `<div class="cmp-cell ${rowClass}" data-group="${g.id}">${renderCell(field, p, max)}</div>`;
         });
       });
     });
@@ -340,6 +364,15 @@
 
     comparisonEl.innerHTML = html;
     setupComparisonScrollSync();
+
+    comparisonEl.querySelectorAll('.cmp-section-toggle').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.group;
+        if (collapsedGroups.has(id)) collapsedGroups.delete(id);
+        else collapsedGroups.add(id);
+        applyGroupState(id);
+      });
+    });
 
     comparisonEl.querySelectorAll('.cmp-remove').forEach((btn) => {
       btn.addEventListener('click', (e) => {
