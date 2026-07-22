@@ -169,15 +169,21 @@
   var fields = window.IMB_PRODUCTS.fields;
   var groups = window.IMB_PRODUCTS.groups;
 
+  var isYes = window.IMB_PRODUCTS.isYes || function () { return false; };
+  var isNo  = window.IMB_PRODUCTS.isNo  || function () { return false; };
+
   function renderField(f) {
     var v = prod.specs[f.key];
+    var override = prod.specs[f.key + '_label'];
     var displayValue;
-    if (f.type === 'bool') {
-      displayValue = v
-        ? '<span class="inline-flex items-center gap-1 text-primary font-bold"><span class="material-symbols-outlined text-base">check_circle</span>' + escHtml(ui('yes')) + '</span>'
-        : '<span class="inline-flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-base">cancel</span>' + escHtml(ui('no')) + '</span>';
+    if (isYes(v)) {
+      displayValue = '<span class="inline-flex items-center gap-1 text-primary font-bold"><span class="material-symbols-outlined text-base">check_circle</span>' + escHtml(ui('yes')) + '</span>';
+    } else if (isNo(v)) {
+      displayValue = '<span class="inline-flex items-center gap-1 text-on-surface-variant"><span class="material-symbols-outlined text-base">cancel</span>' + escHtml(ui('no')) + '</span>';
     } else if (v == null || v === '') {
       displayValue = '<span class="text-on-surface-variant">—</span>';
+    } else if (override) {
+      displayValue = '<span class="font-bold text-on-surface">' + escHtml(T(override)) + '</span>';
     } else {
       displayValue = '<span class="font-bold text-on-surface">' + escHtml(fmt(v, f.unit)) + '</span>';
     }
@@ -189,7 +195,8 @@
   }
 
   var specBlocks = groups.map(function (g) {
-    var inGroup = fields.filter(function (f) { return f.group === g.id; });
+    // Campos sem a chave no specs do produto não se aplicam à linha dele — a linha some da ficha.
+    var inGroup = fields.filter(function (f) { return f.group === g.id && (f.key in prod.specs); });
     var hasAny = inGroup.some(function (f) {
       var v = prod.specs[f.key];
       return v != null && v !== '';

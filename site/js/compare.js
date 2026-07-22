@@ -188,8 +188,12 @@
     return max;
   }
 
+  const isYes = window.IMB_PRODUCTS.isYes || function () { return false; };
+  const isNo  = window.IMB_PRODUCTS.isNo  || function () { return false; };
+
   function renderCell(field, product, max) {
     const v = product.specs[field.key];
+    const override = product.specs[field.key + '_label'];
     const unitStr = field.unit ? T(field.unit) : '';
     const unit = unitStr ? ` <span class="text-[10px] text-on-surface-variant font-semibold uppercase tracking-wider ml-1">${unitStr}</span>` : '';
 
@@ -197,17 +201,21 @@
       return `<div class="text-on-surface-variant/60 text-sm italic">N/A</div>`;
     }
 
-    if (field.type === 'bool') {
-      return v
-        ? `<span class="cmp-bool cmp-bool-yes"><span class="material-symbols-outlined" style="font-size:inherit;line-height:1;">check</span></span>`
-        : `<span class="cmp-bool cmp-bool-no"><span class="material-symbols-outlined" style="font-size:inherit;line-height:1;">close</span></span>`;
+    if (isYes(v)) {
+      return `<span class="cmp-bool cmp-bool-yes"><span class="material-symbols-outlined" style="font-size:inherit;line-height:1;">check</span></span>`;
     }
+    if (isNo(v)) {
+      return `<span class="cmp-bool cmp-bool-no"><span class="material-symbols-outlined" style="font-size:inherit;line-height:1;">close</span></span>`;
+    }
+
+    // `<key>_label` troca só o texto exibido; o número segue valendo para a barra.
+    const numeric = override ? escapeHTML(T(override)) : `${fmtNumber(v)}${unit}`;
 
     if (field.type === 'bar') {
       const pct = max > 0 ? Math.max(4, Math.round((v / max) * 100)) : 0;
       return `
         <div class="space-y-2">
-          <div class="font-bold text-on-surface text-sm md:text-base">${fmtNumber(v)}${unit}</div>
+          <div class="font-bold text-on-surface text-sm md:text-base">${numeric}</div>
           <div class="cmp-bar-track">
             <div class="cmp-bar-fill" style="width:${pct}%"></div>
           </div>
@@ -215,7 +223,7 @@
     }
 
     if (field.type === 'number') {
-      return `<div class="font-bold text-on-surface text-sm md:text-base">${fmtNumber(v)}${unit}</div>`;
+      return `<div class="font-bold text-on-surface text-sm md:text-base">${numeric}</div>`;
     }
 
     // text (may be multilang object)
@@ -305,6 +313,9 @@
         </div>`;
 
       groupFields.forEach((field) => {
+        // Linha some quando o campo não se aplica a nenhum dos produtos selecionados.
+        const applies = picks.some((p) => field.key in p.specs);
+        if (!applies) return;
         const max = field.type === 'bar' ? maxFor(field.key, picks) : 0;
         html += `<div class="cmp-row-label">${escapeHTML(T(field.label))}</div>`;
         picks.forEach((p) => {

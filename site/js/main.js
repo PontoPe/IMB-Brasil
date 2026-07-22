@@ -2,8 +2,8 @@
 var IMB_CONFIG = {
   whatsappNumber: '5541988490341',        // somente num
   whatsappDefaultMsg: 'Olá! Gostaria de mais informações sobre os equipamentos IMB.',
-  telefone: '+55 (47) 3333-0000',
-  email: 'comercial@imb-brasil.com.br',
+  telefone: '+55 (41) 3679-8050',
+  email: 'comercial2@imb-brasil.com.br',
   // Horário comercial — exibido em badges perto de botões WA principais.
   horarioComercial: 'Seg–Sex · 8h–18h · Resposta em ~15min',
 };

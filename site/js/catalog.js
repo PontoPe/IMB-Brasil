@@ -37,6 +37,7 @@
     seeDetails:     { pt: 'Ver Detalhes', en: 'View Details', es: 'Ver Detalles' },
     available:      { pt: 'Disponível', en: 'Available', es: 'Disponible' },
     powerLabel:     { pt: 'Potência', en: 'Power', es: 'Potencia' },
+    productivityLabel:{ pt: 'Produtividade', en: 'Productivity', es: 'Productividad' },
     widthLabel:     { pt: 'Largura Máx.', en: 'Max. Width', es: 'Ancho Máx.' },
     applicationLabel:{ pt: 'Aplicação', en: 'Application', es: 'Aplicación' },
     resultOne:      { pt: '1 equipamento', en: '1 machine', es: '1 equipo' },
@@ -85,11 +86,14 @@
     return 'other';
   }
 
+  var isYes = window.IMB_PRODUCTS.isYes || function () { return false; };
+  var isOptional = window.IMB_PRODUCTS.isOptional || function () { return false; };
+
   function hasCapability(p, capability) {
     if (capability === 'all') return true;
-    if (capability === 'automated') return Boolean(p.specs.direcao_auto || p.specs.sensores_auto);
-    if (capability === 'steel-tracks') return Boolean(p.specs.esteiras_aco);
-    if (capability === 'clutch') return Boolean(p.specs.embreagem);
+    if (capability === 'automated') return isYes(p.specs.sensor_altura) || isYes(p.specs.sensor_direcao) || isYes(p.specs.sensor_inclinacao);
+    if (capability === 'steel-tracks') return isYes(p.specs.esteiras_aco);
+    if (capability === 'clutch') return isYes(p.specs.embreagem_radial) || isOptional(p.specs.embreagem_radial);
     if (capability === 'wide-profile') return Number(p.specs.largura_perfil || 0) >= 1500;
     return true;
   }
@@ -196,7 +200,7 @@
   function card(p) {
     var detailUrl = productDetailUrl(p);
     var widthVal = p.specs.largura_perfil != null ? fmtNumber(p.specs.largura_perfil) + ' mm' : '-';
-    var powerVal = p.specs.motor_hp != null ? p.specs.motor_hp + ' cv' : '-';
+    var prodVal  = p.specs.produtividade != null ? T(p.specs.produtividade) : '-';
     return ''
       + '<a href="' + escHTML(detailUrl) + '" class="group bg-surface-container-lowest rounded-xl overflow-hidden flex flex-col transition-all hover:shadow-2xl block fade-in-up is-visible">'
       +   '<div class="relative aspect-[16/10] overflow-hidden bg-surface-container">'
@@ -210,12 +214,12 @@
       +     (p.specs.aplicacoes ? '<p class="text-sm text-on-surface-variant mb-4 leading-relaxed"><span class="font-bold text-on-surface">' + escHTML(ui('applicationLabel')) + ':</span> ' + escHTML(T(p.specs.aplicacoes)) + '</p>' : '')
       +     '<div class="grid grid-cols-2 gap-3 mb-6">'
       +       '<div class="bg-surface-container-low p-3 rounded-lg border-b-2 border-outline-variant">'
-      +         '<span class="text-[10px] font-bold text-on-surface-variant uppercase block mb-1">' + escHTML(ui('powerLabel')) + '</span>'
-      +         '<span class="text-sm font-bold text-on-surface">' + escHTML(powerVal) + '</span>'
-      +       '</div>'
-      +       '<div class="bg-surface-container-low p-3 rounded-lg border-b-2 border-outline-variant">'
       +         '<span class="text-[10px] font-bold text-on-surface-variant uppercase block mb-1">' + escHTML(ui('widthLabel')) + '</span>'
       +         '<span class="text-sm font-bold text-on-surface">' + escHTML(widthVal) + '</span>'
+      +       '</div>'
+      +       '<div class="bg-surface-container-low p-3 rounded-lg border-b-2 border-outline-variant">'
+      +         '<span class="text-[10px] font-bold text-on-surface-variant uppercase block mb-1">' + escHTML(ui('productivityLabel')) + '</span>'
+      +         '<span class="text-sm font-bold text-on-surface">' + escHTML(prodVal) + '</span>'
       +       '</div>'
       +     '</div>'
       +     '<div class="mt-auto flex items-center justify-between gap-3">'
