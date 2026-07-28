@@ -12,6 +12,32 @@
   var LANG = (window.IMB_I18N && window.IMB_I18N.lang) || 'pt';
   var state = { type: 'all', line: 'all', capability: 'all', sort: 'recommended', query: '' };
 
+  // Deep-link de categoria — produtos.html?tipo=pavimentadoras|extrusoras.
+  // Substituiu as antigas páginas de linha (pavimentadora.html / extrusora.html), que
+  // hoje só redirecionam para cá. Aceita os slugs das 3 línguas + os valores internos.
+  var TYPE_ALIASES = {
+    'paver': 'paver', 'pavers': 'paver', 'pavimentadora': 'paver', 'pavimentadoras': 'paver',
+    'extruder': 'extruder', 'extruders': 'extruder', 'extrusora': 'extruder', 'extrusoras': 'extruder',
+    'all': 'all', 'todos': 'all', 'todas': 'all',
+  };
+  var TYPE_SLUGS = { paver: 'pavimentadoras', extruder: 'extrusoras' };
+
+  function typeFromUrl() {
+    var params = new URLSearchParams(window.location.search);
+    var raw = (params.get('tipo') || params.get('type') || params.get('categoria') || '').trim().toLowerCase();
+    return TYPE_ALIASES[raw] || 'all';
+  }
+
+  // Mantém a URL em sincronia com o filtro para o link continuar compartilhável.
+  function syncUrl() {
+    if (!window.history || !window.history.replaceState) return;
+    var slug = TYPE_SLUGS[state.type];
+    var url = window.location.pathname + (slug ? '?tipo=' + slug : '') + window.location.hash;
+    window.history.replaceState(null, '', url);
+  }
+
+  state.type = typeFromUrl();
+
   var UI = {
     title:          { pt: 'Filtros', en: 'Filters', es: 'Filtros' },
     search:         { pt: 'Busca', en: 'Search', es: 'Búsqueda' },
@@ -197,6 +223,16 @@
     if (countEl) countEl.textContent = count === 1 ? ui('resultOne') : count + ' ' + ui('resultsMany');
   }
 
+  // Quem chega pelo deep-link de categoria vê o título da categoria, não o do catálogo inteiro.
+  var baseTitle = document.title;
+  var heading = document.querySelector('[data-catalog-heading]');
+  var baseHeading = heading ? heading.textContent : '';
+  function syncPageTitle() {
+    var label = state.type === 'paver' ? ui('pavers') : (state.type === 'extruder' ? ui('extruders') : '');
+    document.title = label ? label + ' | IMB Brasil' : baseTitle;
+    if (heading) heading.textContent = label ? label.toUpperCase() : baseHeading;
+  }
+
   function card(p) {
     var detailUrl = productDetailUrl(p);
     var widthVal = p.specs.largura_perfil != null ? fmtNumber(p.specs.largura_perfil) + ' mm' : '-';
@@ -244,6 +280,8 @@
     }));
 
     syncControls(filtered.length);
+    syncUrl();
+    syncPageTitle();
     if (!filtered.length) {
       grid.innerHTML = '<div class="col-span-full catalog-empty">' + escHTML(ui('noResults')) + '</div>';
       return;

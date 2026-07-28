@@ -1547,6 +1547,40 @@ textarea:disabled,
   text-transform: uppercase;
 }
 
+/* Listas de países/estados dos cards de rede oficial (Sobre a IMB → Onde atuamos).
+   Duas colunas para as listas longas não esticarem o card. */
+.presence-list {
+  columns: 2;
+  column-gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.presence-list li {
+  break-inside: avoid;
+  color: rgba(233, 236, 239, 0.72);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  padding-left: 0.85rem;
+  position: relative;
+}
+
+.presence-list li::before {
+  background: var(--imb-orange, #ea7805);
+  border-radius: 50%;
+  content: '';
+  height: 4px;
+  left: 0;
+  position: absolute;
+  top: 0.65em;
+  width: 4px;
+}
+
+@media (max-width: 400px) {
+  .presence-list { columns: 1; }
+}
+
 .global-presence-panel {
   background: var(--imb-white);
   border: 1px solid var(--imb-neutral-300);

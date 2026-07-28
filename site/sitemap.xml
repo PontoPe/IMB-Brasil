@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Gerado por .claude/build-sitemap.js a partir de js/products.js e js/cases.js. Não editar à mão. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- Home -->
+  <!-- Páginas fixas -->
   <url>
     <loc>https://imb-brasil.com.br/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://imb-brasil.com.br/en/"/>
-    <xhtml:link rel="alternate" hreflang="es"    href="https://imb-brasil.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -15,104 +16,726 @@
   <url>
     <loc>https://imb-brasil.com.br/en/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://imb-brasil.com.br/en/"/>
-    <xhtml:link rel="alternate" hreflang="es"    href="https://imb-brasil.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://imb-brasil.com.br/es/</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://imb-brasil.com.br/en/"/>
-    <xhtml:link rel="alternate" hreflang="es"    href="https://imb-brasil.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
-  <!-- Catalog -->
   <url>
     <loc>https://imb-brasil.com.br/produtos.html</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://imb-brasil.com.br/en/products.html"/>
-    <xhtml:link rel="alternate" hreflang="es"    href="https://imb-brasil.com.br/es/productos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html"/>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://imb-brasil.com.br/en/products.html</loc>
-    <changefreq>weekly</changefreq><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://imb-brasil.com.br/es/productos.html</loc>
-    <changefreq>weekly</changefreq><priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
-
-  <!-- Product detail -->
-  <url><loc>https://imb-brasil.com.br/produto.html?id=imb-7300</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/produto.html?id=imb-1200-evolution</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/produto.html?id=imb-800-master</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/produto.html?id=imb-ultra-500</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/produto.html?id=imb-5000-curb</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/product.html?id=imb-7300</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/product.html?id=imb-1200-evolution</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/product.html?id=imb-800-master</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/product.html?id=imb-ultra-500</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/product.html?id=imb-5000-curb</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/producto.html?id=imb-7300</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/producto.html?id=imb-1200-evolution</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/producto.html?id=imb-800-master</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/producto.html?id=imb-ultra-500</loc><priority>0.8</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/producto.html?id=imb-5000-curb</loc><priority>0.8</priority></url>
-
-  <!-- Paver line -->
-  <url><loc>https://imb-brasil.com.br/pavimentadora.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/paver.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/pavimentadora.html</loc><priority>0.7</priority></url>
-
-  <!-- Extruder line -->
-  <url><loc>https://imb-brasil.com.br/extrusora.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/extruder.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/extrusora.html</loc><priority>0.7</priority></url>
-
-  <!-- Compare -->
-  <url><loc>https://imb-brasil.com.br/comparar.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/compare.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/comparar.html</loc><priority>0.7</priority></url>
-
-  <!-- Cases listing -->
+  <url>
+    <loc>https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/products.html?tipo=pavimentadoras</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/productos.html?tipo=pavimentadoras</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html?tipo=pavimentadoras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html?tipo=pavimentadoras"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produtos.html?tipo=extrusoras</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html?tipo=extrusoras"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/products.html?tipo=extrusoras</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html?tipo=extrusoras"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/productos.html?tipo=extrusoras</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produtos.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/products.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/productos.html?tipo=extrusoras"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produtos.html?tipo=extrusoras"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/comparar.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/comparar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/compare.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/comparar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/comparar.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/compare.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/comparar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/compare.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/comparar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/comparar.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/comparar.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/comparar.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/compare.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/comparar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/comparar.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <url>
     <loc>https://imb-brasil.com.br/cases.html</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/cases.html"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://imb-brasil.com.br/en/cases.html"/>
-    <xhtml:link rel="alternate" hreflang="es"    href="https://imb-brasil.com.br/es/casos.html"/>
-    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/cases.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/casos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/cases.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-  <url><loc>https://imb-brasil.com.br/en/cases.html</loc><priority>0.7</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/casos.html</loc><priority>0.7</priority></url>
-
-  <!-- Case detail -->
-  <url><loc>https://imb-brasil.com.br/case.html?id=guaratuba</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/case.html?id=linha-verde-curitiba</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/case.html?id=br-101-sul</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/case.html?id=aeroporto-floripa</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/case.html?id=anel-joinville</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/case.html?id=rodoanel-sp</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/case.html?id=guaratuba</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/case.html?id=linha-verde-curitiba</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/en/case.html?id=br-101-sul</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/caso.html?id=guaratuba</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/caso.html?id=linha-verde-curitiba</loc><priority>0.6</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/caso.html?id=br-101-sul</loc><priority>0.6</priority></url>
-
-  <!-- Contact / About -->
+  <url>
+    <loc>https://imb-brasil.com.br/en/cases.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/cases.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/cases.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/casos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/cases.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/casos.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/cases.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/cases.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/casos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/cases.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://imb-brasil.com.br/contato.html</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/contato.html"/>
-    <xhtml:link rel="alternate" hreflang="en"    href="https://imb-brasil.com.br/en/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="es"    href="https://imb-brasil.com.br/es/contacto.html"/>
-    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/contato.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
-  <url><loc>https://imb-brasil.com.br/en/contact.html</loc><priority>0.9</priority></url>
-  <url><loc>https://imb-brasil.com.br/es/contacto.html</loc><priority>0.9</priority></url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/contato.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/contato.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/contacto.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/contato.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/contacto.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/contato.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/politica-de-privacidade.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/politica-de-privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/politica-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/politica-de-privacidade.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/privacy-policy.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/politica-de-privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/politica-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/politica-de-privacidade.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/politica-de-privacidad.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/politica-de-privacidade.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/privacy-policy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/politica-de-privacidad.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/politica-de-privacidade.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Fichas técnicas (11 equipamentos) -->
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-2000hd-max</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-2000hd-max"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-2000hd-max</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-2000hd-max"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-2000hd-max</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-2000hd-max"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-2000hd-max"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-3500hd</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-3500hd"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-3500hd</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-3500hd"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-3500hd</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-3500hd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-3500hd"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-5500hd-titan</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-titan</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-titan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-titan"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-5500hd-cronus</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-cronus</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-5500hd-cronus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-5500hd-cronus"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-500hd</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-500hd"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-500hd</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-500hd"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-500hd</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-500hd"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-500hd"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-400-economic</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-400-economic"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-400-economic</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-400-economic"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-400-economic</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-400-economic"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-400-economic"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-700-compact</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-700-compact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-700-compact</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-700-compact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-700-compact</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-700-compact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-700-compact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-800-compact</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-800-compact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-800-compact</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-800-compact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-800-compact</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-800-compact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-800-compact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-900g-master</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-900g-master</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-900g-master</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-master"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-900g-master-embreagem</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-900g-master-embreagem</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-master-embreagem"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-master-embreagem"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/produto.html?id=imb-900g-stc</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-stc"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/product.html?id=imb-900g-stc</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-stc"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/producto.html?id=imb-900g-stc</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/produto.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/product.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/producto.html?id=imb-900g-stc"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/produto.html?id=imb-900g-stc"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Cases (8 obras) -->
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=ponte-guaratuba</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=ponte-guaratuba"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=ponte-guaratuba</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=ponte-guaratuba"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=ponte-guaratuba</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=ponte-guaratuba"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=ponte-guaratuba"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=linha-verde</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=linha-verde"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=linha-verde</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=linha-verde"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=linha-verde</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=linha-verde"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=linha-verde"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=rodoanel</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=rodoanel"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=rodoanel</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=rodoanel"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=rodoanel</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=rodoanel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=rodoanel"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=palotina</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=palotina"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=palotina</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=palotina"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=palotina</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=palotina"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=palotina"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=major-vieira</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=major-vieira"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=major-vieira</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=major-vieira"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=major-vieira</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=major-vieira"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=major-vieira"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=lages</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=lages"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=lages</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=lages"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=lages</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=lages"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=lages"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=ferrovia-mato-grosso</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=ferrovia-mato-grosso</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=ferrovia-mato-grosso"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=ferrovia-mato-grosso"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/case.html?id=br-101-alagoas</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=br-101-alagoas"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/case.html?id=br-101-alagoas</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=br-101-alagoas"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/caso.html?id=br-101-alagoas</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/case.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/case.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/caso.html?id=br-101-alagoas"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/case.html?id=br-101-alagoas"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
 </urlset>

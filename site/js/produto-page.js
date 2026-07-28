@@ -25,7 +25,7 @@
     notFoundDesc:  { pt: 'O equipamento solicitado não existe ou foi removido.', en: 'The requested equipment does not exist or has been removed.', es: 'El equipo solicitado no existe o fue removido.' },
     backCatalog:   { pt: 'Voltar ao catálogo', en: 'Back to catalog', es: 'Volver al catálogo' },
     precisionEng:  { pt: 'Engenharia de Precisão', en: 'Precision Engineering', es: 'Ingeniería de Precisión' },
-    breadcrumbProd:{ pt: 'Produtos', en: 'Products', es: 'Productos' },
+    breadcrumbProd:{ pt: 'Equipamentos', en: 'Equipment', es: 'Equipos' },
     pavers:        { pt: 'Pavimentadoras', en: 'Pavers', es: 'Pavimentadoras' },
     extruders:     { pt: 'Extrusoras', en: 'Extruders', es: 'Extrusoras' },
     widthLabel:    { pt: 'Largura', en: 'Width', es: 'Ancho' },
@@ -228,6 +228,10 @@
       : '';
   }).join('');
 
+  // Desenho de perfis é por equipamento (products.js → profile_image); o genérico só entra
+  // como fallback se algum modelo ainda não tiver desenho oficial.
+  var perfisImg = prod.profile_image || (assetPrefix + 'images/perfis-personalizados.png');
+
   var perfisSection = ''
     + '<section class="py-16 md:py-24 bg-surface-container-low">'
     +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
@@ -236,7 +240,7 @@
     +     '</div>'
     +     '<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center fade-in-up">'
     +       '<div class="rounded-xl p-6 md:p-8 border border-outline-variant" style="background:#ffffff;">'
-    +         '<img src="' + escHtml(assetPrefix + 'images/perfis-personalizados.png') + '" alt="' + escHtml(ui('profilesAlt')) + '" class="w-full h-auto" loading="lazy" />'
+    +         '<img src="' + escHtml(perfisImg) + '" alt="' + escHtml(ui('profilesAlt')) + ' — ' + escHtml(prod.name) + '" class="w-full h-auto" loading="lazy" />'
     +       '</div>'
     +       '<div>'
     +         (profileChips ? '<p class="text-on-surface-variant text-sm md:text-base mb-3">' + escHtml(ui('profilesThis')) + '</p><div class="flex flex-wrap gap-2 mb-6">' + profileChips + '</div>' : '')

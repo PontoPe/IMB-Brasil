@@ -232,12 +232,15 @@ window.IMB_resolveWaMsg = function (el) {
       + '</div>';
   }
 
-  function renderTestimonialCard(c) {
-    if (!c.testimonial) return '';
-    var t = c.testimonial;
-    var detailUrl = (window.IMB_I18N && window.IMB_I18N.caseDetailUrl)
-      ? window.IMB_I18N.caseDetailUrl(c.id)
-      : caseUrl + '?id=' + encodeURIComponent(c.id);
+  // `t` vem de IMB_CASES.allTestimonials(): depoimentos de case + avulsos.
+  // Só mostra o link "ver case" quando o depoimento aponta para uma obra (case_id).
+  function renderTestimonialCard(t) {
+    if (!t || !t.quote) return '';
+    var detailUrl = t.case_id
+      ? ((window.IMB_I18N && window.IMB_I18N.caseDetailUrl)
+          ? window.IMB_I18N.caseDetailUrl(t.case_id)
+          : caseUrl + '?id=' + encodeURIComponent(t.case_id))
+      : '';
     return ''
       + '<article class="bg-surface-container-lowest rounded-xl p-6 md:p-8 flex flex-col gap-4 shadow-sm">'
       +   '<span class="testimonial-quote-mark" aria-hidden="true">“</span>'
@@ -247,9 +250,11 @@ window.IMB_resolveWaMsg = function (el) {
       +       '<div class="font-headline font-bold text-sm text-on-surface leading-tight">' + escHtml(t.author) + '</div>'
       +       '<div class="text-[11px] text-on-surface-variant mt-0.5">' + escHtml(T(t.role)) + ' · ' + escHtml(T(t.company)) + '</div>'
       +     '</div>'
-      +     '<a href="' + escHtml(detailUrl) + '" class="shrink-0 text-[10px] font-bold uppercase tracking-widest text-primary hover:underline flex items-center gap-1">'
-      +       escHtml(mainUi('viewCase')) + '<span class="material-symbols-outlined text-sm">arrow_outward</span>'
-      +     '</a>'
+      +     (detailUrl
+            ? '<a href="' + escHtml(detailUrl) + '" class="shrink-0 text-[10px] font-bold uppercase tracking-widest text-primary hover:underline flex items-center gap-1">'
+              + escHtml(mainUi('viewCase')) + '<span class="material-symbols-outlined text-sm">arrow_outward</span>'
+              + '</a>'
+            : '')
       +   '</div>'
       + '</article>';
   }
@@ -294,9 +299,8 @@ window.IMB_resolveWaMsg = function (el) {
     }
 
     var testEl = document.getElementById('cases-testimonials');
-    if (testEl) {
-      var withTestimonials = window.IMB_CASES.cases.filter(function (c) { return !!c.testimonial; });
-      testEl.innerHTML = withTestimonials.map(renderTestimonialCard).join('');
+    if (testEl && window.IMB_CASES.allTestimonials) {
+      testEl.innerHTML = window.IMB_CASES.allTestimonials().map(renderTestimonialCard).join('');
     }
   }
 

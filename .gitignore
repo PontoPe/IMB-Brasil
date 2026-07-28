@@ -1,11 +1,109 @@
-# Camera originals from the client's SharePoint dump (~480 MB).
-# Keep them locally, but do NOT commit/deploy the originals — the web-ready,
-# optimized copies live in site/images/fabrica/ and ARE tracked.
+# ──────────────────────────────────────────────────────────────────────
+# IMB Brasil — deploy automático pela Vercel, com `site/` como raiz web.
+# Tudo que está dentro de site/ E versionado vira URL pública.
+# Regra: só entra no git o que o site precisa para rodar.
+# Lembrete: .gitignore só vale para arquivo NÃO rastreado. Para tirar algo
+# que já está no repo (mantendo no disco): git rm -r --cached <caminho>
+# ──────────────────────────────────────────────────────────────────────
+
+# --- Material de origem do cliente (fica só local) --------------------
+# Originais de câmera do SharePoint (~51 GB). As cópias web-ready
+# otimizadas vivem em site/images/ e essas SIM são versionadas.
 site/images/SharePoint/
 
-# Stray download archives
-site/images/*.zip
+# Planilhas, .docx e desenhos de origem (fichas técnicas, perfis de
+# aprovação). São fonte de verdade de products.js/cases.js, mas não vão
+# pro ar — site/ é público. Backup: SharePoint/Drive do cliente.
+site/docs/
 
-# OS / editor junk
-Thumbs.db
+# PDFs internos soltos na raiz do site (design system, feedback do
+# cliente, catálogo duplicado). Os PDFs que o site realmente linka ficam
+# em site/manuals/ e continuam versionados.
+/site/*.pdf
+
+# Mockups do Stitch e checklists de validação da reunião
+/stitch/
+*.docx
+
+# --- Arquivos compactados ---------------------------------------------
+*.zip
+*.rar
+*.7z
+*.tar
+*.tar.gz
+*.tgz
+
+# --- Fontes pesadas de imagem/vídeo (versionar o derivado, não o master)
+*.psd
+*.ai
+*.eps
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+
+# --- Dependências e build ----------------------------------------------
+node_modules/
+.pnp
+.pnp.*
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.cache/
+.parcel-cache/
+
+# --- Vercel -------------------------------------------------------------
+.vercel/
+.vercel_build_output/
+
+# --- Env e segredos -----------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials.json
+
+# --- Logs ---------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Sistema operacional ------------------------------------------------
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# --- Editores -----------------------------------------------------------
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# --- Temporários e rascunho ---------------------------------------------
+tmp/
+temp/
+scratch/
+scratchpad/
+*.bak
+*.orig
+*.rej
+*.tmp

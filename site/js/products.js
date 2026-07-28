@@ -20,6 +20,7 @@ window.IMB_PRODUCTS = (function () {
   const CORREIA_DUPLA = L('Polia e correia dupla', 'Double pulley and belt', 'Polea y correa doble');
   const CORREIA_TRIPLA = L('Polia e correia tripla', 'Triple pulley and belt', 'Polea y correa triple');
   const CORRENTE_DUPLA = L('Corrente e engrenagem dupla', 'Double chain and gear', 'Cadena y engranaje doble');
+  const TRACAO_MEC = L('Mecânica', 'Mechanical', 'Mecánica');
 
   function isToken(v, pt) { return !!v && typeof v === 'object' && v.pt === pt; }
   function isYes(v) { return isToken(v, 'Sim'); }
@@ -33,7 +34,7 @@ window.IMB_PRODUCTS = (function () {
     { id: 'cap',   label: L('Capacidade do Perfil',   'Profile Capacity',          'Capacidad del Perfil') },
     { id: 'dim',   label: L('Dimensões & Peso',       'Dimensions & Weight',       'Dimensiones y Peso') },
     { id: 'tech',  label: L('Tecnologia & Recursos',  'Technology & Features',     'Tecnología y Funciones') },
-    { id: 'prod',  label: L('Produtividade',          'Productivity',              'Productividad') },
+    { id: 'prod',  label: L('Produtividade (variável)','Productivity (variable)',   'Productividad (variable)') },
   ];
 
   // A ordem aqui vale para as duas linhas: cada uma exibe só os campos que possui.
@@ -49,6 +50,7 @@ window.IMB_PRODUCTS = (function () {
     { key: 'tracao',            label: L('Tração',                      'Drive',                       'Tracción'),                        type: 'text',   group: 'motor' },
     { key: 'partida',           label: L('Partida',                     'Start',                       'Arranque'),                        type: 'text',   group: 'motor' },
     { key: 'vibradores',        label: L('Vibradores Hidráulicos',      'Hydraulic Vibrators',         'Vibradores Hidráulicos'),          type: 'number', unit: L('un','units','un'), group: 'motor' },
+    { key: 'martelo_extrusor',  label: L('Martelo Extrusor',            'Extruding Hammer',            'Martillo Extrusor'),               type: 'text',   group: 'motor' },
 
     { key: 'largura_perfil',    label: L('Largura Máx. do Perfil',      'Max. Profile Width',          'Ancho Máx. del Perfil'),           type: 'bar',    unit: 'mm', group: 'cap' },
     { key: 'altura_perfil',     label: L('Altura Máx. do Perfil',       'Max. Profile Height',         'Altura Máx. del Perfil'),          type: 'number', unit: 'mm', group: 'cap' },
@@ -94,6 +96,17 @@ window.IMB_PRODUCTS = (function () {
   const IMG_EXTRUDER_900_EMB     = assetPrefix + 'images/produtos/900g-master-embreagem.jpg';
   const IMG_EXTRUDER_900_STC     = assetPrefix + 'images/produtos/900g-stc.jpg';
 
+  // Desenhos oficiais de perfis por equipamento (docs/Perfis de Aprovação, 07/2026).
+  // Cada máquina tem o seu; nunca reaproveitar o desenho de outra.
+  const PERFIS_2000HD       = assetPrefix + 'images/perfis/2000hd-max.png';
+  const PERFIS_3500HD       = assetPrefix + 'images/perfis/3500hd.png';
+  const PERFIS_TITAN        = assetPrefix + 'images/perfis/5500hd-titan.png';
+  const PERFIS_CRONUS       = assetPrefix + 'images/perfis/5500hd-cronus.png';
+  const PERFIS_400_ECON     = assetPrefix + 'images/perfis/400-economic.png';
+  const PERFIS_700_800      = assetPrefix + 'images/perfis/700-800-compact.png';
+  const PERFIS_900_MASTER   = assetPrefix + 'images/perfis/900g-master-500hd.png'; // 900G Master, 900G Master c/ Emb. e 500HD
+  const PERFIS_900_STC      = assetPrefix + 'images/perfis/900g-stc.png';
+
   const TIPO_PAVER    = L('Pavimentadora de Concreto', 'Concrete Paver', 'Pavimentadora de Concreto');
   const TIPO_EXTRUSOR = L('Extrusora de Concreto', 'Concrete Extruder', 'Extrusora de Concreto');
   const LINHA_HIDR    = L('Hidráulica', 'Hydraulic', 'Hidráulica');
@@ -118,7 +131,8 @@ window.IMB_PRODUCTS = (function () {
       url: 'pavimentadora.html',
       image: IMG_PAVER_COMPACT_2000HD,
       manualUrl: 'manuals/manual-imb-2000hd-max.pdf',
-      profile_types: ['pavimento-concreto'],
+      profile_image: PERFIS_2000HD,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
@@ -133,7 +147,7 @@ window.IMB_PRODUCTS = (function () {
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
         monitoramento_3d: null, inset_offset: null, esteiras_aco: null,
         desloc_lateral: null, rosca_sem_fim: null, revest_esteiras: null,
-        produtividade: L('3,5 a 4 m/min, variável conforme perfil','3.5 to 4 m/min, varies by profile','3,5 a 4 m/min, variable según perfil'),
+        produtividade: L('3,5 a 4 m/min','3.5 to 4 m/min','3,5 a 4 m/min'),
       },
     },
     {
@@ -143,7 +157,8 @@ window.IMB_PRODUCTS = (function () {
       url: 'pavimentadora.html',
       image: IMG_PAVER_MEDIUM_3500HD,
       manualUrl: 'manuals/manual-imb-3500hd.pdf',
-      profile_types: ['pavimento-concreto', 'canaleta-drenagem'],
+      profile_image: PERFIS_3500HD,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem', 'barreira-new-jersey'],
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
@@ -168,7 +183,8 @@ window.IMB_PRODUCTS = (function () {
       url: 'pavimentadora.html',
       image: IMG_PAVER_LARGE_TITAN,
       manualUrl: 'manuals/manual-imb-5500hd-titan.pdf',
-      profile_types: ['pavimento-concreto', 'barreira-new-jersey'],
+      profile_image: PERFIS_TITAN,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'canaleta-drenagem', 'barreira-new-jersey', 'pavimento-concreto'],
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
@@ -194,7 +210,8 @@ window.IMB_PRODUCTS = (function () {
       url: 'pavimentadora.html',
       image: IMG_PAVER_LARGE_CRONUS,
       manualUrl: null,
-      profile_types: ['pavimento-concreto', 'barreira-new-jersey'],
+      profile_image: PERFIS_CRONUS,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'canaleta-drenagem', 'barreira-new-jersey', 'pavimento-concreto'],
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
@@ -202,7 +219,7 @@ window.IMB_PRODUCTS = (function () {
         motor_hp: 142,     motor_tipo: L('Diesel — Perkins 1104D','Diesel — Perkins 1104D','Diésel — Perkins 1104D'),
         tracao:            L('Hidráulica integral 4WD em esteiras de aço','Full hydraulic 4WD on steel tracks','Hidráulica integral 4WD en orugas de acero'),
         vibradores: 12,    vibradores_label: vibradores(12),
-        largura_perfil: 5000, largura_perfil_label: perfilOffsetInset('2.750 mm', '5.000 mm'),
+        largura_perfil: 5000, largura_perfil_label: perfilOffsetInset('2.700 mm', '5.000 mm'),
         altura_perfil: 350,
         peso: 16800, comprimento: 9600, largura: 2350, altura: 2800,
         tanque_combust: 220, tanque_hidr: 480, tanque_agua: 1700,
@@ -221,21 +238,24 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_500HD,
       manualUrl: 'manuals/manual-imb-500hd.pdf',
-      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
+      profile_image: PERFIS_900_MASTER,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Automatizada','Automated','Automatizada'),
-        aplicacoes:        L('Meio-fio, guia e sarjeta e calçada','Curbs, curb & gutter and sidewalks','Cordones, guías y cunetas, y veredas'),
+        aplicacoes:        L('Meio-fio, guia e sarjeta, calçadas e canaletas U','Curbs, curb & gutter, sidewalks and U-channels','Cordones, guías y cunetas, veredas y canaletas U'),
         motor_hp: 14,      motor_tipo: 'Diesel',
         redutor: '1:40',
         transmissao: CORREIA_TRIPLA,
+        tracao: TRACAO_MEC,
         partida: PARTIDA_ELET_RET,
+        vibradores: null,  martelo_extrusor: SIM,
         largura_perfil: 1500, altura_perfil: 450,
         peso: 800, comprimento: 3050, largura: 720, altura: 840,
         tanque_combust: 5.5, tanque_hidr: 10,
         horimetro: SIM, suspensao: AUTOM, direcao: AUTOM, embreagem_radial: NAO,
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
-        produtividade: L('2,5 a 3,5 m/min, variável conforme perfil','2.5 to 3.5 m/min, varies by profile','2,5 a 3,5 m/min, variable según perfil'),
+        produtividade: L('2,5 a 3,5 m/min','2.5 to 3.5 m/min','2,5 a 3,5 m/min'),
       },
     },
 
@@ -248,6 +268,7 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_400_ECON,
       manualUrl: 'manuals/manual-imb-400-economic.pdf',
+      profile_image: PERFIS_400_ECON,
       profile_types: ['meio-fio', 'guia-sarjeta'],
       specs: {
         tipo: TIPO_EXTRUSOR,
@@ -256,13 +277,15 @@ window.IMB_PRODUCTS = (function () {
         motor_hp: 7,       motor_tipo: 'Diesel',
         redutor: '1:40',
         transmissao: CORREIA_DUPLA,
+        tracao: TRACAO_MEC,
         partida: PARTIDA_ELET_RET,
+        vibradores: null,  martelo_extrusor: SIM,
         largura_perfil: 450, altura_perfil: 300,
         peso: 410, comprimento: 2520, largura: 600, altura: 980,
         tanque_combust: 3.5, tanque_hidr: null,
         horimetro: NAO, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: NAO,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
-        produtividade: L('até 2 m/min','up to 2 m/min','hasta 2 m/min'),
+        produtividade: L('1,5 a 2,0 m/min','1.5 to 2.0 m/min','1,5 a 2,0 m/min'),
       },
     },
 
@@ -274,6 +297,7 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_700_COMPACT,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
+      profile_image: PERFIS_700_800,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
       specs: {
         tipo: TIPO_EXTRUSOR,
@@ -282,13 +306,15 @@ window.IMB_PRODUCTS = (function () {
         motor_hp: 13,      motor_tipo: 'Diesel',
         redutor: '1:40',
         transmissao: CORREIA_DUPLA,
+        tracao: TRACAO_MEC,
         partida: PARTIDA_ELET_RET,
+        vibradores: null,  martelo_extrusor: SIM,
         largura_perfil: 1200, altura_perfil: 450,
         peso: 580, comprimento: 2930, largura: 720, altura: 980,
         tanque_combust: 5.5, tanque_hidr: null,
         horimetro: NAO, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: NAO,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
-        produtividade: L('2 a 3 m/min, variável conforme perfil','2 to 3 m/min, varies by profile','2 a 3 m/min, variable según perfil'),
+        produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
     {
@@ -298,6 +324,7 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_800_COMPACT,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
+      profile_image: PERFIS_700_800,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
       specs: {
         tipo: TIPO_EXTRUSOR,
@@ -306,13 +333,15 @@ window.IMB_PRODUCTS = (function () {
         motor_hp: 15,      motor_tipo: 'Diesel',
         redutor: '1:40',
         transmissao: CORRENTE_DUPLA,
+        tracao: TRACAO_MEC,
         partida: PARTIDA_ELET,
+        vibradores: null,  martelo_extrusor: SIM,
         largura_perfil: 1500, altura_perfil: 450,
         peso: 600, comprimento: 2900, largura: 720, altura: 1030,
         tanque_combust: 5.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: OPC,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
-        produtividade: L('2 a 3 m/min, variável conforme perfil','2 to 3 m/min, varies by profile','2 a 3 m/min, variable según perfil'),
+        produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
 
@@ -324,7 +353,8 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_900_MASTER,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
-      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'barreira-new-jersey'],
+      profile_image: PERFIS_900_MASTER,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Pesada','Heavy','Pesada'),
@@ -334,11 +364,12 @@ window.IMB_PRODUCTS = (function () {
         transmissao: CORRENTE_DUPLA,
         partida: PARTIDA_ELET,
         largura_perfil: 1500, altura_perfil: 450,
+        tracao: TRACAO_MEC, vibradores: null, martelo_extrusor: SIM,
         peso: 710, comprimento: 3000, largura: 720, altura: 1030,
         tanque_combust: 12.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: NAO,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
-        produtividade: L('2 a 3 m/min, variável conforme perfil','2 to 3 m/min, varies by profile','2 a 3 m/min, variable según perfil'),
+        produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
     {
@@ -348,7 +379,8 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_900_EMB,
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
-      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'barreira-new-jersey'],
+      profile_image: PERFIS_900_MASTER,
+      profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Pesada','Heavy','Pesada'),
@@ -358,11 +390,12 @@ window.IMB_PRODUCTS = (function () {
         transmissao: CORRENTE_DUPLA,
         partida: PARTIDA_ELET,
         largura_perfil: 1500, altura_perfil: 450,
+        tracao: TRACAO_MEC, vibradores: null, martelo_extrusor: SIM,
         peso: 800, comprimento: 3280, largura: 720, altura: 1030,
         tanque_combust: 12.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: SIM,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
-        produtividade: L('2 a 3 m/min, variável conforme perfil','2 to 3 m/min, varies by profile','2 a 3 m/min, variable según perfil'),
+        produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
 
@@ -374,6 +407,7 @@ window.IMB_PRODUCTS = (function () {
       url: 'extrusora.html',
       image: IMG_EXTRUDER_900_STC,
       manualUrl: 'manuals/manual-imb-900g-stc.pdf',
+      profile_image: PERFIS_900_STC,
       profile_types: ['canaleta-drenagem'],
       specs: {
         tipo: TIPO_EXTRUSOR,
@@ -384,11 +418,12 @@ window.IMB_PRODUCTS = (function () {
         transmissao: CORRENTE_DUPLA,
         partida: PARTIDA_ELET,
         largura_perfil: 1800, altura_perfil: 600,
+        tracao: TRACAO_MEC, vibradores: null, martelo_extrusor: SIM,
         peso: 1000, comprimento: 3080, largura: 870, altura: 1030,
         tanque_combust: 12.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: SIM,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
-        produtividade: L('até 1,5 m/min, variável conforme perfil','up to 1.5 m/min, varies by profile','hasta 1,5 m/min, variable según perfil'),
+        produtividade: L('1,0 a 1,5 m/min','1.0 to 1.5 m/min','1,0 a 1,5 m/min'),
       },
     },
   ];

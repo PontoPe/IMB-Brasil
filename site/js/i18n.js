@@ -3,7 +3,7 @@
 // Exposes window.IMB_I18N { lang, t(key), pickLang(obj), urlFor(page) }.
 //
 // Usage patterns:
-//   IMB_I18N.t('nav.products')           → 'Produtos' | 'Products' | 'Productos'
+//   IMB_I18N.t('nav.products')           → 'Equipamentos' | 'Equipment' | 'Equipos'
 //   IMB_I18N.pickLang({pt:'a', en:'b'})  → picks current lang or PT fallback
 //   IMB_I18N.urlFor('produtos')          → resolves '/produtos.html', '/en/products.html', '/es/productos.html'
 window.IMB_I18N = (function () {
@@ -27,7 +27,7 @@ window.IMB_I18N = (function () {
   // ---- UI string dictionary ----
   var DICT = {
     'nav.home':        { pt: 'Início',     en: 'Home',         es: 'Inicio' },
-    'nav.products':    { pt: 'Produtos',   en: 'Products',     es: 'Productos' },
+    'nav.products':    { pt: 'Equipamentos', en: 'Equipment',  es: 'Equipos' },
     'nav.cases':       { pt: 'Nossos Projetos', en: 'Our Projects', es: 'Nuestros Proyectos' },
     'nav.about':       { pt: 'Sobre a IMB', en: 'About IMB', es: 'Sobre IMB' },
     'nav.contact':     { pt: 'Contato',    en: 'Contact',      es: 'Contacto' },
@@ -99,8 +99,9 @@ window.IMB_I18N = (function () {
     'home':        { pt: 'index.html',        en: 'en/index.html',        es: 'es/index.html' },
     'produtos':    { pt: 'produtos.html',     en: 'en/products.html',     es: 'es/productos.html' },
     'produto':     { pt: 'produto.html',      en: 'en/product.html',      es: 'es/producto.html' },
-    'pavimentadora':{pt: 'pavimentadora.html',en: 'en/paver.html',        es: 'es/pavimentadora.html' },
-    'extrusora':   { pt: 'extrusora.html',    en: 'en/extruder.html',     es: 'es/extrusora.html' },
+    // As linhas de produto não têm mais página própria: são o catálogo filtrado por categoria.
+    'pavimentadora':{pt: 'produtos.html?tipo=pavimentadoras', en: 'en/products.html?tipo=pavimentadoras', es: 'es/productos.html?tipo=pavimentadoras' },
+    'extrusora':   { pt: 'produtos.html?tipo=extrusoras',     en: 'en/products.html?tipo=extrusoras',     es: 'es/productos.html?tipo=extrusoras' },
     'comparar':    { pt: 'comparar.html',     en: 'en/compare.html',      es: 'es/comparar.html' },
     'cases':       { pt: 'cases.html',        en: 'en/cases.html',        es: 'es/casos.html' },
     'case':        { pt: 'case.html',         en: 'en/case.html',         es: 'es/caso.html' },
