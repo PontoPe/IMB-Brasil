@@ -34,6 +34,10 @@
     similarDesc:   { pt: 'Fale com nossos engenheiros e receba uma proposta com os equipamentos certos para sua obra.', en: 'Talk to our engineers and receive a proposal with the right equipment for your project.', es: 'Habla con nuestros ingenieros y recibe una propuesta con los equipos adecuados para tu obra.' },
     contact:       { pt: 'Contato', en: 'Contact', es: 'Contacto' },
     otherCases:    { pt: 'Outros cases', en: 'Other cases', es: 'Otros casos' },
+    gallery:       { pt: 'Galeria da obra', en: 'Project gallery', es: 'Galería de la obra' },
+    galleryPrev:   { pt: 'Foto anterior', en: 'Previous photo', es: 'Foto anterior' },
+    galleryNext:   { pt: 'Próxima foto', en: 'Next photo', es: 'Foto siguiente' },
+    galleryGoTo:   { pt: 'Ir para a foto', en: 'Go to photo', es: 'Ir a la foto' },
     waSeen:        { pt: function(t){ return 'Olá! Vi o case "' + t + '" no site da IMB e quero saber mais.'; },
                      en: function(t){ return 'Hi! I saw the case "' + t + '" on the IMB website and want to know more.'; },
                      es: function(t){ return '¡Hola! Vi el caso "' + t + '" en el sitio de IMB y quiero saber más.'; } },
@@ -199,6 +203,37 @@
       + '</section>';
   }
 
+  // ---- Galeria da obra (carrossel automático) ----
+  // A foto principal é a hero_image; a galeria são as demais fotos da obra.
+  // Sem fotos em `gallery` (js/cases.js) a seção nem é renderizada.
+  var galleryPhotos = (c.gallery || []).filter(Boolean);
+  var galleryBlock = '';
+  if (galleryPhotos.length) {
+    var slides = galleryPhotos.map(function (src, i) {
+      return '<img class="case-gallery-slide' + (i === 0 ? ' is-active' : '') + '" src="' + escHtml(src) + '"'
+        + ' alt="' + escHtml(cTitle) + ' — ' + (i + 1) + '/' + galleryPhotos.length + '"'
+        + (i === 0 ? '' : ' loading="lazy"') + ' />';
+    }).join('');
+    var dots = galleryPhotos.map(function (_, i) {
+      return '<button type="button" class="case-gallery-dot' + (i === 0 ? ' is-active' : '') + '"'
+        + ' data-gallery-go="' + i + '" aria-label="' + escHtml(ui('galleryGoTo')) + ' ' + (i + 1) + '"></button>';
+    }).join('');
+    galleryBlock = ''
+      + '<section class="py-16 md:py-20 bg-surface">'
+      +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
+      +     '<h2 class="font-headline font-extrabold text-2xl md:text-3xl tracking-tight mb-8 border-l-8 border-primary pl-6">' + escHtml(ui('gallery')) + '</h2>'
+      +     '<div class="case-gallery" data-case-gallery aria-roledescription="carousel" aria-label="' + escHtml(ui('gallery')) + '">'
+      +       '<div class="case-gallery-stage">' + slides + '</div>'
+      +       (galleryPhotos.length > 1
+            ? '<button type="button" class="case-gallery-arrow case-gallery-arrow--prev" data-gallery-step="-1" aria-label="' + escHtml(ui('galleryPrev')) + '"><span class="material-symbols-outlined">chevron_left</span></button>'
+              + '<button type="button" class="case-gallery-arrow case-gallery-arrow--next" data-gallery-step="1" aria-label="' + escHtml(ui('galleryNext')) + '"><span class="material-symbols-outlined">chevron_right</span></button>'
+              + '<div class="case-gallery-dots">' + dots + '</div>'
+            : '')
+      +     '</div>'
+      +   '</div>'
+      + '</section>';
+  }
+
   // ---- Testimonial ----
   var testimonialBlock = '';
   if (c.testimonial) {
@@ -250,5 +285,58 @@
     +   '</div>'
     + '</section>';
 
-  main.innerHTML = hero + metricsBlock + equipBlock + storyBlock + testimonialBlock + ctaBlock;
+  main.innerHTML = hero + metricsBlock + equipBlock + storyBlock + galleryBlock + testimonialBlock + ctaBlock;
+
+  // Carrossel: avança sozinho, pausa no hover/foco e reinicia o timer a cada
+  // interação. Respeita prefers-reduced-motion (aí só navega no clique).
+  (function initGallery() {
+    var root = main.querySelector('[data-case-gallery]');
+    if (!root) return;
+    var items = root.querySelectorAll('.case-gallery-slide');
+    if (items.length < 2) return;
+    var bullets = root.querySelectorAll('.case-gallery-dot');
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0;
+    var timer = null;
+
+    // Slide fora de foco fica com opacity 0, e não com display none — o lazy-load
+    // do browser não dispara sozinho nesse caso. Promovemos o próximo na mão para
+    // ele já estar carregado quando o crossfade acontecer.
+    function preload(i) {
+      var img = items[(i + items.length) % items.length];
+      if (img && img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+    }
+
+    function show(next) {
+      current = (next + items.length) % items.length;
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.toggle('is-active', i === current);
+        items[i].setAttribute('aria-hidden', i === current ? 'false' : 'true');
+      }
+      for (var j = 0; j < bullets.length; j++) bullets[j].classList.toggle('is-active', j === current);
+      preload(current + 1);
+    }
+    function play() {
+      if (reduced) return;
+      stop();
+      timer = setInterval(function () { show(current + 1); }, 4500);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    root.addEventListener('click', function (event) {
+      var step = event.target.closest('[data-gallery-step]');
+      var go = event.target.closest('[data-gallery-go]');
+      if (step) show(current + parseInt(step.getAttribute('data-gallery-step'), 10));
+      else if (go) show(parseInt(go.getAttribute('data-gallery-go'), 10));
+      else return;
+      play();
+    });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
+
+    show(0);
+    play();
+  })();
 })();

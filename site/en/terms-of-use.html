@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use | IMB Brasil</title>
+  <meta name="description" content="Terms and Conditions of Use of the IMB - Industria Metalurgica Ltda website: access rules, intellectual property, quote requests and liability." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/termos-de-uso.html" />
+  <link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/terms-of-use.html" />
+  <link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/terminos-de-uso.html" />
+  <link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/termos-de-uso.html" />
+
+  <meta name="wa-default-msg" content="Hi! I came from the IMB Brasil website and would like more information." />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="../css/styles.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-high": "#e9ecef",
+            "surface-dim": "#dee2e6",
+            "inverse-surface": "#272e63",
+            "on-primary-container": "#ffffff",
+            "primary-container": "#ea7805",
+            "outline-variant": "#ced4da",
+            "secondary-container": "#e9ecef",
+            "on-primary-fixed": "#1f2322",
+            "on-primary-fixed-variant": "#e94f1b",
+            "primary-fixed": "#fdc531",
+            "on-background": "#1f2322",
+            "primary-fixed-dim": "#fdc531",
+            "on-secondary": "#ffffff",
+            "on-secondary-container": "#6c757d",
+            "on-tertiary-container": "#272e63",
+            "on-tertiary-fixed": "#272e63",
+            "on-tertiary-fixed-variant": "#272e63",
+            "surface-bright": "#f8f9fa",
+            "surface-container-low": "#f8f9fa",
+            "on-surface-variant": "#6c757d",
+            "inverse-primary": "#fdc531",
+            "surface-container-highest": "#dee2e6",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1f2322",
+            "tertiary-container": "#e9ecef",
+            "tertiary-fixed-dim": "#dee2e6",
+            "background": "#f8f9fa",
+            "surface-tint": "#ea7805",
+            "inverse-on-surface": "#f8f9fa",
+            "tertiary": "#272e63",
+            "surface-container": "#e9ecef",
+            "surface": "#f8f9fa",
+            "tertiary-fixed": "#e9ecef",
+            "on-primary": "#ffffff",
+            "secondary": "#6c757d",
+            "primary": "#ea7805",
+            "outline": "#6c757d"
+          },
+          borderRadius: { DEFAULT: "8px", lg: "8px", xl: "20px", full: "9999px" },
+          fontFamily: { headline: ["Poppins"], body: ["Roboto"], label: ["Roboto"] }
+        }
+      }
+    };
+  </script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
+</head>
+<body class="bg-surface text-on-surface">
+
+    <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="flex items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-12">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="products.html">Equipment</a>
+        <a class="nav-link" href="compare.html">Compare Equipment</a>
+        <a class="nav-link" href="cases.html">Our Projects</a>
+        <a class="nav-link" href="contact.html">About IMB</a>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3 ml-auto">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle theme" title="Toggle theme"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button><div class="lang-switcher hidden md:flex items-center">
+          <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Language"><img class="lang-flag" src="../images/bandeiras/usa.svg"    alt="" aria-hidden="true" width="20" height="14" /></button>
+          <ul class="lang-switcher-menu" role="menu" data-open="false">
+            <li role="none"><a role="menuitem" data-lang="pt" href="../politica-de-privacidade.html" aria-label="Português"><img class="lang-flag" src="../images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="en" href="privacy-policy.html" aria-label="English"><img class="lang-flag" src="../images/bandeiras/usa.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">English</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="es" href="../es/politica-de-privacidad.html" aria-label="Español"><img class="lang-flag" src="../images/bandeiras/esp.svg"    alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
+          </ul>
+        </div>
+        <a href="contact.html#contact" class="hidden xl:inline-flex btn-secondary-light nav-cta">Contact Us</a>
+        <a href="contact.html#contact" class="hidden md:inline-flex btn-solid-orange text-white nav-cta">Request a Quote</a>
+        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Open menu">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high">
+      <a href="index.html" class="site-logo" aria-label="IMB Brasil"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" aria-label="Close menu"><span class="material-symbols-outlined text-2xl">close</span></button>
+    </div>
+    <div class="flex-1 overflow-y-auto py-6 px-6">
+      <div class="space-y-1">
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="index.html">Home</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="products.html">Equipment</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="compare.html">Compare Equipment</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="cases.html">Our Projects</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="contact.html">About IMB</a>
+      </div>
+      <div class="mt-8 space-y-3">
+        <a href="contact.html#contact" class="flex w-full btn-secondary-light nav-cta">Contact Us</a>
+        <a href="contact.html#contact" class="flex w-full btn-solid-orange text-white nav-cta">Request a Quote</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="pt-28 md:pt-32 pb-16 md:pb-24 bg-surface">
+    <div class="max-w-4xl mx-auto px-4 md:px-8">
+      <div class="flex items-center gap-4 mb-4 fade-in-up">
+        <span class="h-1 w-12 bg-primary"></span>
+        <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm">Legal</span>
+      </div>
+      <h1 class="font-headline font-extrabold text-3xl md:text-4xl text-on-surface tracking-tight leading-tight mb-8 fade-in-up">Website Terms and Conditions of Use</h1>
+      <p class="text-sm text-on-surface-variant border-l-4 border-outline-variant pl-4 mb-8">Courtesy translation. In the event of any discrepancy, the Portuguese version prevails.</p>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>These Terms and Conditions of Use (“Terms”) govern access to and use of the website of IMB – INDÚSTRIA METALÚRGICA LTDA, a private legal entity registered under CNPJ no. 04.792.895/0001-03, headquartered at Rua Clóvis Rogério da Silva Maschio, 749 – Campina Grande do Sul/PR, Brazil, by any individual or legal entity that accesses or uses it (“USER”).</p>
+        <p>Use of the website implies full and unreserved acceptance of these Terms. Users who do not agree with any of the provisions set out herein must refrain from using the website.</p>
+        <p>These Terms must be read together with IMB’s Privacy and Data Protection Policy, available on the website, which forms an integral and inseparable part of them.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">1. Definitions</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>For the purposes of these Terms, the following definitions apply:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li><strong>WEBSITE:</strong> IMB’s institutional website, available at www.imb-brasil.com.br, including all of its pages, subdomains, forms and features;</li>
+          <li><strong>USER:</strong> any individual or legal entity who accesses, browses or uses, by any means, the WEBSITE or its contact channels;</li>
+          <li><strong>CONTENT:</strong> any and all material made available on the WEBSITE, including texts, images, photographs, videos, catalogues, data sheets, drawings, illustrations, trademarks, logos, layout, source code and databases;</li>
+          <li><strong>QUOTE REQUEST:</strong> the request for a quotation, commercial proposal or technical information submitted by the USER through the forms or contact channels available on the WEBSITE.</li>
+        </ul>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">2. Purpose and Nature of the Website</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>The WEBSITE is institutional and informational in nature, intended to present IMB, its activities, production capabilities, product line and services, as well as to provide channels for contact and for submitting QUOTE REQUESTS.</p>
+        <p>The WEBSITE is not an e-commerce platform. No sales, payments, contracting or deliveries are carried out through the WEBSITE.</p>
+        <p>Access to the WEBSITE is free of charge; no consideration is charged from the USER for simply browsing, without prejudice to internet connection costs and required equipment, which are the USER’s sole responsibility.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">3. Quote Requests and Commercial Proposals</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>The submission of a QUOTE REQUEST by the USER constitutes a mere invitation to treat and does not create for IMB any obligation to contract, to supply products or to issue a proposal.</p>
+        <p>Information on products, applications, dimensions, materials, capacities, lead times and other characteristics published on the WEBSITE is merely informational and for reference, and does not constitute a binding offer under article 30 of the Brazilian Consumer Protection Code, unless expressly stated otherwise.</p>
+        <p>Any and all commercial relationships between IMB and the USER shall be governed exclusively by the commercial proposal formally issued by IMB and by the contractual instruments arising from it, which shall prevail over any information contained on the WEBSITE in the event of discrepancy.</p>
+        <p>Prices, delivery times, payment terms and product availability are subject to change without prior notice and only become binding after formal and express confirmation by IMB.</p>
+        <p>When submitting a QUOTE REQUEST, the USER is fully responsible for the truthfulness, accuracy and sufficiency of the information and technical specifications provided, and is liable for any losses arising from incorrect, incomplete or outdated data.</p>
+        <p>Should the USER submit drawings, designs, specifications or any technical files, the USER declares and warrants that they hold the respective rights or are duly authorised to share them, holding IMB harmless from any liability towards third parties. IMB shall treat such materials confidentially and use them exclusively to prepare the quotation and for any subsequent supply.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">4. User Obligations and Conduct</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>The USER undertakes to use the WEBSITE in good faith, in accordance with applicable law and good practice, and is prohibited from, by way of example and not limitation:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>providing false or inaccurate information, or information belonging to third parties without due authorisation;</li>
+          <li>using the WEBSITE for unlawful, fraudulent, defamatory or discriminatory purposes, or in a manner harmful to third-party rights;</li>
+          <li>performing acts that compromise the security, integrity, stability or performance of the WEBSITE, including introducing viruses, malware or malicious code;</li>
+          <li>attempting to gain unauthorised access to restricted areas, servers, databases or IMB systems;</li>
+          <li>using robots, spiders, scrapers, data miners or any automated process to collect, extract or reproduce the CONTENT without IMB’s prior written authorisation;</li>
+          <li>reverse engineering, decompiling or disassembling any element of the WEBSITE;</li>
+          <li>using the CONTENT for competitive, unfairly comparative, advertising or unauthorised commercial purposes.</li>
+        </ul>
+        <p>Breach of any of the above obligations entitles IMB to suspend or block the USER’s access to the WEBSITE, regardless of prior notice, without prejudice to applicable legal measures and to civil and criminal liability.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">5. Intellectual Property</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>All CONTENT made available on the WEBSITE is the exclusive property of IMB or of third parties who have licensed its use, and is protected by Brazilian Law no. 9,610/1998 (Copyright), Law no. 9,279/1996 (Industrial Property), Law no. 9,609/1998 (Software) and other applicable rules, as well as by international treaties in force.</p>
+        <h3 class="font-headline font-semibold text-lg text-on-surface pt-2">5.1. Trademarks and distinctive signs</h3>
+        <p>The “IMB” trademark, its visual identity, logos, trade names, slogans, domain names and other distinctive signs are the exclusive property of IMB. Access to the WEBSITE does not grant the USER any licence, assignment, authorisation or right of use over such elements; their reproduction, imitation, association, use as a keyword in search engines or any other use without IMB’s prior express authorisation is prohibited.</p>
+        <h3 class="font-headline font-semibold text-lg text-on-surface pt-2">5.2. Technical drawings, designs and know-how</h3>
+        <p>The technical drawings, designs, plans, models, sketches, descriptive memoranda, production processes, manufacturing methods, engineering specifications and other technical information published on the WEBSITE constitute IMB’s intellectual property and know-how. Their reproduction, download for purposes other than consultation, adaptation, execution, industrialisation, reverse engineering or use for own or third-party production is expressly prohibited.</p>
+        <p>Any drawing or technical specification made available on the WEBSITE is intended exclusively for consultation and product identification by the USER, and does not imply technology transfer, manufacturing licence or authorisation for industrial use.</p>
+        <h3 class="font-headline font-semibold text-lg text-on-surface pt-2">5.3. Catalogues, data sheets and commercial materials</h3>
+        <p>Catalogues, tables, data sheets, manuals, corporate presentations and other materials made available for viewing or download are provided exclusively for the USER’s internal and informational use. Their alteration, removal of watermarks or credits, commercial redistribution, incorporation into third-party materials or use in other companies’ commercial proposals is prohibited.</p>
+        <h3 class="font-headline font-semibold text-lg text-on-surface pt-2">5.4. Photographs and product images</h3>
+        <p>Photographs, renderings, videos and other images of products, manufacturing facilities, equipment and completed projects are protected by copyright and, where applicable, by image rights. Their reproduction, editing, cropping, publication on social media or third-party websites, or use for any commercial purpose without IMB’s prior written authorisation is prohibited.</p>
+        <p>Product images are illustrative only and may differ in colour, finish, scale or configuration from the product actually supplied, which shall follow the specifications of the accepted commercial proposal.</p>
+        <h3 class="font-headline font-semibold text-lg text-on-surface pt-2">5.5. Authorised use and sanctions</h3>
+        <p>IMB authorises the USER, free of charge, revocably and non-exclusively, to view the CONTENT and to make occasional copies for personal, internal and non-commercial use, provided that ownership notices and credits are preserved. Any use beyond this authorisation requires IMB’s prior written consent, which may be requested through the channels listed in item 11.</p>
+        <p>Infringement of the intellectual property rights described herein subjects the infringer to applicable civil and criminal sanctions, including the obligation to immediately cease the improper use, to recall materials in circulation and to indemnify IMB for losses and damages, moral damages and loss of profits.</p>
+        <h3 class="font-headline font-semibold text-lg text-on-surface pt-2">5.6. Content submitted by the User</h3>
+        <p>The USER remains the owner of the materials submitted to IMB, granting IMB, however, a free and limited licence for storage, internal reproduction and technical analysis, exclusively to the extent necessary to handle the QUOTE REQUEST and any subsequent supply.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">6. Availability, Maintenance and Changes to the Website</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB uses its best efforts to keep the WEBSITE available and properly functioning, but does not guarantee the absence of interruptions, failures, errors or unavailability arising from scheduled maintenance, updates, connection failures, acts of God, force majeure or third-party acts.</p>
+        <p>IMB may, at its sole discretion and at any time, modify, suspend, limit or discontinue, in whole or in part, the WEBSITE, its features or the CONTENT, without any obligation to indemnify.</p>
+        <p>IMB reserves the right to correct material, typographical, specification or pricing errors on the WEBSITE, even after a QUOTE REQUEST has been submitted.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">7. Third-Party Links and Content</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>The WEBSITE may contain links, redirects or embedded content from third-party websites, made available exclusively for the USER’s convenience.</p>
+        <p>IMB has no control over such websites and is not responsible for their content, availability, privacy practices, products or services. When accessing a third-party website, the USER should review its terms of use and privacy policies.</p>
+        <p>The existence of a link does not imply endorsement, sponsorship, partnership or recommendation by IMB.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">8. Personal Data Protection</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>The processing of personal data carried out through the WEBSITE complies with Brazilian Law no. 13,709/2018 (General Personal Data Protection Law – LGPD), Law no. 12,965/2014 (Internet Civil Framework) and, where applicable, the European Union General Data Protection Regulation.</p>
+        <p>The purposes, legal bases, collection methods, storage periods, sharing scenarios and data subject rights are described in IMB’s <a class="text-primary hover:underline" href="privacy-policy.html">Privacy and Data Protection Policy</a>, which forms part of these Terms for all purposes.</p>
+        <p>By using the WEBSITE and its contact channels, the USER declares to have read and understood that Policy.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">9. Limitation of Liability</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB is not liable for:</p>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>damages arising from improper use of the WEBSITE or the CONTENT by the USER or third parties;</li>
+          <li>technical, commercial, design or purchasing decisions made by the USER based solely on reference information contained on the WEBSITE;</li>
+          <li>unavailability, slowness, interruption or access failure arising from the USER’s connection, equipment or provider;</li>
+          <li>damages caused by viruses, intrusions, cyberattacks or unauthorised access by third parties, except where liability is legally attributed;</li>
+          <li>content, products or services of third-party websites accessed from the WEBSITE.</li>
+        </ul>
+        <p>To the extent permitted by applicable law, IMB’s liability is limited to direct and proven damages, excluding loss of profits, indirect damages and damages for loss of opportunity.</p>
+        <p>Nothing in these Terms excludes the rights afforded to consumers under Brazilian Law no. 8,078/1990, where the relationship is so characterised.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">10. Official Communication Channels</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB’s official communication channels are the WEBSITE, the e-mail addresses and the telephone and WhatsApp numbers expressly indicated in the contact section of the WEBSITE.</p>
+        <p>IMB is not responsible for communications, proposals, charges or payment requests originating from channels other than those officially published. If in doubt as to the authenticity of any communication, the USER must contact IMB through the channels indicated on the WEBSITE before taking any action.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">11. Contact</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>Questions, requests, notices of intellectual property infringement or requests for authorisation to use CONTENT should be sent to:</p>
+        <div class="p-6 bg-surface-container-lowest rounded-md border-l-4 border-primary space-y-2 text-on-surface">
+          <p><strong>Department:</strong> Administrative</p>
+          <p><strong>E-mail:</strong> <a class="text-primary hover:underline" href="mailto:contato@imb-brasil.com.br">contato@imb-brasil.com.br</a></p>
+          <p><strong>Address:</strong> Rua Clóvis Rogério da Silva Maschio, 749 – Campina Grande do Sul/PR – 83433-422, Brazil</p>
+          <p><strong>Phone/WhatsApp:</strong> +55 41 3679-8050</p>
+        </div>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">12. Changes to these Terms</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>IMB may amend these Terms at any time by publishing the updated version on the WEBSITE, indicating the respective effective date.</p>
+        <p>The USER is responsible for reviewing this page periodically. Continued use of the WEBSITE after the publication of changes implies agreement with the new version.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">13. General Provisions</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>Any tolerance by IMB regarding the breach of any obligation set out in these Terms is a mere concession and does not constitute novation, waiver or amendment of what is agreed herein.</p>
+        <p>Should any provision of these Terms be deemed null, invalid or unenforceable, the remaining provisions shall remain in full force, and the affected provision shall be replaced by another that preserves, as far as possible, the parties’ original intent.</p>
+        <p>These Terms do not create any corporate, associative, employment, representation or partnership relationship between IMB and the USER.</p>
+      </div>
+
+      <h2 class="font-headline font-bold text-2xl text-on-surface mt-12 mb-4">14. Governing Law and Jurisdiction</h2>
+      <div class="space-y-4 text-on-surface-variant text-base md:text-lg leading-relaxed">
+        <p>These Terms are governed by and construed in accordance with the laws of the Federative Republic of Brazil.</p>
+        <p>The courts of the District of Campina Grande do Sul, State of Paraná, Brazil, are elected as the competent forum, waiving any other however privileged, to settle disputes arising from these Terms, except that, in consumer relationships, the consumer retains the legal right to sue in the forum of their domicile.</p>
+      </div>
+
+      <p class="mt-12 text-sm text-on-surface-variant">Last updated: 29 July 2026.</p>
+      <p class="mt-2 font-semibold text-on-surface">IMB – INDÚSTRIA METALÚRGICA LTDA Team</p>
+    </div>
+  </main>
+
+  <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="space-y-4">
+        <div class="site-logo-footer"><img src="../images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
+        <p class="text-xs text-on-surface-variant leading-relaxed">Leader in concrete paving and extrusion technology, serving the largest infrastructure projects in Latin America.</p>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Equipment</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" href="products.html?tipo=pavimentadoras">Pavers</a></li>
+          <li><a class="hover:text-primary transition-colors" href="products.html?tipo=extrusoras">Concrete Extruders</a></li>
+          <li><a class="hover:text-primary transition-colors" href="products.html">Full Catalog</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Company</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" href="contact.html#about">About Us</a></li>
+          <li><a class="hover:text-primary transition-colors" href="contact.html">Contact</a></li>
+          <li><a class="hover:text-primary transition-colors" href="#">Technical Support</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline">Quick Contact</h5>
+        <div class="text-xs text-on-surface-variant space-y-2">
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (41) 3679-8050</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial2@imb-brasil.com.br</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (47) 98888-7777</p>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-10 pt-8 border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-4 px-4 md:px-8">
+      <p class="text-xs text-on-surface-variant">© 2025 IMB Brasil. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="privacy-policy.html" class="text-xs text-on-surface-variant hover:text-primary transition-colors">Privacy Policy</a>
+        <a href="terms-of-use.html" class="text-xs text-on-surface-variant hover:text-primary transition-colors">Terms of Use</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-link wa-fab fixed bottom-6 right-6 z-50 hidden md:flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-success text-white rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <span class="material-symbols-outlined text-2xl md:text-3xl" style="font-variation-settings:'FILL' 1;">chat</span>
+  </a>
+
+  <script src="../js/i18n.js"></script>
+  <script src="../js/cases.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

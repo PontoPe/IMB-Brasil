@@ -102,10 +102,19 @@ window.IMB_resolveWaMsg = function (el) {
     var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReduced) return;
     var idx = 0;
+    // Os slides seguintes ficam com opacity 0 (não display:none), então o lazy-load
+    // do browser não dispara sozinho. Promovemos o próximo antes do crossfade para
+    // ele não entrar em branco.
+    function preloadNext(i) {
+      var img = slides[(i + 1) % slides.length];
+      if (img && img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+    }
+    preloadNext(0);
     setInterval(function () {
       slides[idx].classList.remove('is-active');
       idx = (idx + 1) % slides.length;
       slides[idx].classList.add('is-active');
+      preloadNext(idx);
     }, 5000);
   });
 

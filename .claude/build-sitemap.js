@@ -33,6 +33,7 @@ const PAGES = [
   { pt: '/cases.html',       en: '/en/cases.html',          es: '/es/casos.html',            priority: '0.8', changefreq: 'weekly' },
   { pt: '/contato.html',     en: '/en/contact.html',        es: '/es/contacto.html',         priority: '0.8', changefreq: 'monthly' },
   { pt: '/politica-de-privacidade.html', en: '/en/privacy-policy.html', es: '/es/politica-de-privacidad.html', priority: '0.3', changefreq: 'yearly' },
+  { pt: '/termos-de-uso.html',           en: '/en/terms-of-use.html',   es: '/es/terminos-de-uso.html',        priority: '0.3', changefreq: 'yearly' },
 ];
 
 const DETAIL = {

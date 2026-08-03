@@ -18,6 +18,15 @@ window.IMB_CASES = (function () {
   var IMG_7 = assetPrefix + 'images/casees/ferrovia-mato-grosso.jpg';
   var IMG_8 = assetPrefix + 'images/casees/br-101-alagoas.jpg';
 
+  // Galeria por obra — vira carrossel automático na página do case.
+  // Convenção: a foto PRINCIPAL fica em hero_image (é a do card e a do topo da
+  // página); as demais entram em `gallery` e passam sozinhas. Para adicionar,
+  // solte os arquivos em site/images/casees/<id-da-obra>/ e liste os nomes aqui.
+  // Galeria vazia = a seção simplesmente não aparece.
+  function gal(slug, files) {
+    return files.map(function (f) { return assetPrefix + 'images/casees/' + slug + '/' + f; });
+  }
+
   // Equipamentos reais (ids batem com IMB_PRODUCTS).
   var EQ_700C   = { id: 'imb-700-compact',   name: L('Extrusora IMB 700 Compact', 'IMB 700 Compact Extruder', 'Extrusora IMB 700 Compact') };
   var EQ_3500HD = { id: 'imb-3500hd',        name: L('Pavimentadora IMB 3500HD','IMB 3500HD Paver', 'Pavimentadora IMB 3500HD') };
@@ -55,6 +64,7 @@ window.IMB_CASES = (function () {
       featured: true,
       client: '',
       hero_image: IMG_1,
+      gallery: gal('ponte-guaratuba', []),
       summary: L(
         'Execução de barreiras divisórias de pista tipo New Jersey simples, com ferragem armada, em uma das obras mais aguardadas do litoral paranaense.',
         'Construction of single New Jersey median barriers with reinforcing steel on one of the most anticipated projects on the Paraná coast.',
@@ -87,8 +97,9 @@ window.IMB_CASES = (function () {
       region: L('Sul', 'South', 'Sur'),
       status: null,
       featured: true,
-      client: 'Marandel',
+      client: '',
       hero_image: IMG_2,
+      gallery: gal('linha-verde', []),
       summary: L(
         'Execução de meio-fio e de guia e sarjeta no complexo da Linha Verde, a maior obra viária de Curitiba.',
         'Curb and curb & gutter construction across the Green Line complex, Curitiba’s largest road project.',
@@ -120,8 +131,9 @@ window.IMB_CASES = (function () {
       region: L('Sudeste', 'Southeast', 'Sudeste'),
       status: null,
       featured: true,
-      client: 'Contec',
+      client: '',
       hero_image: IMG_3,
+      gallery: gal('rodoanel', []),
       summary: L(
         'Pavimento de concreto com 14,40 metros de largura total, em passadas de 3,60 metros e espessura mínima de 25 centímetros, incluindo três faixas de rolagem e acostamento.',
         'Concrete pavement 14.40 metres wide in total, laid in 3.60-metre passes with a minimum thickness of 25 centimetres, covering three traffic lanes plus the shoulder.',
@@ -158,6 +170,7 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_4,
+      gallery: gal('palotina', []),
       summary: L(
         'Execução de barreiras divisórias de pista tipo New Jersey dupla no contorno viário de Palotina, uma das obras de infraestrutura logística mais estratégicas do Oeste do Paraná.',
         'Double New Jersey median barriers on the Palotina bypass, one of the most strategic logistics infrastructure projects in western Paraná.',
@@ -191,6 +204,7 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_5,
+      gallery: gal('major-vieira', []),
       summary: L(
         'Execução de bordo de acostamento na rodovia SC-477, com 90 centímetros de largura e 22 centímetros de espessura.',
         'Shoulder edge construction on the SC-477 highway, 90 centimetres wide and 22 centimetres thick.',
@@ -222,6 +236,7 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_6,
+      gallery: gal('lages', []),
       summary: L(
         'Execução de barreiras New Jersey duplas com concreto armado na BR-116, no trecho que liga Lages/SC ao Rio Grande do Sul.',
         'Double New Jersey barriers in reinforced concrete on the BR-116, on the stretch linking Lages, SC to Rio Grande do Sul.',
@@ -255,6 +270,7 @@ window.IMB_CASES = (function () {
       featured: true,
       client: '',
       hero_image: IMG_7,
+      gallery: gal('ferrovia-mato-grosso', []),
       summary: L(
         'Execução de canaletas de drenagem de até 1.600 mm de largura no projeto ferroviário mais ambicioso em execução no Brasil.',
         'Drainage channels up to 1,600 mm wide on the most ambitious railway project underway in Brazil.',
@@ -289,8 +305,9 @@ window.IMB_CASES = (function () {
       region: L('Nordeste', 'Northeast', 'Nordeste'),
       status: EM_ANDAMENTO,
       featured: false,
-      client: 'Contec',
+      client: '',
       hero_image: IMG_8,
+      gallery: gal('br-101-alagoas', []),
       summary: L(
         'Execução de pavimento de concreto com 10,40 metros de largura total em um dos projetos viários mais marcantes do Nordeste.',
         'Concrete pavement 10.40 metres wide in total on one of the most significant road projects in Brazil’s Northeast.',
@@ -336,7 +353,7 @@ window.IMB_CASES = (function () {
     {
       id: 'marandel-vanderlei',
       case_id: 'linha-verde',
-      author: 'Vanderlei Marconi',
+      author: 'Wanderlei Marconi',
       role: L('Proprietário', 'Owner', 'Propietario'),
       company: L('Marandel Marconi Ltda.', 'Marandel Marconi Ltda.', 'Marandel Marconi Ltda.'),
       quote: L(

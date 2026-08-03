@@ -220,6 +220,33 @@
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://imb-brasil.com.br/termos-de-uso.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/termos-de-uso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/terms-of-use.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/terminos-de-uso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/termos-de-uso.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/en/terms-of-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/termos-de-uso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/terms-of-use.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/terminos-de-uso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/termos-de-uso.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://imb-brasil.com.br/es/terminos-de-uso.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://imb-brasil.com.br/termos-de-uso.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://imb-brasil.com.br/en/terms-of-use.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://imb-brasil.com.br/es/terminos-de-uso.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://imb-brasil.com.br/termos-de-uso.html"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 
   <!-- Fichas técnicas (11 equipamentos) -->
   <url>

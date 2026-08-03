@@ -53,7 +53,6 @@
     automated:      { pt: 'Automação / sensores', en: 'Automation / sensors', es: 'Automatización / sensores' },
     steelTracks:    { pt: 'Esteiras de aço', en: 'Steel tracks', es: 'Orugas de acero' },
     clutch:         { pt: 'Com embreagem', en: 'With clutch', es: 'Con embrague' },
-    wideProfile:    { pt: 'Perfil largo', en: 'Wide profile', es: 'Perfil ancho' },
     sort:           { pt: 'Ordenar por', en: 'Sort by', es: 'Ordenar por' },
     recommended:    { pt: 'Recomendados', en: 'Recommended', es: 'Recomendados' },
     powerDesc:      { pt: 'Maior potência', en: 'Highest power', es: 'Mayor potencia' },
@@ -120,7 +119,6 @@
     if (capability === 'automated') return isYes(p.specs.sensor_altura) || isYes(p.specs.sensor_direcao) || isYes(p.specs.sensor_inclinacao);
     if (capability === 'steel-tracks') return isYes(p.specs.esteiras_aco);
     if (capability === 'clutch') return isYes(p.specs.embreagem_radial) || isOptional(p.specs.embreagem_radial);
-    if (capability === 'wide-profile') return Number(p.specs.largura_perfil || 0) >= 1500;
     return true;
   }
 
@@ -191,7 +189,6 @@
       +     '<option value="automated">' + escHTML(ui('automated')) + '</option>'
       +     '<option value="steel-tracks">' + escHTML(ui('steelTracks')) + '</option>'
       +     '<option value="clutch">' + escHTML(ui('clutch')) + '</option>'
-      +     '<option value="wide-profile">' + escHTML(ui('wideProfile')) + '</option>'
       +   '</select></div>'
       +   '<div><label class="catalog-control-label" for="catalog-sort">' + escHTML(ui('sort')) + '</label><select id="catalog-sort" class="catalog-select">'
       +     '<option value="recommended">' + escHTML(ui('recommended')) + '</option>'

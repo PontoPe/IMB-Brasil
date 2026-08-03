@@ -1547,6 +1547,90 @@ textarea:disabled,
   text-transform: uppercase;
 }
 
+/* Galeria da obra — carrossel automático na página de case (js/case-page.js).
+   Crossfade por opacidade; setas e bullets aparecem só com 2+ fotos. */
+.case-gallery {
+  position: relative;
+  border-radius: var(--imb-radius-card, 20px);
+  overflow: hidden;
+  box-shadow: var(--imb-shadow-2, 0 12px 32px rgba(0, 0, 0, 0.16));
+}
+
+.case-gallery-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--imb-neutral-200, #e9ecef);
+}
+
+.case-gallery-slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.case-gallery-slide.is-active { opacity: 1; }
+
+.case-gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(31, 35, 34, 0.55);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.case-gallery-arrow:hover,
+.case-gallery-arrow:focus-visible { background: var(--imb-orange, #ea7805); }
+.case-gallery-arrow--prev { left: 0.85rem; }
+.case-gallery-arrow--next { right: 0.85rem; }
+
+.case-gallery-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.case-gallery-dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.case-gallery-dot.is-active {
+  background: var(--imb-orange, #ea7805);
+  transform: scale(1.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-gallery-slide { transition: none; }
+}
+
+@media (max-width: 640px) {
+  .case-gallery-arrow { width: 36px; height: 36px; }
+}
+
 /* Listas de países/estados dos cards de rede oficial (Sobre a IMB → Onde atuamos).
    Duas colunas para as listas longas não esticarem o card. */
 .presence-list {
