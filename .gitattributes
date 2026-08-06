@@ -1,0 +1,5 @@
+# _redirects e _headers sao lidos linha a linha pelo Cloudflare Pages.
+# No Windows o git converteria para CRLF; forca LF para nao arriscar que o
+# \r entre no valor do header ou no status do redirect.
+_redirects text eol=lf
+_headers   text eol=lf

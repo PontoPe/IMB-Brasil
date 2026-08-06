@@ -1,0 +1,24 @@
+# Redirects do site antigo (Wix) para o site novo.
+# Formato do Cloudflare Pages: <origem> <destino> <status>
+# Uma regra por linha; a primeira que casar vence.
+#
+# Origem: sitemap publico do Wix (9 URLs, levantado em 06/08/2026).
+# A home antiga (/) ja cai na home nova, entao nao precisa de regra.
+#
+# As duas URLs com acento aparecem nos logs tanto na forma literal quanto
+# percent-encoded, dependendo do navegador. As duas formas estao cobertas.
+
+/home                        /           301
+
+/equipamentos                /produtos   301
+/cópia-equipamentos          /produtos   301
+/c%C3%B3pia-equipamentos     /produtos   301
+
+/obras                       /cases      301
+
+/mapa                        /contato    301
+/book-online                 /contato    301
+/página-de-obrigado          /contato    301
+/p%C3%A1gina-de-obrigado     /contato    301
+
+/coming-soon-03              /           301
