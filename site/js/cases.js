@@ -64,7 +64,8 @@ window.IMB_CASES = (function () {
       featured: true,
       client: '',
       hero_image: IMG_1,
-      gallery: gal('ponte-guaratuba', []),
+      gallery: gal('ponte-guaratuba', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg']),
+      video: 'k9QqYW0zS7M',
       summary: L(
         'Execução de barreiras divisórias de pista tipo New Jersey simples, com ferragem armada, em uma das obras mais aguardadas do litoral paranaense.',
         'Construction of single New Jersey median barriers with reinforcing steel on one of the most anticipated projects on the Paraná coast.',
@@ -99,7 +100,7 @@ window.IMB_CASES = (function () {
       featured: true,
       client: '',
       hero_image: IMG_2,
-      gallery: gal('linha-verde', []),
+      gallery: gal('linha-verde', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg']),
       summary: L(
         'Execução de meio-fio e de guia e sarjeta no complexo da Linha Verde, a maior obra viária de Curitiba.',
         'Curb and curb & gutter construction across the Green Line complex, Curitiba’s largest road project.',
@@ -133,7 +134,8 @@ window.IMB_CASES = (function () {
       featured: true,
       client: '',
       hero_image: IMG_3,
-      gallery: gal('rodoanel', []),
+      gallery: gal('rodoanel', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg']),
+      video: 'qDNPor8lTic',
       summary: L(
         'Pavimento de concreto com 14,40 metros de largura total, em passadas de 3,60 metros e espessura mínima de 25 centímetros, incluindo três faixas de rolagem e acostamento.',
         'Concrete pavement 14.40 metres wide in total, laid in 3.60-metre passes with a minimum thickness of 25 centimetres, covering three traffic lanes plus the shoulder.',
@@ -170,7 +172,8 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_4,
-      gallery: gal('palotina', []),
+      gallery: gal('palotina', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg']),
+      video: 'x4bnRptPIME',
       summary: L(
         'Execução de barreiras divisórias de pista tipo New Jersey dupla no contorno viário de Palotina, uma das obras de infraestrutura logística mais estratégicas do Oeste do Paraná.',
         'Double New Jersey median barriers on the Palotina bypass, one of the most strategic logistics infrastructure projects in western Paraná.',
@@ -204,7 +207,8 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_5,
-      gallery: gal('major-vieira', []),
+      gallery: gal('major-vieira', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg']),
+      video: 'zSISqKmgzHw',
       summary: L(
         'Execução de bordo de acostamento na rodovia SC-477, com 90 centímetros de largura e 22 centímetros de espessura.',
         'Shoulder edge construction on the SC-477 highway, 90 centimetres wide and 22 centimetres thick.',
@@ -236,7 +240,7 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_6,
-      gallery: gal('lages', []),
+      gallery: gal('lages', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg']),
       summary: L(
         'Execução de barreiras New Jersey duplas com concreto armado na BR-116, no trecho que liga Lages/SC ao Rio Grande do Sul.',
         'Double New Jersey barriers in reinforced concrete on the BR-116, on the stretch linking Lages, SC to Rio Grande do Sul.',
@@ -270,7 +274,8 @@ window.IMB_CASES = (function () {
       featured: true,
       client: '',
       hero_image: IMG_7,
-      gallery: gal('ferrovia-mato-grosso', []),
+      gallery: gal('ferrovia-mato-grosso', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg']),
+      video: 'z7Y5mJWOsxc',
       summary: L(
         'Execução de canaletas de drenagem de até 1.600 mm de largura no projeto ferroviário mais ambicioso em execução no Brasil.',
         'Drainage channels up to 1,600 mm wide on the most ambitious railway project underway in Brazil.',
@@ -307,7 +312,8 @@ window.IMB_CASES = (function () {
       featured: false,
       client: '',
       hero_image: IMG_8,
-      gallery: gal('br-101-alagoas', []),
+      gallery: gal('br-101-alagoas', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg']),
+      video: '2kxTaPZRqs4',
       summary: L(
         'Execução de pavimento de concreto com 10,40 metros de largura total em um dos projetos viários mais marcantes do Nordeste.',
         'Concrete pavement 10.40 metres wide in total on one of the most significant road projects in Brazil’s Northeast.',
@@ -338,6 +344,20 @@ window.IMB_CASES = (function () {
   // Depoimentos que não pertencem a um case específico (AJUSTES SITE 28/07/2026).
   // Mesmo formato de `case.testimonial` + `case_id` opcional para o link "ver case".
   const testimonials = [
+    {
+      id: 'contec-felipe',
+      case_id: 'rodoanel',
+      author: 'Felipe Alvarez',
+      role: L('Sócio-proprietário', 'Owner-partner', 'Socio propietario'),
+      company: L('Contec Projetos Especiais — 05 pavimentadoras IMB na frota',
+                 'Contec Projetos Especiais — 5 IMB pavers in its fleet',
+                 'Contec Projetos Especiais — 05 pavimentadoras IMB en su flota'),
+      quote: L(
+        'Desde o primeiro momento, o atendimento da IMB sempre foi muito solícito e de qualidade. Temos sido muito bem atendidos, com um relacionamento muito próximo. Os equipamentos apresentam uma produtividade excelente e uma enorme versatilidade de aplicações. Os equipamentos IMB estão em um nível equivalente aos de fabricantes americanos e alemães. Recomendamos de olhos fechados.',
+        'From the very first moment, IMB’s service has always been highly responsive and of great quality. We have been very well supported, with a very close relationship. The machines deliver excellent output and enormous versatility of applications. IMB equipment is on a par with American and German manufacturers. We recommend them without hesitation.',
+        'Desde el primer momento, la atención de IMB siempre fue muy solícita y de calidad. Hemos sido muy bien atendidos, con una relación muy cercana. Los equipos presentan una productividad excelente y una enorme versatilidad de aplicaciones. Los equipos IMB están a un nivel equivalente al de fabricantes americanos y alemanes. Los recomendamos con los ojos cerrados.'
+      ),
+    },
     {
       id: 'jgx-ricardo',
       case_id: null,

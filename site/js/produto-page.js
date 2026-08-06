@@ -56,6 +56,10 @@
     profilesCustom: { pt: 'Perfis personalizados sob consulta — moldes sob medida para o seu projeto.', en: 'Custom profiles on request — made-to-measure molds for your project.', es: 'Perfiles personalizados bajo consulta — moldes a medida para su proyecto.' },
     profilesCatBtn: { pt: 'Ver catálogo de perfis (PDF)', en: 'View profile catalog (PDF)', es: 'Ver catálogo de perfiles (PDF)' },
     profilesAlt:    { pt: 'Perfis personalizados sob consulta', en: 'Custom profiles on request', es: 'Perfiles personalizados bajo consulta' },
+    galleryTitle:   { pt: 'Galeria do equipamento', en: 'Equipment gallery', es: 'Galería del equipo' },
+    galleryPrev:    { pt: 'Foto anterior', en: 'Previous photo', es: 'Foto anterior' },
+    galleryNext:    { pt: 'Próxima foto', en: 'Next photo', es: 'Foto siguiente' },
+    galleryGoTo:    { pt: 'Ir para a foto', en: 'Go to photo', es: 'Ir a la foto' },
   };
   var PROFILE_LABELS = {
     'meio-fio':            { pt: 'Meio-fio',              en: 'Curb',               es: 'Cordón' },
@@ -253,6 +257,38 @@
     +   '</div>'
     + '</section>';
 
+  // ---- Galeria complementar do equipamento (carrossel automático) ----
+  // Fotos oficiais em site/images/produtos/<id>/, listadas em products.js.
+  // Equipamento sem galeria não renderiza a seção. O init do carrossel é
+  // compartilhado com a galeria de obra e vive em js/main.js.
+  var prodPhotos = (prod.gallery || []).filter(Boolean);
+  var galleryBlock = '';
+  if (prodPhotos.length) {
+    var gSlides = prodPhotos.map(function (src, i) {
+      return '<img class="media-carousel-slide' + (i === 0 ? ' is-active' : '') + '" src="' + escHtml(src) + '"'
+        + ' alt="' + escHtml(prod.name) + ' — ' + (i + 1) + '/' + prodPhotos.length + '"'
+        + (i === 0 ? '' : ' loading="lazy"') + ' />';
+    }).join('');
+    var gDots = prodPhotos.map(function (_, i) {
+      return '<button type="button" class="media-carousel-dot' + (i === 0 ? ' is-active' : '') + '"'
+        + ' data-gallery-go="' + i + '" aria-label="' + escHtml(ui('galleryGoTo')) + ' ' + (i + 1) + '"></button>';
+    }).join('');
+    galleryBlock = ''
+      + '<section class="py-16 md:py-24 bg-surface">'
+      +   '<div class="max-w-7xl mx-auto px-4 md:px-8">'
+      +     '<h2 class="text-2xl md:text-3xl font-black font-headline tracking-tight uppercase border-l-8 border-primary-container pl-6 mb-8 md:mb-10">' + escHtml(ui('galleryTitle')) + '</h2>'
+      +     '<div class="media-carousel" data-media-carousel aria-roledescription="carousel" aria-label="' + escHtml(ui('galleryTitle')) + '">'
+      +       '<div class="media-carousel-stage">' + gSlides + '</div>'
+      +       (prodPhotos.length > 1
+            ? '<button type="button" class="media-carousel-arrow media-carousel-arrow--prev" data-gallery-step="-1" aria-label="' + escHtml(ui('galleryPrev')) + '"><span class="material-symbols-outlined">chevron_left</span></button>'
+              + '<button type="button" class="media-carousel-arrow media-carousel-arrow--next" data-gallery-step="1" aria-label="' + escHtml(ui('galleryNext')) + '"><span class="material-symbols-outlined">chevron_right</span></button>'
+              + '<div class="media-carousel-dots">' + gDots + '</div>'
+            : '')
+      +     '</div>'
+      +   '</div>'
+      + '</section>';
+  }
+
   // ---- Cases relacionados ----
   var relatedCases = [];
   if (window.IMB_CASES && window.IMB_CASES.cases) {
@@ -295,5 +331,5 @@
     +   '</div>'
     + '</section>';
 
-  main.innerHTML = hero + specsSection + perfisSection + casesBlock + ctaBlock;
+  main.innerHTML = hero + specsSection + galleryBlock + perfisSection + casesBlock + ctaBlock;
 })();

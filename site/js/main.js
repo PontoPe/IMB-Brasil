@@ -118,6 +118,57 @@ window.IMB_resolveWaMsg = function (el) {
     }, 5000);
   });
 
+  // ---- Carrossel de mídia (galeria de obra e de equipamento) ----
+  // Markup: [data-media-carousel] com .media-carousel-slide (a primeira com .is-active),
+  // setas [data-gallery-step] e bullets [data-gallery-go]. Renderizado por
+  // case-page.js / produto-page.js, que rodam antes deste arquivo.
+  document.querySelectorAll('[data-media-carousel]').forEach(function (root) {
+    var items = root.querySelectorAll('.media-carousel-slide');
+    if (items.length < 2) return;
+    var bullets = root.querySelectorAll('.media-carousel-dot');
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var current = 0;
+    var timer = null;
+
+    // Slide fora de foco fica com opacity 0, e não display:none — o lazy-load do
+    // browser não dispara sozinho nesse caso. Promovemos o próximo na mão.
+    function preload(i) {
+      var img = items[(i + items.length) % items.length];
+      if (img && img.getAttribute('loading') === 'lazy') img.setAttribute('loading', 'eager');
+    }
+    function show(next) {
+      current = (next + items.length) % items.length;
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.toggle('is-active', i === current);
+        items[i].setAttribute('aria-hidden', i === current ? 'false' : 'true');
+      }
+      for (var j = 0; j < bullets.length; j++) bullets[j].classList.toggle('is-active', j === current);
+      preload(current + 1);
+    }
+    function play() {
+      if (reduced) return;
+      stop();
+      timer = setInterval(function () { show(current + 1); }, 4500);
+    }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+
+    root.addEventListener('click', function (event) {
+      var step = event.target.closest('[data-gallery-step]');
+      var go = event.target.closest('[data-gallery-go]');
+      if (step) show(current + parseInt(step.getAttribute('data-gallery-step'), 10));
+      else if (go) show(parseInt(go.getAttribute('data-gallery-go'), 10));
+      else return;
+      play();
+    });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', stop);
+    root.addEventListener('focusout', play);
+
+    show(0);
+    play();
+  });
+
   const nav = document.getElementById('main-nav');
   if (nav) {
     window.addEventListener('scroll', function () {

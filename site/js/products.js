@@ -107,6 +107,12 @@ window.IMB_PRODUCTS = (function () {
   const PERFIS_900_MASTER   = assetPrefix + 'images/perfis/900g-master-500hd.png'; // 900G Master, 900G Master c/ Emb. e 500HD
   const PERFIS_900_STC      = assetPrefix + 'images/perfis/900g-stc.png';
 
+  // Galeria complementar por equipamento (fotos oficiais, 06/08/2026).
+  // Arquivos em site/images/produtos/<id>/ — vira carrossel na página do produto.
+  function galeria(id, files) {
+    return files.map(function (f) { return assetPrefix + 'images/produtos/' + id + '/' + f; });
+  }
+
   const TIPO_PAVER    = L('Pavimentadora de Concreto', 'Concrete Paver', 'Pavimentadora de Concreto');
   const TIPO_EXTRUSOR = L('Extrusora de Concreto', 'Concrete Extruder', 'Extrusora de Concreto');
   const LINHA_HIDR    = L('Hidráulica', 'Hydraulic', 'Hidráulica');
@@ -240,6 +246,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-500hd.pdf',
       profile_image: PERFIS_900_MASTER,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
+      gallery: galeria('imb-500hd', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Automatizada','Automated','Automatizada'),
@@ -270,6 +277,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-400-economic.pdf',
       profile_image: PERFIS_400_ECON,
       profile_types: ['meio-fio', 'guia-sarjeta'],
+      gallery: galeria('imb-400-economic', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Leve','Light','Liviana'),
@@ -299,6 +307,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_image: PERFIS_700_800,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
+      gallery: galeria('imb-700-compact', ['01.jpg', '02.jpg', '03.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Média','Medium','Media'),
@@ -326,6 +335,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_image: PERFIS_700_800,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada'],
+      gallery: galeria('imb-800-compact', ['01.jpg', '02.jpg', '03.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Média','Medium','Media'),
@@ -355,6 +365,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_image: PERFIS_900_MASTER,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
+      gallery: galeria('imb-900g-master', ['01.jpg', '02.jpg', '03.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Pesada','Heavy','Pesada'),
@@ -381,6 +392,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-700-800-compact-900g-master.pdf',
       profile_image: PERFIS_900_MASTER,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
+      gallery: galeria('imb-900g-master-embreagem', ['01.jpg', '02.jpg', '03.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Pesada','Heavy','Pesada'),
@@ -409,6 +421,7 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-900g-stc.pdf',
       profile_image: PERFIS_900_STC,
       profile_types: ['canaleta-drenagem'],
+      gallery: galeria('imb-900g-stc', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']),
       specs: {
         tipo: TIPO_EXTRUSOR,
         linha:             L('Especial','Special','Especial'),
