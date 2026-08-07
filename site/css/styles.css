@@ -327,17 +327,6 @@ footer a {
   padding-block: 0.35rem;
 }
 
-.vignette-bottom::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50%;
-  background: rgba(22, 28, 31, 0.45);
-  pointer-events: none;
-}
-
 .spec-chip {
   border-radius: 9999px;
 }
