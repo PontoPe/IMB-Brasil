@@ -15,9 +15,16 @@ name: Deploy KingHost
 # conta ja e a raiz web. O canal de dados em si esta saudavel (PASV
 # negocia e transfere normalmente).
 
+# DESLIGADO no push. O servidor aceita login de qualquer origem mas
+# recusa STOR de fora do Brasil: do runner o diretorio aparece vazio e
+# todo envio volta 550, enquanto da maquina do desenvolvedor o mesmo
+# comando funciona. Ha um .ftpaccess de 97 KB na raiz da conta, tamanho
+# compativel com lista de IPs.
+#
+# Ate a KingHost liberar acesso externo (ou oferecer SFTP), a publicacao
+# e feita por deploy.ps1, rodado localmente. O gatilho fica em
+# workflow_dispatch para dar para testar a liberacao sem reescrever nada.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 # Dois deploys simultaneos brigariam pelos mesmos arquivos no servidor.
