@@ -3,3 +3,4 @@
 # \r entre no valor do header ou no status do redirect.
 _redirects text eol=lf
 _headers   text eol=lf
+.htaccess  text eol=lf

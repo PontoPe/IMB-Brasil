@@ -1,0 +1,105 @@
+# ───────────────────────────────────────────────────────────────
+# IMB Brasil — Apache (KingHost)
+# Equivalente ao que _redirects/_headers fazem no Cloudflare Pages.
+# ───────────────────────────────────────────────────────────────
+
+Options -Indexes
+DirectoryIndex index.html
+AddDefaultCharset utf-8
+
+RewriteEngine On
+
+# ── HTTPS + dominio canonico (sem www) ─────────────────────────
+# As tres condicoes num RewriteRule so para resolver em um unico
+# salto: http+www vira https sem www direto, sem redirect duplo.
+# X-Forwarded-Proto cobre o caso de a hospedagem terminar o TLS
+# num proxy na frente do Apache, onde %{HTTPS} vem vazio.
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP:X-Forwarded-Proto} =http [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://imb-brasil.com.br%{REQUEST_URI} [L,R=301]
+
+# ── Redirects do site antigo (Wix) ─────────────────────────────
+# Origem: sitemap publico do Wix (9 URLs, levantado em 06/08/2026).
+# Os destinos usam .html porque e essa a forma canonica do site:
+# o sitemap e os links internos usam extensao. Nao ha reescrita
+# de URL limpa — uma forma so, sem duplicidade.
+#
+# Nos dois casos acentuados o padrao usa .{1,2} no lugar da letra:
+# casa tanto o byte UTF-8 quanto a forma percent-encoded, sem
+# depender de como o navegador manda.
+RewriteRule ^home/?$                    /                [L,R=301]
+RewriteRule ^equipamentos/?$            /produtos.html   [L,R=301]
+RewriteRule ^c.{1,2}pia-equipamentos/?$ /produtos.html   [L,R=301]
+RewriteRule ^obras/?$                   /cases.html      [L,R=301]
+RewriteRule ^mapa/?$                    /contato.html    [L,R=301]
+RewriteRule ^book-online/?$             /contato.html    [L,R=301]
+RewriteRule ^p.{1,2}gina-de-obrigado/?$ /contato.html    [L,R=301]
+RewriteRule ^coming-soon-03/?$          /                [L,R=301]
+
+# ── Pagina de erro ─────────────────────────────────────────────
+# Caminho a partir da raiz: a mesma pagina responde por /en/... e
+# /es/... tambem. Por isso todo link e asset dentro de 404.html e
+# absoluto — a URL da barra continua sendo a que quebrou, e um
+# caminho relativo resolveria contra ela.
+ErrorDocument 404 /404.html
+
+# ── Arquivos internos que nao podem ser servidos ───────────────
+# O deploy grava um manifesto de sincronia na raiz; sem isto ele
+# fica legivel publicamente (lista nomes e hashes dos arquivos).
+<FilesMatch "^\.(ftp-deploy-sync-state\.json|htaccess)$">
+  Require all denied
+</FilesMatch>
+
+# Cinto extra. O servidor ja tinha um index.htm.old de 1,28 MB e um
+# phpinfo solto na raiz desde 2019, ambos publicos. Como o deploy nao
+# apaga o que nao conhece, sobra de site antigo tende a ficar por la —
+# assim ela ao menos nasce inacessivel.
+<FilesMatch "\.(old|bak|orig|save|swp|sql|log|ini|conf)$">
+  Require all denied
+</FilesMatch>
+
+# ── Headers de seguranca ───────────────────────────────────────
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+
+  # HSTS curto de proposito: o navegador que ve este header passa a
+  # recusar HTTP no dominio pelo tempo declarado, e nao da para
+  # desfazer remotamente. Sobe para 31536000 depois de um mes estavel.
+  Header always set Strict-Transport-Security "max-age=604800"
+</IfModule>
+
+# ── Cache ──────────────────────────────────────────────────────
+# Os assets nao tem hash no nome (styles.css, main.js, foto.jpg).
+# Cache longo neles significa que trocar uma foto ou o CSS so
+# chega no visitante quando o cache dele expira — e as fotos
+# oficiais ainda estao sendo trocadas. Por isso os prazos curtos.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault              "access plus 1 hour"
+  ExpiresByType image/jpeg    "access plus 1 day"
+  ExpiresByType image/png     "access plus 1 day"
+  ExpiresByType image/webp    "access plus 1 day"
+  ExpiresByType image/svg+xml "access plus 1 day"
+  ExpiresByType application/pdf "access plus 7 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # HTML, CSS e JS mudam a cada deploy: sempre revalida.
+  # O ETag resolve em 304, entao o custo por acesso e baixo.
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "public, no-cache"
+  </FilesMatch>
+</IfModule>
+
+# ── Compressao ─────────────────────────────────────────────────
+# So texto. JPEG, PNG e PDF ja vem comprimidos: passar deflate
+# neles gasta CPU e nao reduz nada.
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>

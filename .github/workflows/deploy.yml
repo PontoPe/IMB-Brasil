@@ -1,0 +1,57 @@
+name: Deploy KingHost
+
+# Publica site/ no servidor a cada push na main.
+#
+# Credenciais NAO ficam neste arquivo. Cadastre em
+# Settings > Secrets and variables > Actions:
+#   FTP_USER      usuario de FTP
+#   FTP_PASSWORD  senha
+#
+# A action sincroniza so o que mudou, comparando com um manifesto
+# que ela mantem no servidor. O primeiro deploy sobe os 108 MB
+# inteiros; os seguintes sobem apenas os arquivos alterados.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Dois deploys simultaneos corromperiam o manifesto de sincronia.
+concurrency:
+  group: deploy-kinghost
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Sincroniza site/ via FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # web182.kinghost.net, e nao ftp.imb-brasil.com.br: o servidor
+          # so apresenta certificado *.kinghost.net, entao conectar pelo
+          # dominio da IMB falha na verificacao TLS. Mesmo servidor, mesma
+          # conta. Se a KingHost migrar o plano para outro servidor, este
+          # nome muda — conferir com: nslookup ftp.imb-brasil.com.br
+          server: web182.kinghost.net
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+
+          # FTPS, nunca FTP puro: em FTP simples usuario e senha
+          # trafegam em texto limpo.
+          protocol: ftps
+          port: 21
+
+          local-dir: ./site/
+          # A raiz do FTP JA E a raiz web neste plano — nao existe
+          # /www/. Verificado em 06/08/2026 listando o servidor.
+          # Enquanto valida, publica em /_preview/; troca para / no
+          # dia da virada.
+          server-dir: /_preview/
+
+          # Nunca apagar o servidor inteiro antes de subir. Se o
+          # manifesto dessincronizar, rode uma vez manualmente pelo
+          # workflow_dispatch em vez de ligar isto.
+          dangerous-clean-slate: false
