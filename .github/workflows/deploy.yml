@@ -70,10 +70,23 @@ jobs:
           DEST=_preview/
 
           cd site
-          find . -type f -printf '%P\n' | sort | xargs -P 4 -I@ \
-            curl -sS --fail --ssl-reqd --ftp-create-dirs \
-              --netrc-file "$RUNNER_TEMP/netrc" \
-              --cacert "$RUNNER_TEMP/ca-bundle.pem" \
-              -T "@" "ftp://web182.kinghost.net/${DEST}@"
+
+          # Um processo curl para todos os arquivos, em vez de um por
+          # arquivo. Hospedagem compartilhada limita conexoes FTP
+          # simultaneas, e 219 logins (4 em paralelo) faziam o servidor
+          # negar acesso — o erro 9 do curl cobre tanto CWD negado quanto
+          # login negado, e era o segundo. Com arquivo de configuracao o
+          # curl faz um login so e reaproveita a conexao.
+          CFG="$RUNNER_TEMP/curl.cfg"
+          : > "$CFG"
+          find . -type f -printf '%P\n' | sort | while IFS= read -r f; do
+            printf 'url = "ftp://web182.kinghost.net/%s%s"\nupload-file = "%s"\n' \
+              "$DEST" "$f" "$f" >> "$CFG"
+          done
+
+          curl -sS --fail --ssl-reqd --ftp-create-dirs \
+            --netrc-file "$RUNNER_TEMP/netrc" \
+            --cacert "$RUNNER_TEMP/ca-bundle.pem" \
+            --config "$CFG"
 
           echo "Enviados $(find . -type f | wc -l) arquivos para ${DEST:-raiz}"
