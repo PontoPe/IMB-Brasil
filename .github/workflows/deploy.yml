@@ -7,11 +7,13 @@ name: Deploy KingHost
 #   FTP_USER      usuario de FTP
 #   FTP_PASSWORD  senha
 #
-# Usa lftp e nao a FTP-Deploy-Action: naquele servidor a action nao
-# consegue criar diretorio (falhava com "550 css: No such file or
-# directory" mesmo com o diretorio pai existindo). lftp cria a arvore
-# sozinho, sobe em paralelo e inclui arquivos ocultos — o .htaccess
-# depende disso.
+# Usa curl, e nao lftp nem a FTP-Deploy-Action. Este servidor responde
+# "550 PWD: Permission denied": ele recusa informar o diretorio atual.
+# lftp depende do PWD para ancorar caminho relativo e, sem resposta,
+# passa a mandar "~/" literal — dai os 550 em ~/_preview, ~/www e /www.
+# curl nao chama PWD: trabalha relativo ao diretorio de login, que nesta
+# conta ja e a raiz web. O canal de dados em si esta saudavel (PASV
+# negocia e transfere normalmente).
 
 on:
   push:
@@ -29,13 +31,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Instala lftp
-        run: sudo apt-get update && sudo apt-get install -y lftp
-
       # O servidor manda so o certificado final e omite o intermediario
-      # que o assina. O Windows resolve isso sozinho pela AIA, o OpenSSL
-      # nao — por isso o lftp acusava "certificate issuer is unknown".
-      # Fechar a cadeia aqui permite manter a verificacao TLS ligada.
+      # que o assina. O Windows resolve isso sozinho pela extensao AIA, o
+      # OpenSSL nao — sem isto o curl do runner recusa a conexao.
       - name: Fecha a cadeia de certificados
         run: cat /etc/ssl/certs/ca-certificates.crt .github/kinghost-chain.pem > "$RUNNER_TEMP/ca-bundle.pem"
 
@@ -44,41 +42,38 @@ jobs:
           FTP_USER: ${{ secrets.FTP_USER }}
           FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
+          set -euo pipefail
+
+          # Credencial em arquivo com permissao restrita, e nao na linha
+          # de comando: argumento de processo e visivel para qualquer
+          # outro processo da maquina.
+          umask 077
+          printf 'machine web182.kinghost.net login %s password %s\n' \
+            "$FTP_USER" "$FTP_PASSWORD" > "$RUNNER_TEMP/netrc"
+
           # web182.kinghost.net, e nao ftp.imb-brasil.com.br: o servidor
           # so apresenta certificado *.kinghost.net, entao conectar pelo
           # dominio da IMB falha na verificacao TLS. Mesmo servidor, mesma
           # conta. Se a KingHost migrar o plano, este nome muda —
           # conferir com: nslookup ftp.imb-brasil.com.br
           #
-          # ssl-force + verify-certificate: sem isso o lftp aceitaria cair
-          # para FTP em texto limpo, mandando a senha aberta na rede.
+          # Destino _preview/ enquanto valida. No dia da virada, trocar
+          # DEST para vazio para publicar na propria raiz web.
           #
-          # A raiz web e /www. A raiz absoluta do FTP e o home da conta,
-          # um nivel acima, onde o .ftpaccess nega escrita — era ali que
-          # o lftp caia, resultando em "550 Permission denied".
+          # --ssl-reqd aborta se o servidor nao oferecer TLS, em vez de
+          # cair para FTP em texto limpo com a senha aberta.
+          # --ftp-create-dirs cria a arvore de diretorios sozinho.
+          # find -type f inclui ocultos, o que o .htaccess exige.
           #
-          # curl e lftp divergem aqui: em URL do curl o caminho e relativo
-          # ao diretorio de login (que ja e /www), enquanto o lftp comeca
-          # na raiz absoluta. Por isso o mesmo _preview existia para um e
-          # nao para o outro. Com cd /www explicito os dois falam do mesmo
-          # lugar.
-          #
-          # No dia da virada: trocar o destino do mirror de _preview/
-          # para . (a propria /www).
-          #
-          # Sem --delete de proposito: o servidor ainda tem restos do site
-          # antigo, e a remocao e feita a mao, com autorizacao da IMB.
-          lftp -c "
-            set ftp:ssl-force true;
-            set ftp:ssl-protect-data true;
-            set ssl:verify-certificate true;
-            set ssl:ca-file $RUNNER_TEMP/ca-bundle.pem;
-            set cmd:fail-exit false;
-            set ftp:passive-mode true;
-            set ftp:prefer-epsv false;
-            set net:timeout 20;
-            set net:max-retries 2;
-            debug 5;
-            open -u '$FTP_USER','$FTP_PASSWORD' web182.kinghost.net;
-            ls -la;
-          "
+          # Nada e apagado no servidor: ainda ha restos do site antigo la,
+          # e a remocao e feita a mao, com autorizacao da IMB.
+          DEST=_preview/
+
+          cd site
+          find . -type f -printf '%P\n' | sort | xargs -P 4 -I@ \
+            curl -sS --fail --ssl-reqd --ftp-create-dirs \
+              --netrc-file "$RUNNER_TEMP/netrc" \
+              --cacert "$RUNNER_TEMP/ca-bundle.pem" \
+              -T "@" "ftp://web182.kinghost.net/${DEST}@"
+
+          echo "Enviados $(find . -type f | wc -l) arquivos para ${DEST:-raiz}"
