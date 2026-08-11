@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Página não encontrada | IMB Brasil</title>
+  <meta name="description" content="A página que você procura não existe ou foi movida. Volte ao início ou consulte o catálogo de equipamentos IMB Brasil." />
+  <meta name="robots" content="noindex, follow" />
+
+  <!-- Esta página é servida pelo Apache (ErrorDocument 404) para qualquer URL
+       inexistente, inclusive /en/... e /es/.... A URL da barra continua sendo a
+       que o visitante pediu, então TODO caminho aqui é absoluto a partir da
+       raiz: caminho relativo resolveria contra a URL quebrada. Sem canonical,
+       de propósito — é uma resposta de erro, não uma página do site. -->
+
+  <meta name="wa-default-msg" content="Olá! Vim pelo site IMB Brasil e gostaria de mais informações." />
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link href="/css/styles.css" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-high":"#e9ecef","surface-dim":"#dee2e6","inverse-surface":"#272e63",
+            "on-primary-container":"#ffffff","primary-container":"#ea7805","outline-variant":"#ced4da",
+            "secondary-container":"#e9ecef","on-primary-fixed":"#1f2322","on-primary-fixed-variant":"#e94f1b",
+            "primary-fixed":"#fdc531","on-background":"#1f2322","primary-fixed-dim":"#fdc531",
+            "on-secondary":"#ffffff","on-secondary-container":"#6c757d","on-tertiary-container":"#272e63",
+            "on-tertiary-fixed":"#272e63","on-tertiary-fixed-variant":"#272e63",
+            "surface-bright":"#f8f9fa","surface-container-low":"#f8f9fa","on-surface-variant":"#6c757d",
+            "inverse-primary":"#fdc531","surface-container-highest":"#dee2e6",
+            "surface-container-lowest":"#ffffff","on-surface":"#1f2322","tertiary-container":"#e9ecef",
+            "tertiary-fixed-dim":"#dee2e6","background":"#f8f9fa","surface-tint":"#ea7805",
+            "inverse-on-surface":"#f8f9fa","tertiary":"#272e63","surface-container":"#e9ecef",
+            "surface":"#f8f9fa","tertiary-fixed":"#e9ecef","on-primary":"#ffffff",
+            "secondary":"#6c757d","primary":"#ea7805","outline":"#6c757d"
+          },
+          borderRadius:{"DEFAULT":"8px","lg":"8px","xl":"20px","full":"9999px"},
+          fontFamily:{"headline":["Poppins"],"body":["Roboto"],"label":["Roboto"]}
+        }
+      }
+    };
+  </script>
+  <script>
+    (function () {
+      var KEY = 'imb-theme';
+      var root = document.documentElement;
+      var theme = 'dark';
+      try { var s = localStorage.getItem(KEY); if (s === 'light' || s === 'dark') theme = s; } catch (e) {}
+      root.setAttribute('data-theme', theme);
+      function syncIcons() {
+        var dark = root.getAttribute('data-theme') !== 'light';
+        var icons = document.querySelectorAll('[data-theme-toggle] .material-symbols-outlined');
+        for (var i = 0; i < icons.length; i++) icons[i].textContent = dark ? 'light_mode' : 'dark_mode';
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+        syncIcons();
+        var btns = document.querySelectorAll('[data-theme-toggle]');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', function () {
+            var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+            root.classList.add('theme-anim');
+            root.setAttribute('data-theme', next);
+            try { localStorage.setItem(KEY, next); } catch (e) {}
+            syncIcons();
+            setTimeout(function () { root.classList.remove('theme-anim'); }, 340);
+          });
+        }
+      });
+    })();
+  </script>
+</head>
+<body class="bg-surface text-on-surface">
+
+  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+    <div class="flex items-center max-w-7xl mx-auto px-4 md:px-8 h-20 gap-12">
+      <a href="/" class="site-logo" aria-label="IMB Brasil"><img src="/images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <div class="hidden lg:flex items-center gap-6 xl:gap-8 font-headline font-semibold tracking-tight text-sm uppercase">
+        <a class="nav-link" href="/" data-nav="home">Início</a>
+        <a class="nav-link" href="/produtos.html" data-nav="products">Equipamentos</a>
+        <a class="nav-link" href="/comparar.html" data-nav="compare">Comparar Equipamentos</a>
+        <a class="nav-link" href="/cases.html" data-nav="cases">Nossos Projetos</a>
+        <a class="nav-link" href="/contato.html" data-nav="about">Sobre a IMB</a>
+      </div>
+      <div class="flex items-center gap-2 md:gap-3 ml-auto">
+        <button type="button" class="theme-toggle" data-theme-toggle aria-label="Alternar tema" title="Alternar tema"><span class="material-symbols-outlined" aria-hidden="true">light_mode</span></button>
+        <div class="lang-switcher hidden md:flex items-center">
+          <button type="button" class="lang-switcher-btn" aria-haspopup="menu" aria-expanded="false" aria-label="Idioma"><img class="lang-flag" src="/images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /></button>
+          <ul class="lang-switcher-menu" role="menu" data-open="false">
+            <li role="none"><a role="menuitem" data-lang="pt" href="/" aria-label="Português"><img class="lang-flag" src="/images/bandeiras/brasil.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Português</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="en" href="/en/" aria-label="English"><img class="lang-flag" src="/images/bandeiras/usa.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">English</span></a></li>
+            <li role="none"><a role="menuitem" data-lang="es" href="/es/" aria-label="Español"><img class="lang-flag" src="/images/bandeiras/esp.svg" alt="" aria-hidden="true" width="20" height="14" /><span class="lang-name">Español</span></a></li>
+          </ul>
+        </div>
+        <a href="/contato.html#contato" class="hidden md:inline-flex btn-solid-orange text-white nav-cta" data-nav="quote">Solicite um orçamento</a>
+        <button id="mobile-menu-btn" class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-high transition-colors" aria-label="Abrir menu">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="menu-overlay" class="hidden fixed inset-0 bg-on-surface/40 z-[60]"></div>
+  <div id="mobile-menu" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
+    <div class="flex items-center justify-between px-6 h-20 border-b border-surface-container-high">
+      <a href="/" class="site-logo" aria-label="IMB Brasil"><img src="/images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></a>
+      <button id="close-menu-btn" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors" aria-label="Fechar menu"><span class="material-symbols-outlined text-2xl">close</span></button>
+    </div>
+    <div class="flex-1 overflow-y-auto py-6 px-6">
+      <div class="space-y-1">
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="/" data-nav="home">Início</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="/produtos.html" data-nav="products">Equipamentos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="/comparar.html" data-nav="compare">Comparar Equipamentos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="/cases.html" data-nav="cases">Nossos Projetos</a>
+        <a class="block px-4 py-3 font-headline font-semibold text-on-surface hover:bg-surface-container-low rounded-lg transition-colors" href="/contato.html" data-nav="about">Sobre a IMB</a>
+      </div>
+      <div class="mt-8 space-y-3">
+        <a href="/contato.html#contato" class="flex w-full btn-solid-orange text-white nav-cta" data-nav="quote">Solicite um orçamento</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="pt-28 md:pt-32 pb-16 md:pb-24 bg-surface">
+    <section class="max-w-3xl mx-auto px-4 md:px-8 py-12 md:py-20 text-center">
+      <div class="flex items-center justify-center gap-4 mb-6 fade-in-up">
+        <span class="h-1 w-12 bg-primary"></span>
+        <span class="font-headline font-bold uppercase tracking-widest text-primary text-sm" data-t="eyebrow">Erro 404</span>
+        <span class="h-1 w-12 bg-primary"></span>
+      </div>
+
+      <p class="font-headline font-black text-7xl md:text-9xl text-primary leading-none tracking-tight mb-6 fade-in-up">404</p>
+
+      <h1 class="font-headline font-extrabold text-2xl md:text-4xl text-on-surface tracking-tight leading-tight mb-4 fade-in-up" data-t="title">Página não encontrada</h1>
+      <p class="text-on-surface-variant text-base md:text-lg leading-relaxed mb-10 fade-in-up" data-t="desc">
+        O endereço que você acessou não existe, mudou de lugar ou foi removido. Nada se perdeu: o catálogo completo e as obras continuam a um clique.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-12 fade-in-up">
+        <a id="cta-home" href="/" class="inline-flex items-center justify-center gap-2 btn-solid-orange text-white nav-cta w-full sm:w-auto">
+          <span class="material-symbols-outlined text-base" aria-hidden="true">home</span><span data-t="ctaHome">Voltar ao início</span>
+        </a>
+        <a id="cta-catalog" href="/produtos.html" class="inline-flex items-center justify-center gap-2 btn-secondary-light nav-cta w-full sm:w-auto">
+          <span class="material-symbols-outlined text-base" aria-hidden="true">precision_manufacturing</span><span data-t="ctaCatalog">Ver catálogo de equipamentos</span>
+        </a>
+      </div>
+
+      <div class="border-t border-surface-container-high pt-8">
+        <p class="text-sm text-on-surface-variant mb-4" data-t="alsoTry">Ou continue por aqui:</p>
+        <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-sm font-semibold">
+          <a id="link-cases" class="text-on-surface hover:text-primary transition-colors" href="/cases.html" data-t="linkCases">Nossos Projetos</a>
+          <a id="link-compare" class="text-on-surface hover:text-primary transition-colors" href="/comparar.html" data-t="linkCompare">Comparar Equipamentos</a>
+          <a id="link-contact" class="text-on-surface hover:text-primary transition-colors" href="/contato.html#contato" data-t="linkContact">Falar com a IMB</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-surface-container-low border-t border-surface-container-high py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-12 max-w-7xl mx-auto px-4 md:px-8">
+      <div class="space-y-4">
+        <div class="site-logo-footer"><img src="/images/LOGO_IMB.svg?v=solid" alt="IMB Brasil" class="site-logo-img" /></div>
+        <p class="text-xs text-on-surface-variant leading-relaxed" data-t="footerAbout">
+          Líder em tecnologia de pavimentação e extrusão de concreto, servindo os maiores projetos de infraestrutura da América Latina.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline" data-t="footerEquip">Equipamentos</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" id="foot-pavers" href="/produtos.html?tipo=pavimentadoras" data-t="footerPavers">Pavimentadoras</a></li>
+          <li><a class="hover:text-primary transition-colors" id="foot-extruders" href="/produtos.html?tipo=extrusoras" data-t="footerExtruders">Extrusoras de Concreto</a></li>
+          <li><a class="hover:text-primary transition-colors" id="foot-catalog" href="/produtos.html" data-t="footerCatalog">Catálogo Completo</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline" data-t="footerCompany">Empresa</h5>
+        <ul class="text-xs text-on-surface-variant space-y-2">
+          <li><a class="hover:text-primary transition-colors" id="foot-about" href="/contato.html#sobre" data-t="footerAboutUs">Sobre Nós</a></li>
+          <li><a class="hover:text-primary transition-colors" id="foot-contact" href="/contato.html#contato" data-t="footerContact">Contato</a></li>
+        </ul>
+      </div>
+      <div class="space-y-4">
+        <h5 class="text-on-surface font-bold text-sm uppercase tracking-widest font-headline" data-t="footerQuick">Contato Rápido</h5>
+        <div class="text-xs text-on-surface-variant space-y-2">
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">call</span> +55 (41) 3679-8050</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-primary">mail</span> comercial2@imb-brasil.com.br</p>
+          <p class="flex items-center gap-2"><span class="material-symbols-outlined text-sm text-success">forum</span> +55 (41) 98849-0341</p>
+        </div>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto mt-10 pt-8 border-t border-surface-container-high flex flex-col md:flex-row justify-between items-center gap-4 px-4 md:px-8">
+      <p class="text-xs text-on-surface-variant" data-t="rights">© 2025 IMB Brasil. Todos os direitos reservados.</p>
+      <div class="flex gap-4">
+        <a id="foot-privacy" href="/politica-de-privacidade.html" class="text-xs text-on-surface-variant hover:text-primary transition-colors" data-t="footerPrivacy">Política de Privacidade</a>
+        <a id="foot-terms" href="/termos-de-uso.html" class="text-xs text-on-surface-variant hover:text-primary transition-colors" data-t="footerTerms">Termos de Uso</a>
+      </div>
+    </div>
+  </footer>
+
+  <a class="wa-link wa-fab fixed bottom-6 right-6 z-50 hidden md:flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-success text-white rounded-full shadow-lg transition-transform hover:scale-110 active:scale-95 group" href="#" target="_blank" rel="noopener" aria-label="Fale conosco pelo WhatsApp">
+    <span class="material-symbols-outlined text-2xl md:text-3xl" style="font-variation-settings:'FILL' 1;">chat</span>
+  </a>
+
+  <script>
+    // Uma unica pagina de erro atende os tres idiomas: o Apache serve /404.html
+    // para /en/qualquer-coisa tambem. O idioma sai do prefixo da URL pedida, que
+    // continua na barra, e daqui saem os textos e os destinos dos links.
+    (function () {
+      var path = window.location.pathname.toLowerCase();
+      var lang = path.indexOf('/en/') === 0 ? 'en' : (path.indexOf('/es/') === 0 ? 'es' : 'pt');
+      if (lang === 'pt') return;
+
+      var HTML_LANG = { en: 'en', es: 'es' };
+      document.documentElement.setAttribute('lang', HTML_LANG[lang]);
+
+      var PAGE_TITLE = { en: 'Page not found | IMB Brasil', es: 'Página no encontrada | IMB Brasil' };
+      document.title = PAGE_TITLE[lang];
+
+      var STR = {
+        eyebrow:    { en: 'Error 404', es: 'Error 404' },
+        title:      { en: 'Page not found', es: 'Página no encontrada' },
+        desc:       { en: 'The address you visited does not exist, moved or was removed. Nothing is lost: the full catalog and our projects are one click away.',
+                      es: 'La dirección que abriste no existe, cambió de lugar o fue removida. Nada se perdió: el catálogo completo y las obras están a un clic.' },
+        ctaHome:    { en: 'Back to home', es: 'Volver al inicio' },
+        ctaCatalog: { en: 'View equipment catalog', es: 'Ver catálogo de equipos' },
+        alsoTry:    { en: 'Or keep going from here:', es: 'O sigue por aquí:' },
+        linkCases:  { en: 'Our Projects', es: 'Nuestros Proyectos' },
+        linkCompare:{ en: 'Compare Equipment', es: 'Comparar Equipos' },
+        linkContact:{ en: 'Talk to IMB', es: 'Hablar con IMB' },
+        footerAbout:{ en: 'Leader in concrete paving and extrusion technology, serving the largest infrastructure projects in Latin America.',
+                      es: 'Líder en tecnología de pavimentación y extrusión de concreto, sirviendo a los mayores proyectos de infraestructura de América Latina.' },
+        footerEquip:{ en: 'Equipment', es: 'Equipos' },
+        footerPavers:{ en: 'Concrete Pavers', es: 'Pavimentadoras' },
+        footerExtruders:{ en: 'Concrete Extruders', es: 'Extrusoras de Concreto' },
+        footerCatalog:{ en: 'Full Catalog', es: 'Catálogo Completo' },
+        footerCompany:{ en: 'Company', es: 'Empresa' },
+        footerAboutUs:{ en: 'About Us', es: 'Sobre Nosotros' },
+        footerContact:{ en: 'Contact', es: 'Contacto' },
+        footerQuick:{ en: 'Quick Contact', es: 'Contacto Rápido' },
+        footerPrivacy:{ en: 'Privacy Policy', es: 'Política de Privacidad' },
+        footerTerms:{ en: 'Terms of Use', es: 'Términos de Uso' },
+        rights:     { en: '© 2025 IMB Brasil. All rights reserved.',
+                      es: '© 2025 IMB Brasil. Todos los derechos reservados.' }
+      };
+      Object.keys(STR).forEach(function (key) {
+        var txt = STR[key][lang];
+        if (!txt) return;
+        var els = document.querySelectorAll('[data-t="' + key + '"]');
+        for (var i = 0; i < els.length; i++) els[i].textContent = txt;
+      });
+
+      var NAV = {
+        home:     { en: 'Home', es: 'Inicio' },
+        products: { en: 'Equipment', es: 'Equipos' },
+        compare:  { en: 'Compare Equipment', es: 'Comparar Equipos' },
+        cases:    { en: 'Our Projects', es: 'Nuestros Proyectos' },
+        about:    { en: 'About IMB', es: 'Sobre IMB' },
+        quote:    { en: 'Request a Quote', es: 'Solicitar Cotización' }
+      };
+      Object.keys(NAV).forEach(function (key) {
+        var els = document.querySelectorAll('[data-nav="' + key + '"]');
+        for (var i = 0; i < els.length; i++) els[i].textContent = NAV[key][lang];
+      });
+
+      // Destinos por idioma. Os slugs mudam entre pt/en/es, entao nao da para
+      // so prefixar /en/ nos hrefs escritos em portugues.
+      var PAGE = {
+        home:     { en: '/en/',                    es: '/es/' },
+        products: { en: '/en/products.html',       es: '/es/productos.html' },
+        compare:  { en: '/en/compare.html',        es: '/es/comparar.html' },
+        cases:    { en: '/en/cases.html',          es: '/es/casos.html' },
+        contact:  { en: '/en/contact.html',        es: '/es/contacto.html' },
+        privacy:  { en: '/en/privacy-policy.html', es: '/es/politica-de-privacidad.html' },
+        terms:    { en: '/en/terms-of-use.html',   es: '/es/terminos-de-uso.html' }
+      };
+      var contactAnchor = lang === 'en' ? '#contact' : '#contacto';
+      // Em es/contacto.html a secao institucional tem id="nosotros" (nas outras
+      // duas linguas o id acompanha o slug local).
+      var aboutAnchor   = lang === 'en' ? '#about'   : '#nosotros';
+      function setHref(sel, url) {
+        var els = document.querySelectorAll(sel);
+        for (var i = 0; i < els.length; i++) els[i].setAttribute('href', url);
+      }
+      // Os itens do seletor de idioma ficam de fora: cada um aponta para o seu
+      // proprio idioma de proposito.
+      setHref('[data-nav="home"], a.site-logo', PAGE.home[lang]);
+      setHref('[data-nav="products"]', PAGE.products[lang]);
+      setHref('[data-nav="compare"]', PAGE.compare[lang]);
+      setHref('[data-nav="cases"]', PAGE.cases[lang]);
+      setHref('[data-nav="about"]', PAGE.contact[lang]);
+      setHref('[data-nav="quote"]', PAGE.contact[lang] + contactAnchor);
+      setHref('#cta-home', PAGE.home[lang]);
+      setHref('#cta-catalog', PAGE.products[lang]);
+      setHref('#link-cases', PAGE.cases[lang]);
+      setHref('#link-compare', PAGE.compare[lang]);
+      setHref('#link-contact', PAGE.contact[lang] + contactAnchor);
+      setHref('#foot-pavers', PAGE.products[lang] + '?tipo=pavimentadoras');
+      setHref('#foot-extruders', PAGE.products[lang] + '?tipo=extrusoras');
+      setHref('#foot-catalog', PAGE.products[lang]);
+      setHref('#foot-about', PAGE.contact[lang] + aboutAnchor);
+      setHref('#foot-contact', PAGE.contact[lang] + contactAnchor);
+      setHref('#foot-privacy', PAGE.privacy[lang]);
+      setHref('#foot-terms', PAGE.terms[lang]);
+
+      var WA = {
+        en: 'Hi! I came from the IMB Brasil website and would like more information.',
+        es: '¡Hola! Vine del sitio de IMB Brasil y quisiera más información.'
+      };
+      var metaWa = document.querySelector('meta[name="wa-default-msg"]');
+      if (metaWa) metaWa.content = WA[lang];
+
+      // aria-label e title dos controles: as paginas irmas em cada idioma ja
+      // usam estes mesmos textos.
+      var LABELS = {
+        '[data-theme-toggle]':   { en: 'Toggle theme', es: 'Cambiar tema', title: true },
+        '#mobile-menu-btn':      { en: 'Open menu',    es: 'Abrir menú' },
+        '#close-menu-btn':       { en: 'Close menu',   es: 'Cerrar menú' },
+        '.lang-switcher-btn':    { en: 'Language',     es: 'Idioma' }
+      };
+      Object.keys(LABELS).forEach(function (sel) {
+        var spec = LABELS[sel];
+        var els = document.querySelectorAll(sel);
+        for (var i = 0; i < els.length; i++) {
+          els[i].setAttribute('aria-label', spec[lang]);
+          if (spec.title) els[i].setAttribute('title', spec[lang]);
+        }
+      });
+
+      var WA_LABEL = { en: 'Contact us on WhatsApp', es: 'Contáctanos por WhatsApp' };
+      var waFab = document.querySelector('.wa-fab');
+      if (waFab) waFab.setAttribute('aria-label', WA_LABEL[lang]);
+
+      var FLAG = { en: '/images/bandeiras/usa.svg', es: '/images/bandeiras/esp.svg' };
+      var switcherFlag = document.querySelector('.lang-switcher-btn .lang-flag');
+      if (switcherFlag) switcherFlag.setAttribute('src', FLAG[lang]);
+    })();
+  </script>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

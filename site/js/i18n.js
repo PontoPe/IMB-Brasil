@@ -127,6 +127,63 @@ window.IMB_I18N = (function () {
     return url;
   }
 
+  // ---- Canonical das paginas com query string ----
+  // Tres paginas servem varias URLs: produto.html e case.html mudam com ?id=,
+  // e produtos.html com ?tipo=. A URL canonica so existe depois que o JS le a
+  // query — sem isto todas as fichas cairiam em /produto.html e as duas
+  // categorias do catalogo em /produtos.html, colapsadas numa pagina so.
+  var CANON_ORIGIN = 'https://imb-brasil.com.br';
+  var DETAIL_PATH = {
+    'produto': { pt: '/produto.html', en: '/en/product.html', es: '/es/producto.html' },
+    'case':    { pt: '/case.html',    en: '/en/case.html',    es: '/es/caso.html' },
+  };
+  var CATALOG_PATH = { pt: '/produtos.html', en: '/en/products.html', es: '/es/productos.html' };
+
+  function writeUrlSignals(pathByLang, query) {
+    function absUrl(l) { return CANON_ORIGIN + pathByLang[l] + (query || ''); }
+
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', absUrl(lang));
+
+    // Os alternates tem que acompanhar: o conjunto hreflang de uma pagina
+    // inclui ela mesma, e essa entrada precisa ser identica a canonica.
+    var ALT = { 'pt-BR': 'pt', 'en': 'en', 'es': 'es', 'x-default': 'pt' };
+    Object.keys(ALT).forEach(function (hl) {
+      var el = document.querySelector('link[rel="alternate"][hreflang="' + hl + '"]');
+      if (el) el.setAttribute('href', absUrl(ALT[hl]));
+    });
+  }
+
+  function setDetailSeo(slug, id) {
+    var entry = DETAIL_PATH[slug];
+    if (!entry || !id) return;
+    writeUrlSignals(entry, '?id=' + encodeURIComponent(id));
+  }
+
+  // typeSlug: 'pavimentadoras' | 'extrusoras' | vazio para o catalogo inteiro.
+  // As tres formas estao no sitemap, entao cada uma aponta para si mesma; os
+  // demais filtros (busca, ordenacao) nao entram na URL e nao mudam nada aqui.
+  function setCatalogSeo(typeSlug) {
+    writeUrlSignals(CATALOG_PATH, typeSlug ? '?tipo=' + encodeURIComponent(typeSlug) : '');
+  }
+
+  // ?id= inexistente gera URL sem conteudo. Como o espaco de parametros e
+  // infinito, essas paginas saem do indice em vez de virar duplicata.
+  function setNoIndex() {
+    var meta = document.querySelector('meta[name="robots"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.setAttribute('name', 'robots');
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute('content', 'noindex, follow');
+  }
+
   function withQuery(url, params) {
     var qs = Object.keys(params || {}).filter(function (key) {
       return params[key] != null && params[key] !== '';
@@ -187,6 +244,9 @@ window.IMB_I18N = (function () {
     caseDetailUrl: caseDetailUrl,
     productDetailUrl: productDetailUrl,
     productLineUrl: productLineUrl,
+    setDetailSeo: setDetailSeo,
+    setCatalogSeo: setCatalogSeo,
+    setNoIndex: setNoIndex,
     applyDom: applyDom,
   };
 })();

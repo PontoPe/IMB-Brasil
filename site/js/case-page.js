@@ -66,6 +66,7 @@
   if (!main) return;
 
   if (!c) {
+    if (window.IMB_I18N && window.IMB_I18N.setNoIndex) window.IMB_I18N.setNoIndex();
     main.innerHTML = ''
       + '<section class="max-w-3xl mx-auto px-4 md:px-8 py-20 md:py-32 text-center">'
       +   '<span class="material-symbols-outlined text-5xl text-on-surface-variant mb-4">search_off</span>'
@@ -87,6 +88,8 @@
   var cClient   = c.client ? T(c.client) : '';
 
   // Atualiza head para SEO + WA contextual
+  // Canonical e hreflang so podem ser escritos aqui: dependem do ?id=.
+  if (window.IMB_I18N && window.IMB_I18N.setDetailSeo) window.IMB_I18N.setDetailSeo('case', c.id || id);
   document.title = cTitle + ' ' + ui('caseSuffix');
   var metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.content = cSummary;

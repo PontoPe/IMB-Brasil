@@ -28,8 +28,17 @@
     return TYPE_ALIASES[raw] || 'all';
   }
 
+  // O canonical acompanha o filtro de categoria: as três formas (catálogo inteiro
+  // e as duas categorias) estão no sitemap, cada uma apontando para si mesma. O
+  // HTML traz o canonical de /produtos.html, que valeria para as três sem isto.
+  function syncCanonical() {
+    if (!window.IMB_I18N || !window.IMB_I18N.setCatalogSeo) return;
+    window.IMB_I18N.setCatalogSeo(TYPE_SLUGS[state.type] || '');
+  }
+
   // Mantém a URL em sincronia com o filtro para o link continuar compartilhável.
   function syncUrl() {
+    syncCanonical();
     if (!window.history || !window.history.replaceState) return;
     var slug = TYPE_SLUGS[state.type];
     var url = window.location.pathname + (slug ? '?tipo=' + slug : '') + window.location.hash;
@@ -37,6 +46,7 @@
   }
 
   state.type = typeFromUrl();
+  syncCanonical();
 
   var UI = {
     title:          { pt: 'Filtros', en: 'Filters', es: 'Filtros' },

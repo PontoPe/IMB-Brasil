@@ -86,6 +86,7 @@
   if (!main) return;
 
   if (!prod) {
+    if (window.IMB_I18N && window.IMB_I18N.setNoIndex) window.IMB_I18N.setNoIndex();
     var catalogUrl = (window.IMB_I18N && window.IMB_I18N.urlFor) ? window.IMB_I18N.urlFor('produtos') : 'produtos.html';
     main.innerHTML = ''
       + '<section class="max-w-3xl mx-auto px-4 md:px-8 py-20 md:py-32 text-center">'
@@ -105,6 +106,8 @@
   var prodSerie    = T(prod.specs.serie);
 
   // SEO + WA
+  // Canonical e hreflang so podem ser escritos aqui: dependem do ?id=.
+  if (window.IMB_I18N && window.IMB_I18N.setDetailSeo) window.IMB_I18N.setDetailSeo('produto', prod.id);
   document.title = prod.name + ' — ' + prodSubtitle + ' | IMB Brasil';
   var metaDesc = document.querySelector('meta[name="description"]');
   if (metaDesc) metaDesc.content = prodSubtitle + '. ' + prod.name + '.';
@@ -261,7 +264,13 @@
   // Fotos oficiais em site/images/produtos/<id>/, listadas em products.js.
   // Equipamento sem galeria não renderiza a seção. O init do carrossel é
   // compartilhado com a galeria de obra e vive em js/main.js.
+  // Padrão: a foto de destaque (prod.image, a mesma do card e do topo) abre a
+  // galeria; as fotos de products.js entram na sequência. Só prepende se já
+  // existe galeria — equipamento sem galeria não vira carrossel de 1 foto.
   var prodPhotos = (prod.gallery || []).filter(Boolean);
+  if (prodPhotos.length && prod.image && prodPhotos.indexOf(prod.image) === -1) {
+    prodPhotos = [prod.image].concat(prodPhotos);
+  }
   var galleryBlock = '';
   if (prodPhotos.length) {
     var gSlides = prodPhotos.map(function (src, i) {
