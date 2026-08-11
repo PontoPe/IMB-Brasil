@@ -67,16 +67,43 @@ jobs:
           # e a remocao e feita a mao, com autorizacao da IMB.
           DEST=_preview/
 
-          # Sobe um arquivo unico antes do lote. Se a credencial estiver
-          # errada, falha aqui com uma mensagem so, em vez de 219 linhas
-          # de erro que escondem a causa.
+          # Este servidor recusa PWD e recusa CWD para o subdiretorio, mas
+          # aceita login. curl tem tres estrategias de navegacao e nem
+          # toda hospedagem aceita a padrao (multicwd), que troca de
+          # diretorio a cada nivel. nocwd manda o caminho inteiro no
+          # proprio comando, sem navegar.
+          #
+          # Descobre qual funciona com um arquivo de teste, e usa o mesmo
+          # metodo no lote. Assim uma restricao do servidor nao custa mais
+          # um ciclo inteiro de CI para ser identificada.
           echo ok > "$RUNNER_TEMP/ping.txt"
-          curl -sS --fail --ssl-reqd \
-            --cacert "$RUNNER_TEMP/ca-bundle.pem" \
-            -u "$FTP_USER:$FTP_PASSWORD" \
-            -T "$RUNNER_TEMP/ping.txt" \
-            "ftp://web182.kinghost.net/${DEST}ping.txt"
-          echo "Login e escrita OK em ${DEST}"
+          METODO=""
+          for m in nocwd singlecwd multicwd; do
+            if curl -sS --fail --ssl-reqd --ftp-create-dirs \
+                 --ftp-method "$m" \
+                 --cacert "$RUNNER_TEMP/ca-bundle.pem" \
+                 -u "$FTP_USER:$FTP_PASSWORD" \
+                 -T "$RUNNER_TEMP/ping.txt" \
+                 "ftp://web182.kinghost.net/${DEST}ping-$m.txt"; then
+              echo "OK com --ftp-method $m"
+              METODO="$m"
+              break
+            fi
+            echo "recusado: --ftp-method $m"
+          done
+
+          if [ -z "$METODO" ]; then
+            echo "Nenhum metodo de navegacao FTP funcionou em ${DEST}."
+            echo "Tentando escrever direto na raiz web, para separar"
+            echo "restricao de subdiretorio de restricao geral de escrita:"
+            curl -sS --fail --ssl-reqd --ftp-method nocwd \
+              --cacert "$RUNNER_TEMP/ca-bundle.pem" \
+              -u "$FTP_USER:$FTP_PASSWORD" \
+              -T "$RUNNER_TEMP/ping.txt" \
+              "ftp://web182.kinghost.net/ping.txt"
+            echo "Raiz aceita escrita — a restricao e no subdiretorio."
+            exit 1
+          fi
 
           cd site
 
@@ -94,6 +121,7 @@ jobs:
           done
 
           curl -sS --fail --ssl-reqd --ftp-create-dirs \
+            --ftp-method "$METODO" \
             -u "$FTP_USER:$FTP_PASSWORD" \
             --cacert "$RUNNER_TEMP/ca-bundle.pem" \
             --config "$CFG"
