@@ -73,9 +73,12 @@ jobs:
             set ftp:ssl-protect-data true;
             set ssl:verify-certificate true;
             set ssl:ca-file $RUNNER_TEMP/ca-bundle.pem;
-            set cmd:fail-exit true;
+            set cmd:fail-exit false;
+            debug 3;
             open -u '$FTP_USER','$FTP_PASSWORD' web182.kinghost.net;
-            cd /www;
-            mkdir -p -f _preview;
-            mirror -R --verbose --parallel=4 ./site/ _preview/;
+            pwd;
+            ls -la;
+            cd www;
+            pwd;
+            ls -la;
           "
