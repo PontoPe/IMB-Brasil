@@ -53,13 +53,18 @@ jobs:
           # ssl-force + verify-certificate: sem isso o lftp aceitaria cair
           # para FTP em texto limpo, mandando a senha aberta na rede.
           #
-          # Destino sem ./ e sem barra inicial: e resolvido a partir do
-          # diretorio onde a conta pousa ao logar, que e a raiz web.
-          # Caminho absoluto (/_preview) sobe um nivel e cai fora da area
-          # publica; ./_preview o lftp expande para ~/_preview e tambem
-          # erra o alvo. O mkdir -p -f garante a pasta existindo sem
-          # abortar quando ela ja existe.
-          # Trocar o destino para . no dia da virada.
+          # A raiz web e /www. A raiz absoluta do FTP e o home da conta,
+          # um nivel acima, onde o .ftpaccess nega escrita — era ali que
+          # o lftp caia, resultando em "550 Permission denied".
+          #
+          # curl e lftp divergem aqui: em URL do curl o caminho e relativo
+          # ao diretorio de login (que ja e /www), enquanto o lftp comeca
+          # na raiz absoluta. Por isso o mesmo _preview existia para um e
+          # nao para o outro. Com cd /www explicito os dois falam do mesmo
+          # lugar.
+          #
+          # No dia da virada: trocar o destino do mirror de _preview/
+          # para . (a propria /www).
           #
           # Sem --delete de proposito: o servidor ainda tem restos do site
           # antigo, e a remocao e feita a mao, com autorizacao da IMB.
@@ -70,9 +75,7 @@ jobs:
             set ssl:ca-file $RUNNER_TEMP/ca-bundle.pem;
             set cmd:fail-exit true;
             open -u '$FTP_USER','$FTP_PASSWORD' web182.kinghost.net;
-            pwd;
-            ls;
-            mkdir -p _preview;
-            ls;
+            cd /www;
+            mkdir -p -f _preview;
             mirror -R --verbose --parallel=4 ./site/ _preview/;
           "
