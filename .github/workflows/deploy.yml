@@ -3,20 +3,22 @@ name: Deploy KingHost
 # Publica site/ no servidor a cada push na main.
 #
 # Credenciais NAO ficam neste arquivo. Cadastre em
-# Settings > Secrets and variables > Actions:
+# Settings > Secrets and variables > Actions > Repository secrets:
 #   FTP_USER      usuario de FTP
 #   FTP_PASSWORD  senha
 #
-# A action sincroniza so o que mudou, comparando com um manifesto
-# que ela mantem no servidor. O primeiro deploy sobe os 108 MB
-# inteiros; os seguintes sobem apenas os arquivos alterados.
+# Usa lftp e nao a FTP-Deploy-Action: naquele servidor a action nao
+# consegue criar diretorio (falhava com "550 css: No such file or
+# directory" mesmo com o diretorio pai existindo). lftp cria a arvore
+# sozinho, sobe em paralelo e inclui arquivos ocultos — o .htaccess
+# depende disso.
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-# Dois deploys simultaneos corromperiam o manifesto de sincronia.
+# Dois deploys simultaneos brigariam pelos mesmos arquivos no servidor.
 concurrency:
   group: deploy-kinghost
   cancel-in-progress: false
@@ -27,34 +29,34 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Sincroniza site/ via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
+      - name: Instala lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Envia site/ via FTPS
+        env:
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
           # web182.kinghost.net, e nao ftp.imb-brasil.com.br: o servidor
           # so apresenta certificado *.kinghost.net, entao conectar pelo
           # dominio da IMB falha na verificacao TLS. Mesmo servidor, mesma
-          # conta. Se a KingHost migrar o plano para outro servidor, este
-          # nome muda — conferir com: nslookup ftp.imb-brasil.com.br
-          server: web182.kinghost.net
-          username: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASSWORD }}
-
-          # FTPS, nunca FTP puro: em FTP simples usuario e senha
-          # trafegam em texto limpo.
-          protocol: ftps
-          port: 21
-
-          local-dir: ./site/
-          # Caminho RELATIVO, com ./ na frente. O diretorio onde a conta
-          # pousa ao logar e a raiz web (nao existe /www/ aqui), mas ele
-          # nao e o / do servidor: caminho absoluto sobe um nivel e cai
-          # fora da area publica. Foi o que causou o 550 na primeira
-          # tentativa. Verificado em 06/08/2026.
-          # Enquanto valida, publica em ./_preview/; troca para ./ no
-          # dia da virada.
-          server-dir: ./_preview/
-
-          # Nunca apagar o servidor inteiro antes de subir. Se o
-          # manifesto dessincronizar, rode uma vez manualmente pelo
-          # workflow_dispatch em vez de ligar isto.
-          dangerous-clean-slate: false
+          # conta. Se a KingHost migrar o plano, este nome muda —
+          # conferir com: nslookup ftp.imb-brasil.com.br
+          #
+          # ssl-force + verify-certificate: sem isso o lftp aceitaria cair
+          # para FTP em texto limpo, mandando a senha aberta na rede.
+          #
+          # O destino e relativo (./_preview/). Caminho absoluto nesta
+          # conta resolve acima da raiz web e cai fora da area publica.
+          # Trocar para ./ no dia da virada.
+          #
+          # Sem --delete de proposito: o servidor ainda tem restos do site
+          # antigo, e a remocao e feita a mao, com autorizacao da IMB.
+          lftp -c "
+            set ftp:ssl-force true;
+            set ftp:ssl-protect-data true;
+            set ssl:verify-certificate true;
+            set cmd:fail-exit true;
+            open -u '$FTP_USER','$FTP_PASSWORD' web182.kinghost.net;
+            mirror -R --verbose --parallel=4 ./site/ ./_preview/;
+          "
