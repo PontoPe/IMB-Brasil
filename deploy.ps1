@@ -39,7 +39,7 @@
 param(
   [string]$Dest = '_preview/',
   [string]$User = 'imb-brasil',
-  [int]$Tentativas = 4,
+  [int]$Tentativas = 8,
   [switch]$SemTlsNosDados
 )
 
@@ -97,7 +97,13 @@ function Invoke-Curl {
     'ssl-reqd',
     'ftp-create-dirs',
     'silent',
-    'show-error'
+    'show-error',
+    # O servidor corta transferencias com frequencia. Retentar dentro da
+    # propria execucao do curl conserta a maioria na hora, em vez de
+    # empurrar o arquivo para a passada seguinte do laco de conferencia.
+    'retry = 3',
+    'retry-all-errors',
+    'retry-delay = 2'
   )
   if ($SemTlsNosDados) { $base += 'ftp-ssl-control' }
   Set-Content -Path $cfg -Value ($base + $Linhas) -Encoding ascii
