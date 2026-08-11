@@ -74,11 +74,11 @@ jobs:
             set ssl:verify-certificate true;
             set ssl:ca-file $RUNNER_TEMP/ca-bundle.pem;
             set cmd:fail-exit false;
-            debug 3;
+            set ftp:passive-mode true;
+            set ftp:prefer-epsv false;
+            set net:timeout 20;
+            set net:max-retries 2;
+            debug 5;
             open -u '$FTP_USER','$FTP_PASSWORD' web182.kinghost.net;
-            pwd;
-            ls -la;
-            cd www;
-            pwd;
             ls -la;
           "
