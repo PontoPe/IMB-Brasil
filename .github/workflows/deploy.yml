@@ -32,6 +32,13 @@ jobs:
       - name: Instala lftp
         run: sudo apt-get update && sudo apt-get install -y lftp
 
+      # O servidor manda so o certificado final e omite o intermediario
+      # que o assina. O Windows resolve isso sozinho pela AIA, o OpenSSL
+      # nao — por isso o lftp acusava "certificate issuer is unknown".
+      # Fechar a cadeia aqui permite manter a verificacao TLS ligada.
+      - name: Fecha a cadeia de certificados
+        run: cat /etc/ssl/certs/ca-certificates.crt .github/kinghost-chain.pem > "$RUNNER_TEMP/ca-bundle.pem"
+
       - name: Envia site/ via FTPS
         env:
           FTP_USER: ${{ secrets.FTP_USER }}
@@ -56,6 +63,7 @@ jobs:
             set ftp:ssl-force true;
             set ftp:ssl-protect-data true;
             set ssl:verify-certificate true;
+            set ssl:ca-file $RUNNER_TEMP/ca-bundle.pem;
             set cmd:fail-exit true;
             open -u '$FTP_USER','$FTP_PASSWORD' web182.kinghost.net;
             mirror -R --verbose --parallel=4 ./site/ ./_preview/;
