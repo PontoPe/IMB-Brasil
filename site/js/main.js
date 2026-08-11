@@ -420,3 +420,26 @@ window.IMB_resolveWaMsg = function (el) {
     });
   }
 })();
+
+/* Ano do rodape -------------------------------------------------------
+   O "© 2025" esta fixo no HTML de 28 paginas, nas tres linguas, e ainda
+   no dicionario embutido do 404. Mantido na mao, o site passa a parecer
+   abandonado toda virada de ano — foi o que aconteceu. Aqui o ano
+   corrente e escrito uma vez, ja com o rodape montado: i18n.js registra
+   o listener de DOMContentLoaded antes deste arquivo, entao aplica
+   primeiro. O ano que esta no HTML continua valendo como fallback caso
+   o JS nao rode. */
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var rodape = document.querySelector('footer');
+    if (!rodape) return;
+    var ano = String(new Date().getFullYear());
+    var walker = document.createTreeWalker(rodape, NodeFilter.SHOW_TEXT, null, false);
+    var no;
+    while ((no = walker.nextNode())) {
+      if (no.nodeValue.indexOf('\u00A9') !== -1) {
+        no.nodeValue = no.nodeValue.replace(/\u00A9\s*\d{4}/, '\u00A9 ' + ano);
+      }
+    }
+  });
+})();
