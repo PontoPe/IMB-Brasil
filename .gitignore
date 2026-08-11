@@ -66,6 +66,9 @@ out/
 .env.*
 !.env.example
 *.pem
+# Excecao: certificado publico de CA, nao e segredo. Fecha a cadeia TLS
+# do FTPS da KingHost no deploy — ver .github/workflows/deploy.yml.
+!.github/kinghost-chain.pem
 *.key
 *.p12
 credentials.json
