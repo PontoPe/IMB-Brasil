@@ -1,28 +1,36 @@
 <#
 .SYNOPSIS
-  Publica site/ na hospedagem da KingHost por FTPS.
+  Publica site/ na hospedagem da KingHost por FTPS, conferindo o que subiu.
 
 .DESCRIPTION
   Roda da maquina do desenvolvedor, e nao no GitHub Actions: o servidor
   aceita login de qualquer origem mas recusa STOR de fora do Brasil.
-  O runner do GitHub loga, enxerga o diretorio vazio e leva 550 em
-  qualquer envio. Ha um .ftpaccess de 97 KB na raiz da conta, tamanho
-  compativel com lista de IPs. Enquanto a KingHost nao liberar acesso
-  externo (ou oferecer SFTP), a publicacao e manual por aqui.
+  Ha um .ftpaccess de 97 KB na raiz da conta, tamanho compativel com
+  lista de IPs.
+
+  O servidor trunca transferencias. Na primeira publicacao varios
+  arquivos chegaram com 0 byte e outros cortados em 16384 bytes exatos,
+  enquanto o curl reportava apenas um 450 no fim. Um deploy que so envia
+  nao e confiavel aqui: este script confere o tamanho de cada arquivo no
+  servidor e reenvia o que nao bater, ate tudo fechar.
 
   A lista de arquivos vem de "git ls-files", nunca de varredura de
   diretorio: site/images/SharePoint/ e site/docs/ estao no .gitignore e
-  somam mais de 50 GB de material bruto do cliente. Varrer o disco
-  mandaria tudo isso para o servidor.
+  somam mais de 50 GB de material bruto do cliente.
 
 .PARAMETER Dest
   Subpasta de destino, com barra no fim. Padrao "_preview/", usada para
-  validar sem publicar. Passe "" para publicar na raiz web, no dia da
-  virada.
+  validar sem publicar. Passe "" para publicar na raiz web.
+
+.PARAMETER SemTlsNosDados
+  Criptografa apenas o canal de controle; o conteudo dos arquivos vai em
+  claro. A senha continua protegida. Use se o truncamento persistir: em
+  alguns servidores ele vem do TLS no canal de dados. O site e publico,
+  entao o conteudo nao e sigiloso.
 
 .EXAMPLE
   .\deploy.ps1
-  Publica em _preview/ para validacao.
+  Publica em _preview/ e confere.
 
 .EXAMPLE
   .\deploy.ps1 -Dest ""
@@ -30,14 +38,18 @@
 #>
 param(
   [string]$Dest = '_preview/',
-  [string]$User = 'imb-brasil'
+  [string]$User = 'imb-brasil',
+  [int]$Tentativas = 4,
+  [switch]$SemTlsNosDados
 )
 
 $ErrorActionPreference = 'Stop'
 Set-Location $PSScriptRoot
 
-$arquivos = @(git ls-files site)
-if ($arquivos.Count -eq 0) {
+$Servidor = 'web182.kinghost.net'
+
+$versionados = @(git ls-files site)
+if ($versionados.Count -eq 0) {
   throw 'Nenhum arquivo versionado em site/. Rode a partir da raiz do repositorio.'
 }
 
@@ -46,13 +58,19 @@ if ($arquivos.Count -eq 0) {
 $sujo = @(git status --porcelain site)
 if ($sujo.Count -gt 0) {
   Write-Warning "$($sujo.Count) arquivo(s) modificado(s) e nao commitado(s) em site/."
-  Write-Warning 'O que vai para o ar e o estado do disco, nao o do ultimo commit.'
+  Write-Warning 'Vai para o ar o estado do disco, nao o do ultimo commit.'
+}
+
+# Caminho relativo -> tamanho esperado.
+$esperado = @{}
+foreach ($f in $versionados) {
+  $esperado[($f -replace '^site/', '')] = (Get-Item $f).Length
 }
 
 $alvo = if ($Dest) { $Dest } else { 'RAIZ WEB (site no ar)' }
 Write-Host ''
-Write-Host "  Arquivos : $($arquivos.Count)"
-Write-Host "  Servidor : web182.kinghost.net"
+Write-Host "  Arquivos : $($esperado.Count)"
+Write-Host "  Servidor : $Servidor"
 Write-Host "  Destino  : $alvo"
 Write-Host ''
 
@@ -61,33 +79,102 @@ if (-not $Dest) {
   if ($r -ne 'PUBLICAR') { Write-Host 'Cancelado.'; exit 1 }
 }
 
-# Um curl para todos os arquivos: um login so, conexao reaproveitada.
-# Hospedagem compartilhada limita conexoes simultaneas, entao subir
-# arquivo a arquivo (ou em paralelo) faz o servidor comecar a recusar.
+# Senha pedida uma vez e mantida so em memoria. Ela vai para o curl por
+# arquivo de configuracao, e nao na linha de comando (argumento de
+# processo e visivel para outros processos) nem por netrc, cujo formato
+# trata "#" como inicio de comentario e truncaria a senha.
+$sec = Read-Host "Senha FTP de $User" -AsSecureString
+$bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($sec)
+try { $senha = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr) }
+finally { [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr) }
+
 $cfg = Join-Path $env:TEMP 'imb-deploy.cfg'
-$linhas = foreach ($f in $arquivos) {
-  $rel = $f -replace '^site/', ''
-  "url = `"ftp://web182.kinghost.net/$Dest$rel`""
-  "upload-file = `"$f`""
+
+function Invoke-Curl {
+  param([string[]]$Linhas)
+  $base = @(
+    "user = `"$User`:$senha`"",
+    'ssl-reqd',
+    'ftp-create-dirs',
+    'silent',
+    'show-error'
+  )
+  if ($SemTlsNosDados) { $base += 'ftp-ssl-control' }
+  Set-Content -Path $cfg -Value ($base + $Linhas) -Encoding ascii
+  $saida = & curl.exe --config $cfg 2>&1
+  return @{ Codigo = $LASTEXITCODE; Saida = $saida }
 }
-Set-Content -Path $cfg -Value $linhas -Encoding ascii
+
+# Le o tamanho de cada arquivo ja presente no servidor, um LIST por
+# diretorio. Nomes com espaco quebrariam este parse; nao ha nenhum no
+# projeto (conferido: todos os nomes sao ASCII sem espaco).
+function Get-TamanhosRemotos {
+  $dirs = $esperado.Keys | ForEach-Object {
+    if ($_ -match '/') { ($_ -replace '/[^/]*$', '') } else { '' }
+  } | Sort-Object -Unique
+
+  $tam = @{}
+  foreach ($d in $dirs) {
+    $url = if ($d) { "ftp://$Servidor/$Dest$d/" } else { "ftp://$Servidor/$Dest" }
+    $r = Invoke-Curl @("url = `"$url`"")
+    if ($r.Codigo -ne 0) { continue }   # diretorio ainda nao existe
+    foreach ($linha in $r.Saida) {
+      if ($linha -match '^-\S+\s+\d+\s+\S+\s+\S+\s+(\d+)\s+\S+\s+\S+\s+\S+\s+(.+)$') {
+        $nome = $matches[2].Trim()
+        $rel = if ($d) { "$d/$nome" } else { $nome }
+        $tam[$rel] = [int64]$matches[1]
+      }
+    }
+  }
+  return $tam
+}
 
 try {
-  # -u sem a senha: o curl pergunta uma vez. Senha nao fica em arquivo,
-  # em variavel de ambiente nem no historico do PowerShell.
-  # --ssl-reqd aborta se o servidor nao oferecer TLS, em vez de cair
-  # para FTP em texto limpo.
-  curl.exe --ssl-reqd --ftp-create-dirs -u $User --config $cfg
-  if ($LASTEXITCODE -ne 0) {
-    throw "curl terminou com codigo $LASTEXITCODE. Nada garantido no servidor."
+  $pendentes = @($esperado.Keys)
+
+  for ($i = 1; $i -le $Tentativas; $i++) {
+    Write-Host "Tentativa $i — enviando $($pendentes.Count) arquivo(s)..."
+
+    $linhas = foreach ($rel in $pendentes) {
+      "url = `"ftp://$Servidor/$Dest$rel`""
+      "upload-file = `"site/$rel`""
+    }
+    $envio = Invoke-Curl $linhas
+    if ($envio.Codigo -ne 0) {
+      Write-Host "  curl saiu com codigo $($envio.Codigo) — o resultado real vem da conferencia."
+    }
+
+    Write-Host '  Conferindo tamanhos no servidor...'
+    $remoto = Get-TamanhosRemotos
+
+    $pendentes = @($esperado.Keys | Where-Object {
+      -not $remoto.ContainsKey($_) -or $remoto[$_] -ne $esperado[$_]
+    })
+
+    if ($pendentes.Count -eq 0) {
+      Write-Host ''
+      Write-Host "$($esperado.Count) arquivos conferidos byte a byte em $alvo." -ForegroundColor Green
+      if ($Dest -eq '_preview/') {
+        Write-Host 'Confira em https://imb-brasil.com.br/_preview/'
+      }
+      exit 0
+    }
+
+    Write-Host "  $($pendentes.Count) arquivo(s) incompleto(s) ou faltando."
+  }
+
+  Write-Host ''
+  Write-Warning "Sobraram $($pendentes.Count) arquivo(s) apos $Tentativas tentativas:"
+  $pendentes | Select-Object -First 20 | ForEach-Object {
+    $r = if ($remoto.ContainsKey($_)) { $remoto[$_] } else { 'ausente' }
+    Write-Host ("   {0}  esperado {1}, servidor {2}" -f $_, $esperado[$_], $r)
   }
   Write-Host ''
-  Write-Host "$($arquivos.Count) arquivos enviados para $alvo." -ForegroundColor Green
-  if ($Dest -eq '_preview/') {
-    Write-Host 'Confira em https://imb-brasil.com.br/_preview/'
-    Write-Host '(so alcancavel por IPv6 enquanto o DNS nao virar; veja a Fase 4)'
-  }
+  Write-Host 'Se o truncamento persistir, tente:  .\deploy.ps1 -SemTlsNosDados'
+  Write-Host '(criptografa so o login; o conteudo do site, que e publico, vai em claro)'
+  exit 1
 }
 finally {
   Remove-Item $cfg -ErrorAction SilentlyContinue
+  $senha = $null
 }
