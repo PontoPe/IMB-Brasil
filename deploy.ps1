@@ -130,7 +130,22 @@ function Get-TamanhosRemotos {
 }
 
 try {
-  $pendentes = @($esperado.Keys)
+  # Confere ANTES de enviar. Sem isto, trocar uma linha de um arquivo
+  # custaria o reenvio dos 108 MB inteiros: a primeira passada mandava
+  # tudo e so depois comparava.
+  Write-Host 'Conferindo o que ja esta no servidor...'
+  $remoto = Get-TamanhosRemotos
+  $pendentes = @($esperado.Keys | Where-Object {
+    -not $remoto.ContainsKey($_) -or $remoto[$_] -ne $esperado[$_]
+  })
+
+  if ($pendentes.Count -eq 0) {
+    Write-Host ''
+    Write-Host "Servidor ja esta igual: $($esperado.Count) arquivos conferidos em $alvo." -ForegroundColor Green
+    exit 0
+  }
+
+  Write-Host "$($pendentes.Count) de $($esperado.Count) arquivo(s) precisam subir."
 
   for ($i = 1; $i -le $Tentativas; $i++) {
     Write-Host "Tentativa $i — enviando $($pendentes.Count) arquivo(s)..."
