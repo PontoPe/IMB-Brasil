@@ -44,13 +44,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Credencial em arquivo com permissao restrita, e nao na linha
-          # de comando: argumento de processo e visivel para qualquer
-          # outro processo da maquina.
-          umask 077
-          printf 'machine web182.kinghost.net login %s password %s\n' \
-            "$FTP_USER" "$FTP_PASSWORD" > "$RUNNER_TEMP/netrc"
-
+          # Credencial via -u, e nao --netrc-file: no formato netrc o "#"
+          # inicia comentario, entao senha que contenha esse caractere
+          # chega truncada e o servidor responde 530. O runner e efemero
+          # e o GitHub redige o valor no log.
+          #
           # web182.kinghost.net, e nao ftp.imb-brasil.com.br: o servidor
           # so apresenta certificado *.kinghost.net, entao conectar pelo
           # dominio da IMB falha na verificacao TLS. Mesmo servidor, mesma
@@ -69,6 +67,17 @@ jobs:
           # e a remocao e feita a mao, com autorizacao da IMB.
           DEST=_preview/
 
+          # Sobe um arquivo unico antes do lote. Se a credencial estiver
+          # errada, falha aqui com uma mensagem so, em vez de 219 linhas
+          # de erro que escondem a causa.
+          echo ok > "$RUNNER_TEMP/ping.txt"
+          curl -sS --fail --ssl-reqd \
+            --cacert "$RUNNER_TEMP/ca-bundle.pem" \
+            -u "$FTP_USER:$FTP_PASSWORD" \
+            -T "$RUNNER_TEMP/ping.txt" \
+            "ftp://web182.kinghost.net/${DEST}ping.txt"
+          echo "Login e escrita OK em ${DEST}"
+
           cd site
 
           # Um processo curl para todos os arquivos, em vez de um por
@@ -85,7 +94,7 @@ jobs:
           done
 
           curl -sS --fail --ssl-reqd --ftp-create-dirs \
-            --netrc-file "$RUNNER_TEMP/netrc" \
+            -u "$FTP_USER:$FTP_PASSWORD" \
             --cacert "$RUNNER_TEMP/ca-bundle.pem" \
             --config "$CFG"
 
