@@ -45,11 +45,14 @@ jobs:
           port: 21
 
           local-dir: ./site/
-          # A raiz do FTP JA E a raiz web neste plano — nao existe
-          # /www/. Verificado em 06/08/2026 listando o servidor.
-          # Enquanto valida, publica em /_preview/; troca para / no
+          # Caminho RELATIVO, com ./ na frente. O diretorio onde a conta
+          # pousa ao logar e a raiz web (nao existe /www/ aqui), mas ele
+          # nao e o / do servidor: caminho absoluto sobe um nivel e cai
+          # fora da area publica. Foi o que causou o 550 na primeira
+          # tentativa. Verificado em 06/08/2026.
+          # Enquanto valida, publica em ./_preview/; troca para ./ no
           # dia da virada.
-          server-dir: /_preview/
+          server-dir: ./_preview/
 
           # Nunca apagar o servidor inteiro antes de subir. Se o
           # manifesto dessincronizar, rode uma vez manualmente pelo
