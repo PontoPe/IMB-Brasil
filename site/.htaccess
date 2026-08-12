@@ -47,7 +47,7 @@ ErrorDocument 404 /404.html
 # ── Arquivos internos que nao podem ser servidos ───────────────
 # O deploy grava um manifesto de sincronia na raiz; sem isto ele
 # fica legivel publicamente (lista nomes e hashes dos arquivos).
-<FilesMatch "^\.(ftp-deploy-sync-state\.json|htaccess)$">
+<FilesMatch "^(\.ftp-deploy-sync-state\.json|\.htaccess|_redirects|_headers)$">
   Require all denied
 </FilesMatch>
 
