@@ -1843,6 +1843,9 @@ textarea:disabled,
   .global-country-table td:first-child {
     background: var(--imb-neutral-200);
     border-bottom: 1px solid var(--imb-neutral-300);
+    /* Sobrepõe o `width: 26%` da regra de desktop, que tem especificidade
+       maior que o `width: 100%` do bloco de empilhamento acima. */
+    width: 100%;
   }
 
   .company-timeline::before {
