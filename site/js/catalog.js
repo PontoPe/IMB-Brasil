@@ -51,13 +51,14 @@
   var UI = {
     title:          { pt: 'Filtros', en: 'Filters', es: 'Filtros' },
     search:         { pt: 'Busca', en: 'Search', es: 'Búsqueda' },
-    searchPh:       { pt: 'Modelo, aplicação ou linha', en: 'Model, application or line', es: 'Modelo, aplicación o línea' },
+    searchPh:       { pt: 'Digite aqui', en: 'Type here', es: 'Escriba aquí' },
     category:       { pt: 'Categoria', en: 'Category', es: 'Categoría' },
     all:            { pt: 'Todos', en: 'All', es: 'Todos' },
     pavers:         { pt: 'Pavimentadoras', en: 'Pavers', es: 'Pavimentadoras' },
     extruders:      { pt: 'Extrusoras', en: 'Extruders', es: 'Extrusoras' },
     line:           { pt: 'Linha', en: 'Line', es: 'Línea' },
     anyLine:        { pt: 'Todas as linhas', en: 'All lines', es: 'Todas las líneas' },
+    mechLine:       { pt: 'Mecânica (todas)', en: 'Mechanical (all)', es: 'Mecánica (todas)' },
     capability:     { pt: 'Recurso', en: 'Feature', es: 'Recurso' },
     allFeatures:    { pt: 'Todos os recursos', en: 'All features', es: 'Todos los recursos' },
     automated:      { pt: 'Automação / sensores', en: 'Automation / sensors', es: 'Automatización / sensores' },
@@ -145,7 +146,9 @@
 
   function productMatches(p) {
     if (state.type !== 'all' && kindOf(p) !== state.type) return false;
-    if (state.line !== 'all' && T(p.specs.linha) !== state.line) return false;
+    if (state.line === MECH_LINE) {
+      if (!isMechanicalLine(p)) return false;
+    } else if (state.line !== 'all' && T(p.specs.linha) !== state.line) return false;
     if (!hasCapability(p, state.capability)) return false;
     if (state.query && searchableText(p).indexOf(normalText(state.query)) === -1) return false;
     return true;
@@ -166,6 +169,17 @@
     });
   }
 
+  // Guarda-chuva do filtro de linha: as quatro linhas mecânicas (a hidráulica e a
+  // automatizada continuam sozinhas). Compara pelo pt canônico, não pelo texto
+  // traduzido, para o filtro valer igual nos três idiomas.
+  var MECH_LINE = 'mecanica';
+  var MECH_LINES_PT = ['Leve', 'Média', 'Pesada', 'Especial'];
+
+  function isMechanicalLine(p) {
+    var pt = p.specs.linha && p.specs.linha.pt;
+    return MECH_LINES_PT.indexOf(pt) !== -1;
+  }
+
   function uniqueLines() {
     var seen = {};
     return products.reduce(function (acc, p) {
@@ -180,8 +194,14 @@
 
   function renderControls() {
     if (!controls) return;
-    var lineOptions = uniqueLines().map(function (line) {
-      return '<option value="' + escHTML(line) + '">' + escHTML(line) + '</option>';
+    // A entrada "Mecânica (todas)" entra logo antes das linhas que ela agrupa.
+    var mechFirst = uniqueLines().findIndex(function (line) {
+      return products.some(function (p) { return T(p.specs.linha) === line && isMechanicalLine(p); });
+    });
+    var lineOptions = uniqueLines().map(function (line, i) {
+      var opt = '<option value="' + escHTML(line) + '">' + escHTML(line) + '</option>';
+      if (i === mechFirst) opt = '<option value="' + MECH_LINE + '">' + escHTML(ui('mechLine')) + '</option>' + opt;
+      return opt;
     }).join('');
 
     controls.innerHTML = ''

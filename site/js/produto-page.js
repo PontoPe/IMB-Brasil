@@ -301,9 +301,10 @@
   // ---- Cases relacionados ----
   var relatedCases = [];
   if (window.IMB_CASES && window.IMB_CASES.cases) {
+    // Cap em 6: com 3 a Cronus escondia a BR-101 e a Ferrovia MT (AJUSTES2 18/08, item 2).
     relatedCases = window.IMB_CASES.cases.filter(function (c) {
       return (c.equipment || []).some(function (e) { return e.id === prod.id; });
-    }).slice(0, 3);
+    }).slice(0, 6);
   }
   var casesBlock = '';
   if (relatedCases.length) {

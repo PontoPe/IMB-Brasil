@@ -1,4 +1,5 @@
-// IMB product catalog — dados oficiais de site/docs/fichas_tecnicas_maquinas_revisado.xlsx (2026-07).
+// IMB product catalog — dados oficiais de fichas_tecnicas_maquinas_revisado.xlsx
+// (abas "Fichas Tecnicas - MEC" e "- HID", revisao de 18/08/2026 entregue no AJUSTES2).
 // Translatable fields use {pt, en, es} objects. Use IMB_I18N.pickLang(obj) at render time.
 //
 // Linha mecânica/automatizada e linha hidráulica têm fichas técnicas de estruturas diferentes.
@@ -21,6 +22,7 @@ window.IMB_PRODUCTS = (function () {
   const CORREIA_TRIPLA = L('Polia e correia tripla', 'Triple pulley and belt', 'Polea y correa triple');
   const CORRENTE_DUPLA = L('Corrente e engrenagem dupla', 'Double chain and gear', 'Cadena y engranaje doble');
   const TRACAO_MEC = L('Mecânica', 'Mechanical', 'Mecánica');
+  const TRANSM_HIDR = L('Hidráulica', 'Hydraulic', 'Hidráulica');
 
   function isToken(v, pt) { return !!v && typeof v === 'object' && v.pt === pt; }
   function isYes(v) { return isToken(v, 'Sim'); }
@@ -77,6 +79,8 @@ window.IMB_PRODUCTS = (function () {
     { key: 'rosca_sem_fim',     label: L('Sistema de Alimentação de Concreto por Rosca Sem Fim', 'Auger Concrete Feeding System', 'Sistema de Alimentación de Concreto por Tornillo Sin Fin'), type: 'text', group: 'tech' },
     { key: 'revest_esteiras',   label: L('Revestimento de Borracha para Esteiras de Tração', 'Rubber Coating for Traction Tracks', 'Revestimiento de Goma para Orugas de Tracción'), type: 'text', group: 'tech' },
 
+    { key: 'silo_argamassa',    label: L('Silo para Argamassa',          'Mortar Silo',                 'Silo para Mortero'),               type: 'text', group: 'tech' },
+
     { key: 'produtividade',     label: L('Produtividade',               'Productivity',                'Productividad'),                   type: 'text',   group: 'prod' },
   ];
 
@@ -107,7 +111,7 @@ window.IMB_PRODUCTS = (function () {
   const PERFIS_900_MASTER   = assetPrefix + 'images/perfis/900g-master-500hd.png'; // 900G Master, 900G Master c/ Emb. e 500HD
   const PERFIS_900_STC      = assetPrefix + 'images/perfis/900g-stc.png';
 
-  // Galeria complementar por equipamento (fotos oficiais, 06/08/2026).
+  // Galeria complementar por equipamento (linha MEC 06/08/2026, linha hidráulica 18/08/2026).
   // Arquivos em site/images/produtos/<id>/ — vira carrossel na página do produto.
   function galeria(id, files) {
     return files.map(function (f) { return assetPrefix + 'images/produtos/' + id + '/' + f; });
@@ -139,21 +143,26 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-2000hd-max.pdf',
       profile_image: PERFIS_2000HD,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem'],
+      gallery: galeria('imb-2000hd-max', ['01.jpg', '02.jpg', '03.jpg', '04.jpg']),
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
         aplicacoes:        L('Meio-fio, guia e sarjeta, calçadas e canaletas em geral','Curbs, curb & gutter, sidewalks and general channels','Cordones, guías y cunetas, veredas y canaletas en general'),
         motor_hp: 22,      motor_tipo: 'Diesel',
+        redutor: '1:5',
+        transmissao: TRANSM_HIDR,
         tracao:            L('Hidráulica integral 3WD','Full hydraulic 3WD','Hidráulica integral 3WD'),
         vibradores: 2,     vibradores_label: vibradores(2),
+        martelo_extrusor: null,
         largura_perfil: 1200, largura_perfil_label: perfilOffset('1.200 mm'),
         altura_perfil: 350,
         peso: 2500, comprimento: 3470, largura: 2410, altura: 1910,
         tanque_combust: 50, tanque_hidr: 100, tanque_agua: null,
+        horimetro: SIM, suspensao: AUTOM, direcao: AUTOM,
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
         monitoramento_3d: null, inset_offset: null, esteiras_aco: null,
         desloc_lateral: null, rosca_sem_fim: null, revest_esteiras: null,
-        produtividade: L('3,5 a 4 m/min','3.5 to 4 m/min','3,5 a 4 m/min'),
+        produtividade: L('9,0 m/min','9.0 m/min','9,0 m/min'),
       },
     },
     {
@@ -165,21 +174,26 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-3500hd.pdf',
       profile_image: PERFIS_3500HD,
       profile_types: ['meio-fio', 'guia-sarjeta', 'calcada', 'canaleta-drenagem', 'barreira-new-jersey'],
+      gallery: galeria('imb-3500hd', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg']),
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
         aplicacoes:        L('Calçadas, canaletas em geral, cocho para confinamento e barreira tipo New Jersey simples','Sidewalks, general channels, feed troughs and single New Jersey barriers','Veredas, canaletas en general, comederos para confinamiento y barrera tipo New Jersey simple'),
         motor_hp: 36,      motor_tipo: 'Diesel',
+        redutor: '1:30,2',
+        transmissao: TRANSM_HIDR,
         tracao:            L('Hidráulica integral 3WD em esteiras de aço','Full hydraulic 3WD on steel tracks','Hidráulica integral 3WD en orugas de acero'),
         vibradores: 4,     vibradores_label: vibradores(4),
+        martelo_extrusor: null,
         largura_perfil: 2000, largura_perfil_label: perfilOffset('2.000 mm'),
         altura_perfil: 350,
         peso: 7500, comprimento: 6900, largura: 2550, altura: 2800,
         tanque_combust: 150, tanque_hidr: 200, tanque_agua: 390,
+        horimetro: SIM, suspensao: AUTOM, direcao: AUTOM,
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
         monitoramento_3d: OPC, inset_offset: null, esteiras_aco: SIM,
-        desloc_lateral: OPC, rosca_sem_fim: OPC, revest_esteiras: OPC,
-        produtividade: L('2 m/min','2 m/min','2 m/min'),
+        desloc_lateral: NAO, rosca_sem_fim: OPC, revest_esteiras: OPC,
+        produtividade: L('2,0 a 6,0 m/min','2.0 to 6.0 m/min','2,0 a 6,0 m/min'),
       },
     },
     {
@@ -191,22 +205,27 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: 'manuals/manual-imb-5500hd-titan.pdf',
       profile_image: PERFIS_TITAN,
       profile_types: ['meio-fio', 'guia-sarjeta', 'canaleta-drenagem', 'barreira-new-jersey', 'pavimento-concreto'],
+      gallery: galeria('imb-5500hd-titan', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg']),
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
         aplicacoes:        L('Calçadas, canaletas em geral, cocho para confinamento, barreira tipo New Jersey simples ou dupla e pavimento de concreto','Sidewalks, general channels, feed troughs, single or double New Jersey barriers and concrete pavement','Veredas, canaletas en general, comederos, barrera tipo New Jersey simple o doble y pavimento de concreto'),
         motor_hp: 85,      motor_tipo: L('Diesel — Yanmar 4TNV','Diesel — Yanmar 4TNV','Diésel — Yanmar 4TNV'),
+        redutor: '1:30,2',
+        transmissao: TRANSM_HIDR,
         tracao:            L('Hidráulica integral 3WD em esteiras de aço','Full hydraulic 3WD on steel tracks','Hidráulica integral 3WD en orugas de acero'),
         vibradores: 6,     vibradores_label: vibradores(6),
+        martelo_extrusor: null,
         largura_perfil: 3600, largura_perfil_label: perfilOffsetInset('2.500 mm', '3.600 mm'),
         altura_perfil: 350,
         peso: 10500, comprimento: 8100, largura: 2600, altura: 2800,
         tanque_combust: 175, tanque_hidr: 450, tanque_agua: 700,
+        horimetro: SIM, suspensao: AUTOM, direcao: AUTOM,
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
         monitoramento_3d: OPC, inset_offset: OPC, esteiras_aco: SIM,
-        desloc_lateral:    L('De série (traseira) / opcional (dianteira direita)','Standard (rear) / optional (front right)','De serie (trasera) / opcional (delantera derecha)'),
+        desloc_lateral: SIM,
         rosca_sem_fim: OPC, revest_esteiras: OPC,
-        produtividade: L('2 m/min','2 m/min','2 m/min'),
+        produtividade: L('2,0 a 6,0 m/min','2.0 to 6.0 m/min','2,0 a 6,0 m/min'),
       },
     },
     {
@@ -218,21 +237,26 @@ window.IMB_PRODUCTS = (function () {
       manualUrl: null,
       profile_image: PERFIS_CRONUS,
       profile_types: ['meio-fio', 'guia-sarjeta', 'canaleta-drenagem', 'barreira-new-jersey', 'pavimento-concreto'],
+      gallery: galeria('imb-5500hd-cronus', ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg', '06.jpg', '07.jpg']),
       specs: {
         tipo: TIPO_PAVER,
         linha: LINHA_HIDR,
         aplicacoes:        L('Calçadas, canaletas em geral, cocho para confinamento, barreira tipo New Jersey simples ou dupla e pavimento de concreto','Sidewalks, general channels, feed troughs, single or double New Jersey barriers and concrete pavement','Veredas, canaletas en general, comederos, barrera tipo New Jersey simple o doble y pavimento de concreto'),
         motor_hp: 142,     motor_tipo: L('Diesel — Perkins 1104D','Diesel — Perkins 1104D','Diésel — Perkins 1104D'),
+        redutor: '1:30,2',
+        transmissao: TRANSM_HIDR,
         tracao:            L('Hidráulica integral 4WD em esteiras de aço','Full hydraulic 4WD on steel tracks','Hidráulica integral 4WD en orugas de acero'),
         vibradores: 12,    vibradores_label: vibradores(12),
-        largura_perfil: 5000, largura_perfil_label: perfilOffsetInset('2.700 mm', '5.000 mm'),
+        martelo_extrusor: null,
+        largura_perfil: 5000, largura_perfil_label: perfilOffsetInset('2.750 mm', '5.000 mm'),
         altura_perfil: 350,
         peso: 16800, comprimento: 9600, largura: 2350, altura: 2800,
         tanque_combust: 220, tanque_hidr: 480, tanque_agua: 1700,
+        horimetro: SIM, suspensao: AUTOM, direcao: AUTOM,
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
         monitoramento_3d: OPC, inset_offset: OPC, esteiras_aco: SIM,
         desloc_lateral: SIM, rosca_sem_fim: OPC, revest_esteiras: OPC,
-        produtividade: L('2 m/min','2 m/min','2 m/min'),
+        produtividade: L('2,0 a 6,0 m/min','2.0 to 6.0 m/min','2,0 a 6,0 m/min'),
       },
     },
 
@@ -262,6 +286,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 5.5, tanque_hidr: 10,
         horimetro: SIM, suspensao: AUTOM, direcao: AUTOM, embreagem_radial: NAO,
         sensor_altura: SIM, sensor_direcao: SIM, sensor_inclinacao: SIM,
+        silo_argamassa: OPC,
         produtividade: L('2,5 a 3,5 m/min','2.5 to 3.5 m/min','2,5 a 3,5 m/min'),
       },
     },
@@ -293,6 +318,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 3.5, tanque_hidr: null,
         horimetro: NAO, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: NAO,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
+        silo_argamassa: NAO,
         produtividade: L('1,5 a 2,0 m/min','1.5 to 2.0 m/min','1,5 a 2,0 m/min'),
       },
     },
@@ -323,6 +349,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 5.5, tanque_hidr: null,
         horimetro: NAO, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: NAO,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
+        silo_argamassa: OPC,
         produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
@@ -351,6 +378,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 5.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: OPC,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
+        silo_argamassa: OPC,
         produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
@@ -380,6 +408,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 12.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: NAO,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
+        silo_argamassa: OPC,
         produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
@@ -407,6 +436,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 12.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: SIM,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
+        silo_argamassa: OPC,
         produtividade: L('2 a 3 m/min','2 to 3 m/min','2 a 3 m/min'),
       },
     },
@@ -436,6 +466,7 @@ window.IMB_PRODUCTS = (function () {
         tanque_combust: 12.5, tanque_hidr: null,
         horimetro: SIM, suspensao: MANUAL, direcao: MANUAL, embreagem_radial: SIM,
         sensor_altura: NAO, sensor_direcao: NAO, sensor_inclinacao: NAO,
+        silo_argamassa: NAO,
         produtividade: L('1,0 a 1,5 m/min','1.0 to 1.5 m/min','1,0 a 1,5 m/min'),
       },
     },

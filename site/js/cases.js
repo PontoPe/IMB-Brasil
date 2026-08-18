@@ -40,9 +40,21 @@ window.IMB_CASES = (function () {
   var UN_M3  = L('m³', 'm³', 'm³');
   var UN_MH  = L('m/h', 'm/h', 'm/h');
   var UN_MMIN= L('m/min', 'm/min', 'm/min');
-  var UN_CM  = L('cm', 'cm', 'cm');
   var UN_MM  = L('mm', 'mm', 'mm');
   var UN_M_S = L('m', 'm', 'm');
+
+  // Rótulos curtos: usados só nos chips do card de case (a página do case continua
+  // mostrando o label completo). Sem isso o chip vira uma frase inteira e estoura no mobile.
+  var SL_EXT       = L('Extensão', 'Length', 'Extensión');
+  var SL_PROD      = L('Produtividade', 'Output', 'Productividad');
+  var SL_LARG      = L('Largura', 'Width', 'Ancho');
+  var SL_LARG_TOT  = L('Largura total', 'Total width', 'Ancho total');
+  var SL_ESP       = L('Espessura', 'Thickness', 'Espesor');
+  var SL_AREA      = L('Área', 'Area', 'Área');
+  var SL_CONC      = L('Concreto', 'Concrete', 'Concreto');
+  var SL_TUN       = L('Túneis', 'Tunnels', 'Túneles');
+  var SL_DREN      = L('Drenagem', 'Drainage', 'Drenaje');
+  var SL_REC       = L('Recorde diário', 'Daily record', 'Récord diario');
 
   var LOC_LINHA_VERDE  = L('Curitiba, PR — Brasil', 'Curitiba, PR — Brazil', 'Curitiba, PR — Brasil');
   var LOC_RODOANEL     = L('Guarulhos, SP — Brasil', 'Guarulhos, SP — Brazil', 'Guarulhos, SP — Brasil');
@@ -84,9 +96,10 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'security', value: '2.900', unit: UN_M,  label: L('Barreiras New Jersey Simples executadas', 'Single New Jersey barriers built', 'Barreras New Jersey Simples ejecutadas') },
-        { icon: 'speed',    value: '60',    unit: UN_MH, label: L('Produtividade média', 'Average output', 'Productividad media') },
+        { icon: 'security', value: '2.900', unit: UN_M,  short_label: SL_EXT, label: L('Barreiras New Jersey Simples executadas', 'Single New Jersey barriers built', 'Barreras New Jersey Simples ejecutadas') },
+        { icon: 'speed',    value: '60',    unit: UN_MH, short_label: SL_PROD, label: L('Produtividade média', 'Average output', 'Productividad media') },
       ],
+      card_tags: [L('Ferragem armada', 'Reinforced steel', 'Armadura')],
       equipment: [EQ_3500HD],
       testimonial: null,
     },
@@ -119,7 +132,7 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'route', value: '+40.000', unit: UN_M, label: L('Meio-fio e guia e sarjeta executados', 'Curb and curb & gutter built', 'Cordón y guía y cuneta ejecutados') },
+        { icon: 'route', value: '+40.000', unit: UN_M, short_label: SL_EXT, label: L('Meio-fio e guia e sarjeta executados', 'Curb and curb & gutter built', 'Cordón y guía y cuneta ejecutados') },
       ],
       equipment: [EQ_700C],
       testimonial: null,
@@ -154,10 +167,10 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'package_2', value: '10.000', unit: UN_M3, label: L('Concreto consumido', 'Concrete poured', 'Concreto consumido') },
-        { icon: 'route',     value: '3.000',  unit: UN_M,  label: L('Túneis pavimentados', 'Tunnels paved', 'Túneles pavimentados') },
-        { icon: 'straighten',value: '14,40',  unit: UN_M_S,label: L('Largura total do pavimento', 'Total pavement width', 'Ancho total del pavimento') },
-        { icon: 'layers',    value: '25',     unit: UN_CM, label: L('Espessura mínima', 'Minimum thickness', 'Espesor mínimo') },
+        { icon: 'package_2', value: '10.000', unit: UN_M3, short_label: SL_CONC, label: L('Concreto consumido', 'Concrete poured', 'Concreto consumido') },
+        { icon: 'route',     value: '3.000',  unit: UN_M,  short_label: SL_TUN, label: L('Túneis pavimentados', 'Tunnels paved', 'Túneles pavimentados') },
+        { icon: 'straighten',value: '14,40',  unit: UN_M_S,short_label: SL_LARG_TOT, label: L('Largura total do pavimento', 'Total pavement width', 'Ancho total del pavimento') },
+        { icon: 'layers',    value: '0,25',   unit: UN_M_S,short_label: SL_ESP, label: L('Espessura mínima', 'Minimum thickness', 'Espesor mínimo') },
       ],
       equipment: [EQ_CRONUS],
       testimonial: null,
@@ -192,7 +205,7 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'security', value: '+2.370', unit: UN_M, label: L('Barreiras New Jersey Duplas executadas', 'Double New Jersey barriers built', 'Barreras New Jersey Dobles ejecutadas') },
+        { icon: 'security', value: '+2.370', unit: UN_M, short_label: SL_EXT, label: L('Barreiras New Jersey Duplas executadas', 'Double New Jersey barriers built', 'Barreras New Jersey Dobles ejecutadas') },
       ],
       equipment: [EQ_CRONUS],
       testimonial: null,
@@ -222,10 +235,10 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'route',      value: '80.000', unit: UN_M,  label: L('Bordo de acostamento executado', 'Shoulder edge built', 'Borde de banquina ejecutado') },
-        { icon: 'grid_on',    value: '72.000', unit: UN_M2, label: L('Área executada', 'Area built', 'Área ejecutada') },
-        { icon: 'straighten', value: '90',     unit: UN_CM, label: L('Largura do perfil', 'Profile width', 'Ancho del perfil') },
-        { icon: 'layers',     value: '22',     unit: UN_CM, label: L('Espessura', 'Thickness', 'Espesor') },
+        { icon: 'route',      value: '80.000', unit: UN_M,  short_label: SL_EXT, label: L('Bordo de acostamento executado', 'Shoulder edge built', 'Borde de banquina ejecutado') },
+        { icon: 'grid_on',    value: '72.000', unit: UN_M2, short_label: SL_AREA, label: L('Área executada', 'Area built', 'Área ejecutada') },
+        { icon: 'straighten', value: '0,90',   unit: UN_M_S, short_label: SL_LARG, label: L('Largura do perfil', 'Profile width', 'Ancho del perfil') },
+        { icon: 'layers',     value: '0,22',   unit: UN_M_S, short_label: SL_ESP, label: L('Espessura', 'Thickness', 'Espesor') },
       ],
       equipment: [EQ_TITAN],
       testimonial: null,
@@ -259,7 +272,7 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'security', value: '+2.500', unit: UN_M, label: L('Barreiras New Jersey Duplas executadas', 'Double New Jersey barriers built', 'Barreras New Jersey Dobles ejecutadas') },
+        { icon: 'security', value: '+2.500', unit: UN_M, short_label: SL_EXT, label: L('Barreiras New Jersey Duplas executadas', 'Double New Jersey barriers built', 'Barreras New Jersey Dobles ejecutadas') },
       ],
       equipment: [EQ_CRONUS],
       testimonial: null,
@@ -267,7 +280,7 @@ window.IMB_CASES = (function () {
     {
       id: 'ferrovia-mato-grosso',
       title: L('Canaletas de Drenagem na Ferrovia de Mato Grosso', 'Drainage Channels on the Mato Grosso Railway', 'Canaletas de Drenaje en el Ferrocarril de Mato Grosso'),
-      subtitle: L('Drenagem com IMB 5500HD Titan e IMB 3500HD', 'Drainage with IMB 5500HD Titan and IMB 3500HD', 'Drenaje con IMB 5500HD Titan e IMB 3500HD'),
+      subtitle: L('Drenagem com IMB 5500HD Cronus e IMB 3500HD', 'Drainage with IMB 5500HD Cronus and IMB 3500HD', 'Drenaje con IMB 5500HD Cronus e IMB 3500HD'),
       location: LOC_FERROVIA_MT,
       region: L('Centro-Oeste', 'Central-West', 'Centro-Oeste'),
       status: null,
@@ -288,18 +301,18 @@ window.IMB_CASES = (function () {
           'El Ferrocarril Estatal de Mato Grosso es actualmente el proyecto ferroviario más ambicioso y estratégico en ejecución en Brasil. La obra está creando un gigantesco corredor de exportación para conectar el corazón del agronegocio matogrossense con el Puerto de Santos.'
         ),
         L(
-          'Para execução do projeto foram utilizadas duas Pavimentadoras de Concreto IMB, que entregaram uma produtividade média de 6,00 metros lineares por minuto e atingiram um marco de produção de 1.200 metros lineares em um único dia.',
-          'Two IMB concrete pavers were used on the project, delivering an average output of 6.00 linear metres per minute and reaching a production milestone of 1,200 linear metres in a single day.',
-          'Para la ejecución del proyecto se utilizaron dos Pavimentadoras de Concreto IMB, que entregaron una productividad media de 6,00 metros lineales por minuto y alcanzaron un hito de producción de 1.200 metros lineales en un solo día.'
+          'Para execução do projeto foram utilizadas duas Pavimentadoras de Concreto IMB, que entregaram uma produtividade média de 6,0 metros lineares por minuto e atingiram um marco de produção de 1.200 metros lineares em um único dia.',
+          'Two IMB concrete pavers were used on the project, delivering an average output of 6.0 linear metres per minute and reaching a production milestone of 1,200 linear metres in a single day.',
+          'Para la ejecución del proyecto se utilizaron dos Pavimentadoras de Concreto IMB, que entregaron una productividad media de 6,0 metros lineales por minuto y alcanzaron un hito de producción de 1.200 metros lineales en un solo día.'
         ),
       ],
       metrics: [
-        { icon: 'water_drop', value: '+17.000', unit: UN_M,   label: L('Drenagem executada', 'Drainage built', 'Drenaje ejecutado') },
-        { icon: 'straighten', value: '1.600',   unit: UN_MM,  label: L('Largura máxima da canaleta', 'Maximum channel width', 'Ancho máximo de la canaleta') },
-        { icon: 'speed',      value: '6,00',    unit: UN_MMIN,label: L('Produtividade média', 'Average output', 'Productividad media') },
-        { icon: 'trending_up',value: '1.200',   unit: UN_M,   label: L('Recorde em um único dia', 'Record in a single day', 'Récord en un solo día') },
+        { icon: 'water_drop', value: '+17.000', unit: UN_M,   short_label: SL_DREN, label: L('Drenagem executada', 'Drainage built', 'Drenaje ejecutado') },
+        { icon: 'straighten', value: '1.600',   unit: UN_MM,  short_label: SL_LARG, label: L('Largura máxima da canaleta', 'Maximum channel width', 'Ancho máximo de la canaleta') },
+        { icon: 'speed',      value: '6,0',     unit: UN_MMIN,short_label: SL_PROD, label: L('Produtividade média', 'Average output', 'Productividad media') },
+        { icon: 'trending_up',value: '1.200',   unit: UN_M,   short_label: SL_REC, label: L('Recorde em um único dia', 'Record in a single day', 'Récord en un solo día') },
       ],
-      equipment: [EQ_TITAN, EQ_3500HD],
+      equipment: [EQ_CRONUS, EQ_3500HD],
       testimonial: null,
     },
     {
@@ -332,9 +345,8 @@ window.IMB_CASES = (function () {
         ),
       ],
       metrics: [
-        { icon: 'straighten', value: '10,40', unit: UN_M_S, label: L('Largura total do pavimento', 'Total pavement width', 'Ancho total del pavimento') },
-        { icon: 'route',      value: '3,60',  unit: UN_M_S, label: L('Largura de cada passada', 'Width of each pass', 'Ancho de cada pasada') },
-        { icon: 'layers',     value: '25',    unit: UN_CM,  label: L('Espessura', 'Thickness', 'Espesor') },
+        { icon: 'straighten', value: '10,40', unit: UN_M_S, short_label: SL_LARG_TOT, label: L('Largura total do pavimento', 'Total pavement width', 'Ancho total del pavimento') },
+        { icon: 'layers',     value: '0,25',  unit: UN_M_S, short_label: SL_ESP, label: L('Espessura', 'Thickness', 'Espesor') },
       ],
       equipment: [EQ_CRONUS],
       testimonial: null,
@@ -463,12 +475,26 @@ window.IMB_CASES = (function () {
     return unit ? value + ' ' + unit : value;
   }
 
+  // Tags livres do card: entram junto com as métricas nos chips, mas não viram
+  // "número" da obra (não aparecem no bloco de métricas da página do case).
+  function cardChipTexts(c) {
+    var out = (c.metrics || []).map(function (m) {
+      return { key: T(m.short_label), value: metricText(m) };
+    });
+    (c.card_tags || []).forEach(function (t) { out.push({ key: '', value: T(t) }); });
+    return out.slice(0, 3);
+  }
+
   function renderCard(c) {
     var title = T(c.title);
     var location = T(c.location);
     var summaryText = T(c.summary);
-    var chips = (c.metrics || []).slice(0, 3).map(function (m) {
-      return '<span class="case-card-chip">' + escHtml(metricText(m)) + '</span>';
+    // Rótulo e valor vão em spans separados de propósito: só o rótulo pode quebrar,
+    // o valor nunca parte no meio (ver .case-card-chip em styles.css).
+    var chips = cardChipTexts(c).map(function (chip) {
+      var value = '<span class="case-card-chip-value">' + escHtml(chip.value) + '</span>';
+      var key = chip.key ? '<span class="case-card-chip-key">' + escHtml(chip.key) + ':</span> ' : '';
+      return '<span class="case-card-chip">' + key + value + '</span>';
     }).join('');
 
     return ''
